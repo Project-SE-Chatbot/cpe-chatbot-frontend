@@ -6,6 +6,7 @@
   padding-bottom: 15px;
 }
 
+
 .options-header {
   text-align: center;
   font-size: 1rem;
@@ -106,10 +107,10 @@
 }
 .app-chatbot-container {
   margin: 40px 0;
-  display: flex;
+  display: center;
   justify-content: center;
   position: fixed;
-  right: 40px;
+   right: 40px; 
   bottom: 55px;
   z-index: 9999;
   box-shadow: 5px 5px 13px rgba(91, 81, 81, 0.4);
