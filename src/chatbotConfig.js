@@ -29,7 +29,10 @@ const config = {
       )
     ],
     state: {},
-    customComponents: { botAvatar: (props) => <CoBotAvatar {...props} /> },
+    customComponents: { 
+      botAvatar: (props) => <CoBotAvatar {...props} />,
+      userAvatar: (props) => <div style={{ visibility: "hidden" }}></div>,
+     },
     widgets: [
       {
         widgetName: "overview",
