@@ -142,6 +142,7 @@
   border-color: rgb(234, 72, 72);
 }
 .OneClicked{
+  border-color: rgb(234, 72, 72);
   background-color: rgb(234, 72, 72);
   color: white;
 
@@ -165,6 +166,12 @@
 .three {
   border-color: rgb(234, 226, 72);
 }
+.ThreeClicked{
+  border-color: rgb(234, 72, 72);
+  background-color: rgb(234, 72, 72);
+  color: white;
+
+}
 .three:hover {
   background-color: rgb(234, 226, 72);
   color: white;
@@ -172,12 +179,24 @@
 .four {
   border-color: rgb(164, 234, 72);
 }
+.FourClicked{
+  border-color: rgb(234, 72, 72);
+  background-color: rgb(234, 72, 72);
+  color: white;
+
+}
 .four:hover {
   background-color: rgb(164, 234, 72);
   color: white;
 }
 .five {
   border-color: rgb(72, 234, 115);
+}
+.FiveClicked{
+  border-color: rgb(234, 72, 72);
+  background-color: rgb(234, 72, 72);
+  color: white;
+
 }
 .five:hover {
   background-color: rgb(72, 234, 115);
