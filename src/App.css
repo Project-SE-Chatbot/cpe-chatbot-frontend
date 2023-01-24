@@ -133,8 +133,18 @@
   border-radius: 100%;
   font-size: 60%;
 }
+.disable {
+  border-color: #7b7b7b;
+  background-color: #7b7b7b;
+  pointer-events: none;
+}
 .one {
   border-color: rgb(234, 72, 72);
+}
+.OneClicked{
+  background-color: rgb(234, 72, 72);
+  color: white;
+
 }
 .one:hover {
   background-color: rgb(234, 72, 72);
@@ -142,6 +152,11 @@
 }
 .two {
   border-color: rgb(234, 145, 72);
+}
+.TwoClicked{
+  background-color: rgb(234, 72, 72);
+  color: white;
+
 }
 .two:hover {
   background-color: rgb(234, 145, 72);
