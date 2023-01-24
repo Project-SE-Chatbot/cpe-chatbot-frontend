@@ -155,7 +155,8 @@
   border-color: rgb(234, 145, 72);
 }
 .TwoClicked{
-  background-color: rgb(234, 72, 72);
+  border-color: rgb(234, 145, 72);
+  background-color: rgb(234, 145, 72);
   color: white;
 
 }
@@ -167,8 +168,8 @@
   border-color: rgb(234, 226, 72);
 }
 .ThreeClicked{
-  border-color: rgb(234, 72, 72);
-  background-color: rgb(234, 72, 72);
+  border-color: rgb(234, 226, 72);
+  background-color: rgb(234, 226, 72);
   color: white;
 
 }
@@ -180,8 +181,8 @@
   border-color: rgb(164, 234, 72);
 }
 .FourClicked{
-  border-color: rgb(234, 72, 72);
-  background-color: rgb(234, 72, 72);
+  border-color: rgb(164, 234, 72);
+  background-color:  rgb(164, 234, 72);
   color: white;
 
 }
@@ -193,8 +194,8 @@
   border-color: rgb(72, 234, 115);
 }
 .FiveClicked{
-  border-color: rgb(234, 72, 72);
-  background-color: rgb(234, 72, 72);
+  border-color: rgb(72, 234, 115);
+  background-color: rgb(72, 234, 115);
   color: white;
 
 }
