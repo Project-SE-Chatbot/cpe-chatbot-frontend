@@ -5,6 +5,7 @@ import LocalStatistics from "./widgets/LocalStatistics";
 import Contact from "./widgets/Contact";
 import MedicineDelivery from "./widgets/MedicineDelivery";
 import CoBotAvatar from "./CoBotAvatar";
+import Reaction from "./widgets/reaction";
 
 const config = {
     lang: "no",
@@ -54,6 +55,10 @@ const config = {
       {
         widgetName: "medicineDelivery",
         widgetFunc: (props) => <MedicineDelivery />
+      },
+      {
+        widgetName: "Reaction",
+        widgetFunc: (props) => <Reaction />
       }
     ]
 }

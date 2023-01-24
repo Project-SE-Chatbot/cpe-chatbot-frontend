@@ -86,7 +86,13 @@ class ActionProvider {
     
         var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     
-        const message = this.createChatBotMessage(randomJoke);
+        const message = this.createChatBotMessage(randomJoke,
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: false
+          });
     
         this.addMessageToState(message);
       };

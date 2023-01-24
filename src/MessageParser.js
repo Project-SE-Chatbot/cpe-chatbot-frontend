@@ -43,9 +43,9 @@ class MessageParser {
     }
 
     if (
-      message.includes("joke") ||
-      message.includes("jokes") ||
-      message.includes("funny")
+      message.includes("สวัสดี") ||
+      message.includes("หวัดดี") ||
+      message.includes("ไง")
     ) {
       return this.actionProvider.handleJoke();
     }
