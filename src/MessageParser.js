@@ -47,7 +47,7 @@ class MessageParser {
       message.includes("หวัดดี") ||
       message.includes("ไง")
     ) {
-      return this.actionProvider.handleJoke();
+      return this.actionProvider.handleGreeting();
     }
 
     if (message.includes("thanks") || message.includes("thank you")) {
