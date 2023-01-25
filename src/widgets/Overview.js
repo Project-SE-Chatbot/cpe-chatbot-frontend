@@ -16,12 +16,13 @@ const GeneralOptions = (props) => {
       name: "เกี่ยวกับภาควิชา",
       handler: props.actionProvider.handleContact,
       id: 3
-    },
-    {
-      name: "Clinical medicine delivery",
-      handler: props.actionProvider.handleMedicine,
-      id: 4
     }
+    // ,
+    // {
+    //   name: "Clinical medicine delivery",
+    //   handler: props.actionProvider.handleMedicine,
+    //   id: 4
+    // }
   ];
   return <Options options={options} title="Options" {...props} />;
 };

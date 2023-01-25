@@ -19,11 +19,10 @@ const config = {
       }
     },
     initialMessages: [
-      createChatBotMessage(`สวัสดี เราCPE botนะครับ มีอะไรให้ช่วยไหมครับ`),
       createChatBotMessage(
-        "Here's a quick overview of what I can help you with. You can also type in.",
+        "สวัสดี เราCPE botนะครับ มีอะไรให้ช่วยไหมครับ",
         {
-          withAvatar: false,
+          withAvatar: true,
           delay: 400,
           widget: "overview"
         }

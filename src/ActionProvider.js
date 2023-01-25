@@ -99,6 +99,20 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+
+      handleMajorElective = () => {
+        const message = this.createChatBotMessage(
+          "เรียนอะไรก็เรียนเถอะ",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+    
+        this.addMessageToState(message);
+      };
     
       addMessageToState = (message) => {
         this.setState((state) => ({

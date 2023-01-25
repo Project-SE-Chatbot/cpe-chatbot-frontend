@@ -54,6 +54,10 @@ class MessageParser {
       return this.actionProvider.handleThanks();
     }
 
+    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
+      return this.actionProvider.handleMajorElective();
+    }
+
     return this.actionProvider.handleOptions({ withAvatar: true });
   }
 }
