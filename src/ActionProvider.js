@@ -141,6 +141,20 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+
+      handleDegreeCurriculum = () => {
+        const message = this.createChatBotMessage(
+          "หลักสูตร...",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+    
+        this.addMessageToState(message);
+      };
     
       addMessageToState = (message) => {
         this.setState((state) => ({
