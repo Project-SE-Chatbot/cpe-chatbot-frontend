@@ -116,7 +116,7 @@ class ActionProvider {
 
       handleFreeElective = () => {
         const message = this.createChatBotMessage(
-          "รายชื่อตัวฟรีที่เปิดทั้งหมดมีดังนี้",
+          "รายชื่อตัวฟรี",
           {
             widget: "Reaction",
             loading: true,
@@ -156,18 +156,42 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
-      handleDegreeCurriculum = () => {
-        const message = this.createChatBotMessage(
-          "หลักสูตร...",
-          {
-            widget: "Reaction",
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
+      handleDegreeCurriculum(degree)  {
+        let message1
+        if(degree == 1){
+          message1 = this.createChatBotMessage(
+            "หลักสูตรปริญญาตรี",
+            {
+              widget: "Reaction",
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          );
+        }else if(degree == 2){
+          message1 = this.createChatBotMessage(
+            "หลักสูตรปริญญาโท",
+            {
+              widget: "Reaction",
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          );
+        }else if(degree == 3){
+          message1 = this.createChatBotMessage(
+            "หลักสูตรปริญญาเอก",
+            {
+              widget: "Reaction",
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          );
+
+        }
     
-        this.addMessageToState(message);
+        this.addMessageToState(message1);
       };
     
       addMessageToState = (message) => {

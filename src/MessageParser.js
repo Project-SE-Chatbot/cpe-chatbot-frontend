@@ -71,11 +71,11 @@ class MessageParser {
     }
     if (message.includes("หลักสูตร")) {
       if (message.includes("ปตรี") || message.includes("ป.ตรี") || message.includes("ปริญญาตรี")) {
-        return this.actionProvider.handleDegreeCurriculum();
+        return this.actionProvider.handleDegreeCurriculum(1);
       }else if(message.includes("ปโท") || message.includes("ป.โท") || message.includes("ปริญญาโท")){
-        return this.actionProvider.handleDegreeCurriculum();
+        return this.actionProvider.handleDegreeCurriculum(2);
       }else if(message.includes("ปเอก") || message.includes("ป.เอก") || message.includes("ปริญญาเอก")){
-        return this.actionProvider.handleDegreeCurriculum();
+        return this.actionProvider.handleDegreeCurriculum(3);
       }
     }
 
