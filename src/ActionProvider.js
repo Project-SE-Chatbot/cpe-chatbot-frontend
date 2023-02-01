@@ -114,6 +114,20 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
+      handleFreeElective = () => {
+        const message = this.createChatBotMessage(
+          "รายชื่อตัวฟรีที่เปิดทั้งหมดมีดังนี้",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+    
+        this.addMessageToState(message);
+      };
+
       handleWhretoStudy = () => {
         const message = this.createChatBotMessage(
           "ตึก30ปี ชั้น5 ห้อง521",

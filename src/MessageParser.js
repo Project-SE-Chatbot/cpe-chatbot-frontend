@@ -58,6 +58,10 @@ class MessageParser {
       return this.actionProvider.handleMajorElective();
     }
 
+    if (message.includes("ตัวฟรี") || message.includes("free elective")) {
+      return this.actionProvider.handleFreeElective();
+    }
+
     if (message.includes("เรียน") ) {
       if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy();} 
     }
