@@ -58,6 +58,10 @@ class MessageParser {
       return this.actionProvider.handleMajorElective();
     }
 
+    if (message.includes("เรียน") ) {
+      if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy();} 
+    }
+
     return this.actionProvider.handleOptions({ withAvatar: true });
   }
 }

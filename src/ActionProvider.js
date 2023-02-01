@@ -113,6 +113,20 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+
+      handleWhretoStudy = () => {
+        const message = this.createChatBotMessage(
+          "ตึก30ปี ชั้น5 ห้อง521",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+    
+        this.addMessageToState(message);
+      };
     
       addMessageToState = (message) => {
         this.setState((state) => ({
