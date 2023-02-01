@@ -127,6 +127,20 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+
+      handleProfesser = () => {
+        const message = this.createChatBotMessage(
+          "อาจารย์...อยู่ประจำที่....",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+    
+        this.addMessageToState(message);
+      };
     
       addMessageToState = (message) => {
         this.setState((state) => ({

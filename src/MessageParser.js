@@ -62,6 +62,10 @@ class MessageParser {
       if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy();} 
     }
 
+    if (message.includes("อาจารย์") || message.includes("อ.")) {
+      return this.actionProvider.handleProfesser();
+    }
+
     return this.actionProvider.handleOptions({ withAvatar: true });
   }
 }
