@@ -6,6 +6,7 @@ import Contact from "./widgets/Contact";
 import MedicineDelivery from "./widgets/MedicineDelivery";
 import CoBotAvatar from "./CoBotAvatar";
 import Reaction from "./widgets/reaction";
+import CustomChatbotMessage from "./chatbotmessage/CustomChatbotMessage";
 
 const config = {
     lang: "no",
@@ -32,6 +33,7 @@ const config = {
     customComponents: { 
       botAvatar: (props) => <CoBotAvatar {...props} />,
       userAvatar: (props) => <div style={{ visibility: "hidden" }}></div>,
+      botChatMessage: (props) => <CustomChatbotMessage {...props} />
      },
     widgets: [
       {

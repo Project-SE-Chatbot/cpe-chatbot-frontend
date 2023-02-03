@@ -85,7 +85,6 @@ class ActionProvider {
     
         const message = this.createChatBotMessage(randomJoke,
           {
-            widget: "Reaction",
             loading: true,
             terminateLoading: true,
             withAvatar: true
@@ -104,7 +103,6 @@ class ActionProvider {
         const message = this.createChatBotMessage(
           "เรียนอะไรก็เรียนเถอะ",
           {
-            widget: "Reaction",
             loading: true,
             terminateLoading: true,
             withAvatar: true
@@ -118,7 +116,6 @@ class ActionProvider {
         const message = this.createChatBotMessage(
           "รายชื่อตัวฟรี",
           {
-            widget: "Reaction",
             loading: true,
             terminateLoading: true,
             withAvatar: true
@@ -132,7 +129,6 @@ class ActionProvider {
         const message = this.createChatBotMessage(
           "ตึก30ปี ชั้น5 ห้อง521",
           {
-            widget: "Reaction",
             loading: true,
             terminateLoading: true,
             withAvatar: true
@@ -146,7 +142,6 @@ class ActionProvider {
         const message = this.createChatBotMessage(
           "อาจารย์...อยู่ประจำที่....",
           {
-            widget: "Reaction",
             loading: true,
             terminateLoading: true,
             withAvatar: true
@@ -162,7 +157,6 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาตรี",
             {
-              widget: "Reaction",
               loading: true,
               terminateLoading: true,
               withAvatar: true
@@ -172,7 +166,6 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาโท",
             {
-              widget: "Reaction",
               loading: true,
               terminateLoading: true,
               withAvatar: true
@@ -182,7 +175,6 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาเอก",
             {
-              widget: "Reaction",
               loading: true,
               terminateLoading: true,
               withAvatar: true
@@ -190,6 +182,7 @@ class ActionProvider {
           );
 
         }
+        
     
         this.addMessageToState(message1);
       };
