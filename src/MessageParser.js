@@ -4,7 +4,7 @@ class MessageParser {
     this.state = state;
   }
 
-  parse(message) {
+  async parse(message) {
     message = message.toLowerCase();
     console.log(message);
 
@@ -34,7 +34,7 @@ class MessageParser {
     ) {
       return [
         this.actionProvider.handleGlobalStats(),
-        this.actionProvider.handleLocalStats()
+        this.actionProvider.handleLocalStats(),
       ];
     }
 
@@ -55,12 +55,24 @@ class MessageParser {
     }
 
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
-      return this.actionProvider.handleMajorElective();
+      var test = {};
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      await fetch("http://localhost:3000/major", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          test = result;
+        })
+        .catch((error) => console.log("error", error));
+        
+      return this.actionProvider.handleMajorElective(test);
     }
 
     return this.actionProvider.handleOptions({ withAvatar: true });
   }
 }
-
 
 export default MessageParser;

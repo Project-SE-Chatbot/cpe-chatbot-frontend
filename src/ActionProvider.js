@@ -100,9 +100,11 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
-      handleMajorElective = () => {
+      handleMajorElective = (info) => {
+        console.log(info);
+        console.log(info[1].name);
         const message = this.createChatBotMessage(
-          "เรียนอะไรก็เรียนเถอะ",
+          info[1].name,
           {
             widget: "Reaction",
             loading: true,
@@ -110,8 +112,19 @@ class ActionProvider {
             withAvatar: true
           }
         );
+        const message2 = this.createChatBotMessage(
+          "ทดลอง2",
+          {
+            widget: "Reaction",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+        
     
         this.addMessageToState(message);
+        this.addMessageToState(message2);
       };
     
       addMessageToState = (message) => {
