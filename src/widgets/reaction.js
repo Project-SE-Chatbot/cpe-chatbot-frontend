@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 
-const Reaction = () => {
+const Reaction = ({ message }) => {
   const [isOneClicked, setisOneClicked] = useState(false);
   const [isOneDisable, setisOneDisable] = useState(false);
   const [isTwoClicked, setisTwoClicked] = useState(false);
@@ -13,36 +13,42 @@ const Reaction = () => {
   const [isFiveClicked, setisFiveClicked] = useState(false);
   const [isFiveDisable, setisFiveDisable] = useState(false);
   const handleClick = (e) => {
+    let a ;
     if (e.target.className.includes("one")) {
       setisOneClicked(true);
       setisTwoDisable(true);
       setisThreeDisable(true);
       setisFourDisable(true);
       setisFiveDisable(true);
+      console.log(message,1) ;
     } else if (e.target.className.includes("two")) {
       setisTwoClicked(true);
       setisOneDisable(true);
       setisThreeDisable(true);
       setisFourDisable(true);
       setisFiveDisable(true);
+      console.log(message,2) ;
     } else if (e.target.className.includes("three")) {
       setisThreeClicked(true);
       setisOneDisable(true);
       setisTwoDisable(true);
       setisFourDisable(true);
       setisFiveDisable(true);
+      console.log(message,3) ;
     } else if (e.target.className.includes("four")) {
       setisFourClicked(true);
       setisOneDisable(true);
       setisTwoDisable(true);
       setisThreeDisable(true);
       setisFiveDisable(true);
+      console.log(message,4) ;
     }else if (e.target.className.includes("five")) {
       setisFiveClicked(true);
       setisOneDisable(true);
       setisTwoDisable(true);
       setisThreeDisable(true);
       setisFourDisable(true);
+      console.log(message,5) ;
     }
   };
   const handleClassStyler = (buttonType) => {
@@ -95,6 +101,7 @@ const Reaction = () => {
   return (
     <div className="reaction-container">
       <div className="help">Was this help?</div>
+      <div className="reaction-button-container">
       <button disabled={isOneDisable}
         onClick={handleClick} className={handleClassStyler('one')}>1</button>
       <button disabled={isTwoDisable}
@@ -105,6 +112,7 @@ const Reaction = () => {
         onClick={handleClick} className={handleClassStyler('four')}>4</button>
       <button disabled={isTwoDisable}
         onClick={handleClick} className={handleClassStyler('five')}>5</button>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const CustomChatbotMessage = (props) => {
           <div className="react-chatbot-kit-chat-bot-message-arrow"></div>
       <p>{props.message}</p>
     </div>
-      <Reaction />
+      <Reaction message={props.message} />
     </div>
   );
 };

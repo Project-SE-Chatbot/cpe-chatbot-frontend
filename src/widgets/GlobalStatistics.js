@@ -38,7 +38,6 @@ const Statistics = () => {
           <p>{stats.global_deaths}</p>
         </div>
       </div>
-      <Reaction />
     </div>
   );
 };

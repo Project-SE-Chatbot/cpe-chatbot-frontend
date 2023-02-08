@@ -39,7 +39,6 @@ const Statistics = () => {
           <p>{stats.local_active_cases}</p>
         </div>
       </div>
-      <Reaction />
     </div>
   );
 };
