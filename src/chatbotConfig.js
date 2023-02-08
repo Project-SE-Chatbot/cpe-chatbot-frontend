@@ -7,6 +7,9 @@ import MedicineDelivery from "./widgets/MedicineDelivery";
 import CoBotAvatar from "./CoBotAvatar";
 import Reaction from "./widgets/reaction";
 import CustomChatbotMessage from "./chatbotmessage/CustomChatbotMessage";
+import BachelorLink from "./widgets/degreelink/BachelorDegrees";
+import MasterLink from "./widgets/degreelink/MasterDegrees";
+import DoctorLink from "./widgets/degreelink/DoctorDegrees";
 
 const config = {
     lang: "no",
@@ -60,6 +63,18 @@ const config = {
       {
         widgetName: "Reaction",
         widgetFunc: (props) => <Reaction />
+      },
+      {
+        widgetName: "BachelorLink",
+        widgetFunc: (props) => <BachelorLink />
+      },
+      {
+        widgetName: "MasterLink",
+        widgetFunc: (props) => <MasterLink />
+      },
+      {
+        widgetName: "DoctorLink",
+        widgetFunc: (props) => <DoctorLink />
       }
     ]
 }

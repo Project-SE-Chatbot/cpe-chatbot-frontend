@@ -157,6 +157,7 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาตรี",
             {
+              widget: "BachelorLink",
               loading: true,
               terminateLoading: true,
               withAvatar: true
@@ -166,6 +167,7 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาโท",
             {
+              widget: "MasterLink",
               loading: true,
               terminateLoading: true,
               withAvatar: true
@@ -175,6 +177,7 @@ class ActionProvider {
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาเอก",
             {
+              widget: "DoctorLink",
               loading: true,
               terminateLoading: true,
               withAvatar: true

@@ -25,7 +25,6 @@ const Link = ({ url, title }) => {
         </svg>
         <h1 className="url-header">Go to {title}</h1>
       </a>
-      <Reaction />
     </div>
   );
 };

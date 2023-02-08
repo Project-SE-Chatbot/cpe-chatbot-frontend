@@ -7,17 +7,16 @@ import MessageParser from "./MessageParser";
 import ActionProvider from "./ActionProvider";
 import { Chatbot } from "react-chatbot-kit";
 import 'react-chatbot-kit/build/main.css';
+import background from "./img/CPEWebMockup.png";
 
 
 function App() {
   const [showBot, toggleBot] = useState(false);
 
   return (
-    <div className="App">
-      <Fade bottom cascade>
-        <h1>CPE-Chatbot</h1>
-        <h2>Start chatting with the CPE-Chatbot!</h2>
-      </Fade>
+    <div style={{ backgroundImage: `url(${background})`,
+    height:'100vh',
+    backgroundSize: 'cover'}}>
       {showBot && (
         <Fade big>
           <div className="app-chatbot-container">
