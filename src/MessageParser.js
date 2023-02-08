@@ -61,7 +61,7 @@ class MessageParser {
         redirect: "follow",
       };
 
-      await fetch("http://localhost:3000/major", requestOptions)
+      await fetch("http://localhost:5000/major", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           test = result;
