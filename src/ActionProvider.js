@@ -101,30 +101,23 @@ class ActionProvider {
       };
 
       handleMajorElective = (info) => {
-        console.log(info);
-        console.log(info[1].name);
-        const message = this.createChatBotMessage(
-          info[1].name,
-          {
-            widget: "Reaction",
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
-        const message2 = this.createChatBotMessage(
-          "ทดลอง2",
-          {
-            widget: "Reaction",
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
-        
-    
-        this.addMessageToState(message);
-        this.addMessageToState(message2);
+        var text = ""
+        var message
+        info.forEach(element => {
+          text = "Course: " + element.course_code + " Name: " + element.name + " Teacher: " + element.name_teacher + " Term: " + element.term + " Place: " + element.place + " Time: " + element.time
+          message = this.createChatBotMessage(
+            text,
+            {
+              widget: "Reaction",
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          console.log(text)
+        })
+
       };
     
       addMessageToState = (message) => {
