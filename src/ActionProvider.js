@@ -1,9 +1,14 @@
+function containsNumbers(str) {
+  return /\d/.test(str);
+}
+
 class ActionProvider {
     constructor(createChatBotMessage, setStateFunc, createClientMessage) {
         this.createChatBotMessage = createChatBotMessage;
         this.setState = setStateFunc;
         this.createClientMessage = createClientMessage;
       }
+
       handleOptions = (options) => {
         const message = this.createChatBotMessage(
           "How can I help you? Below are some possible options.",
@@ -106,12 +111,18 @@ class ActionProvider {
         };
         
         let responseData
-
-        await fetch("", requestOptions)
-          .then(response =>  response.json())
-          .then(result => responseData = result)
-          .catch(error => console.log('error', error));
-
+        let url = "http://localhost:5000/major"
+        if(containsNumbers(question) === true){
+          let onlyNum = question.replace(/\D/g, "")
+          // console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString()
+          // console.log("Url : "+ url)
+        }
+        await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
+    
         console.log(responseData)
         const message = this.createChatBotMessage(
           "เรียนอะไรก็เรียนเถอะ",
@@ -132,11 +143,17 @@ class ActionProvider {
         };
         
         let responseData
-
-        await fetch("", requestOptions)
-          .then(response =>  response.json())
-          .then(result => responseData = result)
-          .catch(error => console.log('error', error));
+        let url = "http://localhost:5000/free-elective"
+        if(containsNumbers(question) === true){
+          let onlyNum = question.replace(/\D/g, "")
+          // console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString()
+          // console.log("Url : "+ url)
+        }
+        await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
 
         console.log(responseData)
         const message = this.createChatBotMessage(
@@ -156,13 +173,19 @@ class ActionProvider {
           method: 'GET',
           redirect: 'follow'
         };
-        
+      
         let responseData
-
-        await fetch("", requestOptions)
-          .then(response =>  response.json())
-          .then(result => responseData = result)
-          .catch(error => console.log('error', error));
+        let url = "http://localhost:5000/place"
+        if(containsNumbers(question) === true){
+          let onlyNum = question.replace(/\D/g, "")
+          // console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString()
+          // console.log("Url : "+ url)
+        }
+        await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
 
         console.log(responseData)
         const message = this.createChatBotMessage(
