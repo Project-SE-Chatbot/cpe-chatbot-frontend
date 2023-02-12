@@ -10,7 +10,6 @@ const CustomChatbotMessage = (props) => {
   return (
     <div>
       <div className="chatbot-chat-bot-message">
-          <div className="react-chatbot-kit-chat-bot-message-arrow"></div>
       <p>{props.message}</p>
     </div>
       <Reaction message={props.message} />

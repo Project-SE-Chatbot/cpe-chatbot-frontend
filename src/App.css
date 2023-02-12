@@ -5,18 +5,31 @@
 .options {
   padding-bottom: 15px;
 }
-
+.chatbot-user-chat-message {
+  background-color: #25AAE2  ;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #000000;
+  font-weight: medium;
+  position: relative;
+  text-align: left;
+}
 .chatbot-chat-bot-message-container {
   border: 1px solid #2898ec;
   border-radius: 25px;
   margin: auto;
 }
 .chatbot-chat-bot-message{
-  background-color: #2898ec;
-  padding: 3px;
+  background-color: #CACACA  ;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
   border-radius: 5px;
   font-size: 0.9rem;
-  color: #fff;
+  color:  #000000;
   font-weight: medium;
   position: relative;
   margin-left: auto;
