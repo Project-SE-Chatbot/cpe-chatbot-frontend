@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 
+
 const Reaction = ({ message }) => {
   const [isOneClicked, setisOneClicked] = useState(false);
   const [isOneDisable, setisOneDisable] = useState(false);
@@ -12,6 +13,9 @@ const Reaction = ({ message }) => {
   const [isFourDisable, setisFourDisable] = useState(false);
   const [isFiveClicked, setisFiveClicked] = useState(false);
   const [isFiveDisable, setisFiveDisable] = useState(false);
+
+  var scoreFeedbackUrl = ""
+  const [score,setScore] = useState(0);
   const handleClick = (e) => {
     let a ;
     if (e.target.className.includes("one")) {
@@ -54,6 +58,7 @@ const Reaction = ({ message }) => {
   const handleClassStyler = (buttonType) => {
     if (buttonType === 'one') {
       if (isOneClicked === true) {
+        setScore(1)
         return "reaction-button OneClicked";
       } else if (isOneDisable === true ) {
         return "reaction-button disable";
@@ -62,6 +67,7 @@ const Reaction = ({ message }) => {
       }
     } else if (buttonType === 'two'){
       if (isTwoClicked === true) {
+        setScore(2)
         return "reaction-button TwoClicked";
       } else if (isTwoDisable === true ) {
         return "reaction-button disable";
@@ -71,6 +77,7 @@ const Reaction = ({ message }) => {
       }
     }else if (buttonType === 'three'){
       if (isThreeClicked === true) {
+        setScore(3)
         return "reaction-button ThreeClicked";
       } else if (isThreeDisable === true ) {
         return "reaction-button disable";
@@ -80,6 +87,7 @@ const Reaction = ({ message }) => {
       }
     }else if (buttonType === 'four'){
       if (isFourClicked === true) {
+        setScore(4)
         return "reaction-button TwoClicked";
       } else if (isFourDisable === true ) {
         return "reaction-button disable";
@@ -89,6 +97,7 @@ const Reaction = ({ message }) => {
       }
     }else if (buttonType === 'five'){
       if (isFiveClicked === true) {
+        setScore(5)
         return "reaction-button FiveClicked";
       } else if (isFiveDisable === true ) {
         return "reaction-button disable";

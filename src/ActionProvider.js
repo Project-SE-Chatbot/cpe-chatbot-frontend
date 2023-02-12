@@ -98,8 +98,21 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+      //เกม --------------------------------------------------- 
+      handleMajorElective = async (question) => {
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        let responseData
 
-      handleMajorElective = () => {
+        await fetch("", requestOptions)
+          .then(response =>  response.json())
+          .then(result => responseData = result)
+          .catch(error => console.log('error', error));
+
+        console.log(responseData)
         const message = this.createChatBotMessage(
           "เรียนอะไรก็เรียนเถอะ",
           {
@@ -111,8 +124,21 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+      //เกม --------------------------------------------
+      handleFreeElective = async(question) => {
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        let responseData
 
-      handleFreeElective = () => {
+        await fetch("", requestOptions)
+          .then(response =>  response.json())
+          .then(result => responseData = result)
+          .catch(error => console.log('error', error));
+
+        console.log(responseData)
         const message = this.createChatBotMessage(
           "รายชื่อตัวฟรี",
           {
@@ -124,8 +150,21 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
+      //เกม ----------------------------------------
+      handleWhretoStudy = async(question) => {
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        let responseData
 
-      handleWhretoStudy = () => {
+        await fetch("", requestOptions)
+          .then(response =>  response.json())
+          .then(result => responseData = result)
+          .catch(error => console.log('error', error));
+
+        console.log(responseData)
         const message = this.createChatBotMessage(
           "ตึก30ปี ชั้น5 ห้อง521",
           {
@@ -147,13 +186,15 @@ class ActionProvider {
             withAvatar: true
           }
         );
+
+        console.log(message)
     
         this.addMessageToState(message);
       };
 
       handleDegreeCurriculum(degree)  {
         let message1
-        if(degree == 1){
+        if(degree === 1){
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาตรี",
             {
@@ -163,7 +204,7 @@ class ActionProvider {
               withAvatar: true
             }
           );
-        }else if(degree == 2){
+        }else if(degree === 2){
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาโท",
             {
@@ -173,7 +214,7 @@ class ActionProvider {
               withAvatar: true
             }
           );
-        }else if(degree == 3){
+        }else if(degree === 3){
           message1 = this.createChatBotMessage(
             "หลักสูตรปริญญาเอก",
             {

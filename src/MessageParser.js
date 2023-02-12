@@ -55,15 +55,15 @@ class MessageParser {
     }
 
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
-      return this.actionProvider.handleMajorElective();
+      return this.actionProvider.handleMajorElective(message);
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
-      return this.actionProvider.handleFreeElective();
+      return this.actionProvider.handleFreeElective(message);
     }
 
     if (message.includes("เรียน") ) {
-      if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy();} 
+      if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy(message);} 
     }
 
     if (message.includes("อาจารย์") || message.includes("อ.")) {
