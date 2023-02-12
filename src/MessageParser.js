@@ -4,7 +4,7 @@ class MessageParser {
     this.state = state;
   }
 
-  parse(message) {
+  async parse(message) {
     message = message.toLowerCase();
     console.log(message);
 
@@ -55,7 +55,20 @@ class MessageParser {
     }
 
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
-      return this.actionProvider.handleMajorElective();
+      var test = {};
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      await fetch("http://localhost:5000/major", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          test = result;
+          console.log(test)
+        })
+        .catch((error) => console.log("error", error));
+      return this.actionProvider.handleMajorElective(test);
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
@@ -67,7 +80,23 @@ class MessageParser {
     }
 
     if (message.includes("อาจารย์") || message.includes("อ.")) {
-      return this.actionProvider.handleProfesser();
+      if (message.includes("ทั้งหมด") || message.includes("ทุกคน")){
+        var test = {};
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      await fetch("http://localhost:5000/teacher", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          test = result;
+        })
+        .catch((error) => console.log("error", error));
+      return this.actionProvider.handleAllProfesser(test);
+      }else{
+
+      }
     }
     if (message.includes("หลักสูตร")) {
       if (message.includes("ปตรี") || message.includes("ป.ตรี") || message.includes("ปริญญาตรี")) {
