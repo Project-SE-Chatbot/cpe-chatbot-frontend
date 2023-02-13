@@ -10,6 +10,7 @@ import CustomChatbotMessage from "./chatbotmessage/CustomChatbotMessage";
 import BachelorLink from "./widgets/degreelink/BachelorDegrees";
 import MasterLink from "./widgets/degreelink/MasterDegrees";
 import DoctorLink from "./widgets/degreelink/DoctorDegrees";
+import CustomUserMessage from "./chatbotmessage/CustomUSerMessage";
 
 const config = {
     lang: "no",
@@ -19,7 +20,7 @@ const config = {
         backgroundColor: "#0f4ff5"
       },
       chatButton: {
-        backgroundColor: "#0fff55"
+        backgroundColor: "#C9D9DF"
       }
     },
     initialMessages: [
@@ -36,7 +37,8 @@ const config = {
     customComponents: { 
       botAvatar: (props) => <CoBotAvatar {...props} />,
       userAvatar: (props) => <div style={{ visibility: "hidden" }}></div>,
-      botChatMessage: (props) => <CustomChatbotMessage {...props} />
+      botChatMessage: (props) => <CustomChatbotMessage {...props} />,
+      userChatMessage: (props) => <CustomUserMessage {...props} />
      },
     widgets: [
       {

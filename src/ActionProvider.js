@@ -103,8 +103,10 @@ class ActionProvider {
     
         this.addMessageToState(message);
       };
-      //เกม --------------------------------------------------- 
-      handleMajorElective = async (question) => {
+
+      handleMajorElective = (info) => {
+ 		var text = ""
+        var message
         var requestOptions = {
           method: 'GET',
           redirect: 'follow'
@@ -124,14 +126,19 @@ class ActionProvider {
         .catch(error => console.log('error', error));
     
         console.log(responseData)
-        const message = this.createChatBotMessage(
-          "เรียนอะไรก็เรียนเถอะ",
-          {
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
+        info.forEach(element => {
+          text = "Course: " + element.course_code + " Name: " + element.name + " Teacher: " + element.name_teacher + " Term: " + element.term + " Place: " + element.place + " Time: " + element.time
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          console.log(text)
+        })
     
         this.addMessageToState(message);
       };
@@ -200,19 +207,40 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
-      handleProfesser = () => {
-        const message = this.createChatBotMessage(
-          "อาจารย์...อยู่ประจำที่....",
-          {
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
+      handleAllProfesser = (info) => {
+        var text = ""
+        var message
+        info.forEach(element => {
+          text = " Name: " + element.name  + "location : " + element.location + "Address: " + element.address + "Time: " + element.time
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          console.log(text)
+        })
+      };
 
-        console.log(message)
-    
-        this.addMessageToState(message);
+      handleProfesser = (info) => {
+        var text = ""
+        var message
+        info.forEach(element => {
+          text = " Name: " + element.name  + " location : " + element.location + " Address: " + element.address + " Time: " + element.time
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          console.log(text)
+        })
       };
 
       handleDegreeCurriculum(degree)  {

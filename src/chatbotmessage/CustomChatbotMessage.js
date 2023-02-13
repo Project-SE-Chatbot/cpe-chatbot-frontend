@@ -2,6 +2,7 @@ import React from "react";
 
 
 import Reaction from "../widgets/reaction";
+import NewlineText from "./Newlinetext";
 
 const CustomChatbotMessage = (props) => {
   const handleClick = (e) => {
@@ -12,8 +13,7 @@ const CustomChatbotMessage = (props) => {
     <div>
       
       <div className="chatbot-chat-bot-message">
-          <div className="react-chatbot-kit-chat-bot-message-arrow"></div>
-      <p>{props.message}</p>
+      <NewlineText text={props.message}/>
     </div>
       
       <Reaction message={props.message} />
