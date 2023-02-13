@@ -1,6 +1,4 @@
-function containsNumbers(str) {
-  return /\d/.test(str);
-}
+
 
 class ActionProvider {
     constructor(createChatBotMessage, setStateFunc, createClientMessage) {
@@ -104,30 +102,16 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
-      handleMajorElective = (info) => {
- 		var text = ""
+      handleMajorElectiveAll = async(question) => {
+ 		    var text = ""
         var message
-        var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-        };
-        
-        let responseData
-        let url = "http://localhost:5000/major"
-        if(containsNumbers(question) === true){
-          let onlyNum = question.replace(/\D/g, "")
-          // console.log("Number : "+ onlyNum)
-          url =  url+"/"+ onlyNum.toString()
-          // console.log("Url : "+ url)
-        }
-        await fetch(url, requestOptions)
-        .then(response =>  response.json())
-        .then(result => responseData = result)
-        .catch(error => console.log('error', error));
-    
-        console.log(responseData)
-        info.forEach(element => {
-          text = "Course: " + element.course_code + " Name: " + element.name + " Teacher: " + element.name_teacher + " Term: " + element.term + " Place: " + element.place + " Time: " + element.time
+        question.forEach(element => {
+          text = "Course: " + element.course_code + "\n" 
+          + " Name: " + element.name + "\n" 
+          + " Teacher: " + element.name_teacher + "\n" 
+          + " Term: " + element.term + "\n" 
+          + " Place: " + element.place + "\n" 
+          + " Time: " + element.time + "\n" 
           message = this.createChatBotMessage(
             text,
             {
@@ -137,66 +121,77 @@ class ActionProvider {
             }
           )
           this.addMessageToState(message)
-          console.log(text)
+          // console.log(text)
         })
-    
-        this.addMessageToState(message);
       };
-      //เกม --------------------------------------------
-      handleFreeElective = async(question) => {
-        var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-        };
-        
-        let responseData
-        let url = "http://localhost:5000/free-elective"
-        if(containsNumbers(question) === true){
-          let onlyNum = question.replace(/\D/g, "")
-          // console.log("Number : "+ onlyNum)
-          url =  url+"/"+ onlyNum.toString()
-          // console.log("Url : "+ url)
-        }
-        await fetch(url, requestOptions)
-        .then(response =>  response.json())
-        .then(result => responseData = result)
-        .catch(error => console.log('error', error));
 
-        console.log(responseData)
-        const message = this.createChatBotMessage(
-          "รายชื่อตัวฟรี",
+      handleMajorElective = async(question) => {
+        var text = ""
+        var message
+        text = "Course: " + question.course_code + "\n" 
+         + " Name: " + question.name + "\n" 
+         + " Teacher: " + question.name_teacher + "\n" 
+         + " Term: " + question.term + "\n" 
+         + " Place: " + question.place + "\n" 
+         + " Day: " + question.day + "\n"
+         + " Time: " + question.time + "\n"
+        message = this.createChatBotMessage(
+        text,
+        {
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        })
+         this.addMessageToState(message)
+         // console.log(text)
+     };
+
+      //เกม --------------------------------------------
+      handleFreeElectiveAll = async(question) => {
+        var text = ""
+        var message
+        text = "Course: " + question.id_free_elective + "\n" 
+         + " Name: " + question.name + "\n" 
+         + " Review: " + question.review + "\n" 
+         + " Mojor: " + question.major + "\n" 
+        message = this.createChatBotMessage(
+          "รายชื่อตัวฟรีทั้งหมด",
           {
             loading: true,
             terminateLoading: true,
             withAvatar: true
           }
         );
-    
         this.addMessageToState(message);
       };
+
+      handleFreeElective = async(question) => {
+        var text = ""
+        var message
+        text = "Course: " + question.id_free_elective + "\n" 
+         + " Name: " + question.name + "\n" 
+         + " Review: " + question.review + "\n" 
+         + " Mojor: " + question.major + "\n" 
+         message = this.createChatBotMessage(
+          text,
+          {
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+        this.addMessageToState(message);
+      };
+
       //เกม ----------------------------------------
       handleWhretoStudy = async(question) => {
-        var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-        };
-      
-        let responseData
-        let url = "http://localhost:5000/place"
-        if(containsNumbers(question) === true){
-          let onlyNum = question.replace(/\D/g, "")
-          // console.log("Number : "+ onlyNum)
-          url =  url+"/"+ onlyNum.toString()
-          // console.log("Url : "+ url)
-        }
-        await fetch(url, requestOptions)
-        .then(response =>  response.json())
-        .then(result => responseData = result)
-        .catch(error => console.log('error', error));
-
-        console.log(responseData)
+        var text = ""
+        var message
+        text = " Building: " + question.building + "\n" 
+         + " Room: " + question.room + "\n" 
+         + " Location: " + question.location + "\n" 
         const message = this.createChatBotMessage(
-          "ตึก30ปี ชั้น5 ห้อง521",
+          text,
           {
             loading: true,
             terminateLoading: true,
@@ -211,7 +206,10 @@ class ActionProvider {
         var text = ""
         var message
         info.forEach(element => {
-          text = " Name: " + element.name  + "location : " + element.location + "Address: " + element.address + "Time: " + element.time
+          text = " Name: " + element.name + "\n" 
+          + "location : " + element.location + "\n" 
+          + "Address: " + element.address + "\n" 
+          + "Time: " + element.time + "\n" 
           message = this.createChatBotMessage(
             text,
             {
@@ -229,7 +227,10 @@ class ActionProvider {
         var text = ""
         var message
         info.forEach(element => {
-          text = " Name: " + element.name  + " location : " + element.location + " Address: " + element.address + " Time: " + element.time
+          text = " Name: " + element.name  + "\n" 
+          + " location : " + element.location + "\n" 
+          + " Address: " + element.address + "\n" 
+          + " Time: " + element.time
           message = this.createChatBotMessage(
             text,
             {

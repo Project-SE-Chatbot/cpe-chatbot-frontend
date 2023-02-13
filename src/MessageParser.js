@@ -4,9 +4,15 @@ class MessageParser {
     this.state = state;
   }
 
+  
+
   async parse(message) {
     message = message.toLowerCase();
     console.log(message);
+
+    function containsNumbers(str) {
+      return /\d/.test(str);
+    }
 
     if (
       message.includes("options") ||
@@ -55,28 +61,81 @@ class MessageParser {
     }
 
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
-      var test = {};
-      var requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
-
-      await fetch("http://localhost:5000/major", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          test = result;
-          console.log(test)
-        })
-        .catch((error) => console.log("error", error));
-      return this.actionProvider.handleMajorElective(test);
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        let responseData
+        let url = "http://localhost:5000/major"
+        if(containsNumbers(message) === true){
+          let onlyNum = message.replace(/\D/g, "")
+          // console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString()
+          // console.log("Url : "+ url)
+        }
+        //-----------------------------------fetch function
+        await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
+        console.log(responseData)
+        if(containsNumbers(message) === true){
+          return this.actionProvider.handleMajorElective(responseData)
+        }else{
+          return this.actionProvider.handleMajorElectiveAll(responseData)
+        }
+      ;
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
-      return this.actionProvider.handleFreeElective(message);
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        let responseData
+        let url = "http://localhost:5000/free-elective"
+
+        if(containsNumbers(message) === true){
+          let onlyNum = message.replace(/\D/g, "")
+          // console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString()
+          // console.log("Url : "+ url)
+        }
+        //-----------------------------------fetch function
+        await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
+        if(containsNumbers(message) === true){
+          return this.actionProvider.handleFreeElective(responseData)
+        }else{
+          return this.actionProvider.handleFreeElectiveAll(responseData)
+        }
     }
 
-    if (message.includes("เรียน") ) {
-      if (message.includes("ที่ไหน") ){return this.actionProvider.handleWhretoStudy(message);} 
+    if (message.includes("ที่ไหน" || "ตึก" || "อยู่ไหน")){
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+        
+      let responseData
+      let url = "http://localhost:5000/place"
+
+      if(containsNumbers(message) === true){
+        let onlyNum = message.replace(/\D/g, "")
+        // console.log("Number : "+ onlyNum)
+        url =  url+"/"+ onlyNum.toString()
+        // console.log("Url : "+ url)
+      }
+      //-----------------------------------fetch function
+      await fetch(url, requestOptions)
+      .then(response =>  response.json())
+      .then(result => responseData = result)
+      .catch(error => console.log('error', error));
+      
+      return this.actionProvider.handleWhretoStudy(message);
     }
 
     if (message.includes("อาจารย์") || message.includes("อ.")) {
