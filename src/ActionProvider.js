@@ -148,9 +148,7 @@ class ActionProvider {
      handleMajorElectivePlace = async(question) => {
       var text = ""
       var message
-      text = "รหัสวิชา: " + question.course_code + "\n" 
-       + " ชื่อวิชา: " + question.name + "\n" 
-       + " สถานที่: " + question.place + "\n" 
+      text = " เรียนที่ " + question.place + " ครับ" +"\n"  
       message = this.createChatBotMessage(
       text,
       {
@@ -242,6 +240,8 @@ class ActionProvider {
         this.addMessageToState(message);
       };
 
+      
+      //-------------------------------------------------
       handleAllProfesser = (info) => {
         var text = ""
         var message

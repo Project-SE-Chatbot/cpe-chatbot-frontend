@@ -61,7 +61,7 @@ class MessageParser {
     }
 
     
-    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
+    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์") || message.includes("วิชา"))  {
         var requestOptions = {
           method: 'GET',
           redirect: 'follow'
@@ -119,7 +119,7 @@ class MessageParser {
         }
     }
 
-    if (message.includes("ไหน") || message.includes("ตึก")|| message.includes("อาคาร")  ){
+    if (message.includes("ไหน") ||  message.includes("ห้อง") || message.includes("ตึกทั้งหมด")){
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -127,12 +127,14 @@ class MessageParser {
         
       let responseData
       let url = "http://localhost:5000/place"
-
-      if(containsNumbers(message) === true){
-        let onlyNum = message.replace(/\D/g, "")
-        // console.log("Number : "+ onlyNum)
-        url =  url+"/"+ onlyNum.toString()
-        // console.log("Url : "+ url)
+      if(message.includes("ห้อง")){
+        if(containsNumbers(message) === true){
+          let onlyNum = message.replace(/\D[^ -~]/g,"")
+  
+          console.log("Number : "+ onlyNum)
+          url =  url+"/"+ onlyNum.toString().replace(/ +/g,"")
+          console.log("Url : "+ url)
+        }
       }
       //-----------------------------------fetch function
       await fetch(url, requestOptions)
@@ -140,11 +142,11 @@ class MessageParser {
       .then(result => responseData = result)
       .catch(error => console.log('error', error));
       
-      if(message.includes("ห้อง") || containsNumbers(message)){
-        return this.actionProvider.handleWhretoStudy(message);
+      if(message.includes("ห้อง")){
+        return this.actionProvider.handleWhretoStudy(responseData);
       }
       else{
-        return this.actionProvider.handleWhretoStudyAll(message);
+        return this.actionProvider.handleWhretoStudyAll(responseData);
       }
     }
 
