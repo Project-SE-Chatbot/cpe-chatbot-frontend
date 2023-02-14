@@ -4,12 +4,12 @@ const GeneralOptions = (props) => {
   const options = [
     {
       name: "หลักสูตรปริญญาตรีปี 2563",
-      handler: props.actionProvider.handleGreeting,
+      handler: props.actionProvider.handleBachelorCurriculum,
       id: 1
     },
     {
       name: "แนะนำตัวเมเจอร์",
-      handler: props.actionProvider.handleMajorElective,
+      handler: props.actionProvider.handleMajorElectiveAll,
       id: 2
     },
     {

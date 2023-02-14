@@ -100,10 +100,22 @@ class ActionProvider {
       this.addMessageToState(message);
     };
 
-    handleMajorElectiveAll = async(question) => {
+    handleMajorElectiveAll = async() => {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      let responseData
+      let url = "http://localhost:5000/major"
+
+      await fetch(url, requestOptions)
+        .then(response =>  response.json())
+        .then(result => responseData = result)
+        .catch(error => console.log('error', error));
+
        var text = ""
       var message
-      question.forEach(element => {
+      responseData.forEach(element => {
         text = "Course: " + element.course_code + "\n" 
         + " Name: " + element.name + "\n" 
         + " Teacher: " + element.name_teacher + "\n" 
@@ -247,19 +259,23 @@ class ActionProvider {
       })
     };
 
+    handleBachelorCurriculum= () =>{
+      const message = this.createChatBotMessage(
+        "หลักสูตรปริญญาตรี",
+        {
+          widget: "BachelorLink",
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        }
+      );
+      this.addMessageToState(message)
+
+    }
+
     handleDegreeCurriculum(degree)  {
       let message1
-      if(degree === 1){
-        message1 = this.createChatBotMessage(
-          "หลักสูตรปริญญาตรี",
-          {
-            widget: "BachelorLink",
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
-      }else if(degree === 2){
+      if(degree === 2){
         message1 = this.createChatBotMessage(
           "หลักสูตรปริญญาโท",
           {
