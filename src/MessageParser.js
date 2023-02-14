@@ -165,8 +165,6 @@ class MessageParser {
         })
         .catch((error) => console.log("error", error));
       return this.actionProvider.handleAllProfesser(test);
-      }else{
-
       }
     }
     if (message.includes("หลักสูตร")) {
