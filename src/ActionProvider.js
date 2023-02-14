@@ -613,6 +613,20 @@ class ActionProvider {
   
       this.addMessageToState(message1);
     };
+
+    handleFBCPECMU= () =>{
+      const message = this.createChatBotMessage(
+        "ติดต่อเพิ่มเติมทางเฟซบุ๊คเพจตามลิ้งค์ข้างล่าง",
+        {
+          widget: "FBLink",
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        }
+      );
+      this.addMessageToState(message)
+
+    }
   
     addMessageToState = (message) => {
       this.setState((state) => ({

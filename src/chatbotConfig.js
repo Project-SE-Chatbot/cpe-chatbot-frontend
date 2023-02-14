@@ -11,6 +11,7 @@ import BachelorLink from "./widgets/degreelink/BachelorDegrees";
 import MasterLink from "./widgets/degreelink/MasterDegrees";
 import DoctorLink from "./widgets/degreelink/DoctorDegrees";
 import CustomUserMessage from "./chatbotmessage/CustomUSerMessage";
+import CPEfbLink from "./widgets/cpefbLink";
 
 const config = {
     lang: "no",
@@ -77,6 +78,10 @@ const config = {
       {
         widgetName: "DoctorLink",
         widgetFunc: (props) => <DoctorLink />
+      },
+      {
+        widgetName: "FBLink",
+        widgetFunc: (props) => <CPEfbLink/>
       }
     ]
 }
