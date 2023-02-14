@@ -60,6 +60,7 @@ class MessageParser {
       return this.actionProvider.handleThanks();
     }
 
+    
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")) {
         var requestOptions = {
           method: 'GET',
@@ -80,7 +81,11 @@ class MessageParser {
         .catch(error => console.log('error', error));
         console.log(responseData)
         if(containsNumbers(message) === true){
-          return this.actionProvider.handleMajorElective(responseData)
+          if(message.includes("ไหน")){
+            return this.actionProvider.handleMajorElectivePlace(responseData)
+          }else{
+            return this.actionProvider.handleMajorElective(responseData)
+          }
         }else{
           return this.actionProvider.handleMajorElectiveAll(responseData)
         }
@@ -114,7 +119,7 @@ class MessageParser {
         }
     }
 
-    if (message.includes("ที่ไหน" || "ตึก" || "อยู่ไหน")){
+    if (message.includes("ไหน") || message.includes("ตึก")|| message.includes("อาคาร")  ){
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -135,7 +140,12 @@ class MessageParser {
       .then(result => responseData = result)
       .catch(error => console.log('error', error));
       
-      return this.actionProvider.handleWhretoStudy(message);
+      if(message.includes("ห้อง") || containsNumbers(message)){
+        return this.actionProvider.handleWhretoStudy(message);
+      }
+      else{
+        return this.actionProvider.handleWhretoStudyAll(message);
+      }
     }
 
     if (message.includes("อาจารย์") || message.includes("อ.")) {

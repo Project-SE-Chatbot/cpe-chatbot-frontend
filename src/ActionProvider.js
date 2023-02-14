@@ -106,12 +106,12 @@ class ActionProvider {
  		    var text = ""
         var message
         question.forEach(element => {
-          text = "Course: " + element.course_code + "\n" 
-          + " Name: " + element.name + "\n" 
-          + " Teacher: " + element.name_teacher + "\n" 
-          + " Term: " + element.term + "\n" 
-          + " Place: " + element.place + "\n" 
-          + " Time: " + element.time + "\n" 
+          text = "รหัสวิชา: " + element.course_code + "\n" 
+          + " ชื่อวิชา: " + element.name + "\n" 
+          + " ผู้สอน: " + element.name_teacher + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
+          + " สถานที่: " + element.place + "\n" 
+          + " เวลา: " + element.time + "\n" 
           message = this.createChatBotMessage(
             text,
             {
@@ -128,13 +128,12 @@ class ActionProvider {
       handleMajorElective = async(question) => {
         var text = ""
         var message
-        text = "Course: " + question.course_code + "\n" 
-         + " Name: " + question.name + "\n" 
-         + " Teacher: " + question.name_teacher + "\n" 
-         + " Term: " + question.term + "\n" 
-         + " Place: " + question.place + "\n" 
-         + " Day: " + question.day + "\n"
-         + " Time: " + question.time + "\n"
+        text = "รหัสวิชา: " + question.course_code + "\n" 
+          + " ชื่อวิชา: " + question.name + "\n" 
+          + " ผู้สอน: " + question.name_teacher + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + question.term + "\n" 
+          + " สถานที่: " + question.place + "\n" 
+          + " เวลา: " + question.time + "\n" 
         message = this.createChatBotMessage(
         text,
         {
@@ -146,51 +145,92 @@ class ActionProvider {
          // console.log(text)
      };
 
+     handleMajorElectivePlace = async(question) => {
+      var text = ""
+      var message
+      text = "รหัสวิชา: " + question.course_code + "\n" 
+       + " ชื่อวิชา: " + question.name + "\n" 
+       + " สถานที่: " + question.place + "\n" 
+      message = this.createChatBotMessage(
+      text,
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      })
+       this.addMessageToState(message)
+       // console.log(text)
+   };
+
       //เกม --------------------------------------------
       handleFreeElectiveAll = async(question) => {
         var text = ""
         var message
-        text = "Course: " + question.id_free_elective + "\n" 
-         + " Name: " + question.name + "\n" 
-         + " Review: " + question.review + "\n" 
-         + " Mojor: " + question.major + "\n" 
-        message = this.createChatBotMessage(
-          "รายชื่อตัวฟรีทั้งหมด",
-          {
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
-        this.addMessageToState(message);
+        question.forEach(element => {
+          text = "รหัสวิชา: " + element.id_free_elective + "\n" 
+         + " ชื่อวิชา: " + element.name + "\n" 
+         + " รีวิว: " + element.review + "\n" 
+         + " คณะ: " + element.major + "\n" 
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          // console.log(text)
+        })
       };
 
       handleFreeElective = async(question) => {
         var text = ""
         var message
-        text = "Course: " + question.id_free_elective + "\n" 
-         + " Name: " + question.name + "\n" 
-         + " Review: " + question.review + "\n" 
-         + " Mojor: " + question.major + "\n" 
-         message = this.createChatBotMessage(
-          text,
-          {
-            loading: true,
-            terminateLoading: true,
-            withAvatar: true
-          }
-        );
-        this.addMessageToState(message);
+          text = "รายวิชา: " + question.id_free_elective + "\n" 
+         + " ชื่อวิชา: " + question.name + "\n" 
+         + " รีวิว: " + question.review + "\n" 
+         + " คณะ: " + question.major + "\n"
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          // console.log(text)
       };
 
       //เกม ----------------------------------------
+      handleWhretoStudyAll = async(question) => {
+        var text = ""
+        var message
+        question.forEach(element => {
+          text = " สถานที่: " + element.building + "\n" 
+         + " ห้อง: " + element.room + "\n" 
+         + " Location: " + element.location + "\n"  
+          message = this.createChatBotMessage(
+            text,
+            {
+              loading: true,
+              terminateLoading: true,
+              withAvatar: true
+            }
+          )
+          this.addMessageToState(message)
+          // console.log(text)
+        })
+      };
+
       handleWhretoStudy = async(question) => {
         var text = ""
         var message
-        text = " Building: " + question.building + "\n" 
-         + " Room: " + question.room + "\n" 
+        text = " สถานที่: " + question.building + "\n" 
+         + " ห้อง: " + question.room + "\n" 
          + " Location: " + question.location + "\n" 
-        const message = this.createChatBotMessage(
+        message = this.createChatBotMessage(
           text,
           {
             loading: true,
