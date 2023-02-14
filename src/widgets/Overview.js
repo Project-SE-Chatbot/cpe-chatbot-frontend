@@ -13,8 +13,8 @@ const GeneralOptions = (props) => {
       id: 2
     },
     {
-      name: "เกี่ยวกับภาควิชา",
-      handler: props.actionProvider.handleContact,
+      name: "ติดต่อเพิ่มเติม",
+      handler: props.actionProvider.handleFBCPECMU,
       id: 3
     }
     // ,
