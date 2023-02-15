@@ -5,6 +5,9 @@
 .options {
   padding-bottom: 15px;
 }
+.react-chatbot-kit-chat-bot-avatar-container{
+  border: 1px solid #000000;
+}
 .chatbot-user-chat-message {
   background-color: #25AAE2  ;
   padding-right: 10px;
