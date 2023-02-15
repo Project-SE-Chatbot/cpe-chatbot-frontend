@@ -21,7 +21,7 @@ const config = {
         backgroundColor: "#0f4ff5"
       },
       chatButton: {
-        backgroundColor: "#C9D9DF"
+        backgroundColor: "#255ee2"
       }
     },
     initialMessages: [
