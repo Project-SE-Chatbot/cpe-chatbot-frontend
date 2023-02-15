@@ -12,6 +12,7 @@ import MasterLink from "./widgets/degreelink/MasterDegrees";
 import DoctorLink from "./widgets/degreelink/DoctorDegrees";
 import CustomUserMessage from "./chatbotmessage/CustomUSerMessage";
 import CPEfbLink from "./widgets/cpefbLink";
+import CustomHeader from "./header/CustomHeader";
 
 const config = {
     lang: "no",
@@ -36,6 +37,7 @@ const config = {
     ],
     state: {},
     customComponents: { 
+      header: () => <CustomHeader/>,
       botAvatar: (props) => <CoBotAvatar {...props} />,
       userAvatar: (props) => <div style={{ visibility: "hidden" }}></div>,
       botChatMessage: (props) => <CustomChatbotMessage {...props} />,

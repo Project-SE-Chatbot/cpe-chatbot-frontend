@@ -5,6 +5,18 @@
 .options {
   padding-bottom: 15px;
 }
+.chatbot-chat-header {
+  border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #9DD9F2;
+    font-family: Arial;
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #514f4f;
+    padding: 12.5px;
+    font-weight: bold;
+}
 .react-chatbot-kit-chat-bot-avatar-container{
   border: 1px solid #000000;
 }
