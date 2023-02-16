@@ -105,12 +105,13 @@ class ActionProvider {
       handleMajorElectiveAll = async(question) => {
  		    var text = ""
         var message
-        question.forEach(element => {
+        await question.forEach(element => {
           text = "รหัสวิชา: " + element.course_code + "\n" 
           + " ชื่อวิชา: " + element.name + "\n" 
-          + " ผู้สอน: " + element.name_teacher + "\n" 
           + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
-          + " สถานที่: " + element.place + "\n" 
+          + " เรียนที่: " + element.place.building + "\n"
+          + " ห้อง: " + element.place.room + "\n"
+          + " ผู้สอน: " + element.teacher.map(x => x.name) + "\n"
           + " เวลา: " + element.time + "\n" 
           message = this.createChatBotMessage(
             text,
@@ -130,9 +131,11 @@ class ActionProvider {
         var message
         text = "รหัสวิชา: " + question.course_code + "\n" 
           + " ชื่อวิชา: " + question.name + "\n" 
-          + " ผู้สอน: " + question.name_teacher + "\n" 
+          
           + " ภาคเรียนที่เปิดสอน: " + question.term + "\n" 
-          + " สถานที่: " + question.place + "\n" 
+          + " สถานที่: " + question.place.building + "\n"
+          + " ห้อง: " + question.place.room + "\n"
+          + " ผู้สอน: " + await question.teacher.map(x => x.name) + "\n"
           + " เวลา: " + question.time + "\n" 
         message = this.createChatBotMessage(
         text,
@@ -148,7 +151,7 @@ class ActionProvider {
       handleMajorElectivePlace = async(question) => {
         var text = ""
         var message
-        text = " เรียนที่ " + question.place + " ครับ" +"\n"  
+        text = " เรียนที่ " + question.place.building +" ห้อง " + question.place.room + " ครับ" +"\n"  
         message = this.createChatBotMessage(
         text,
         {

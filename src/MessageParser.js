@@ -131,7 +131,7 @@ class MessageParser {
       let url = "http://localhost:5000/place"
       if(message.includes("ห้อง")){
         if(containsNumbers(message) === true){
-          let onlyNum = message.replace(/\D[^ -~]/g,"")
+          let onlyNum = message.replace(/\D+[^ -~]/g,"")
   
           console.log("Number : "+ onlyNum)
           url =  url+"/"+ onlyNum.toString().replace(/ +/g,"")
