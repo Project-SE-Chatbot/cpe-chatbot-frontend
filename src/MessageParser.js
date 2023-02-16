@@ -10,10 +10,7 @@ class MessageParser {
     message = message.toLowerCase();
     console.log(message);
 
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
+    
 
     function containsNumbers(str) {
       return /\d/.test(str);
@@ -67,7 +64,10 @@ class MessageParser {
 
     
     if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์") || message.includes("วิชา"))  {
-        
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
         let responseData
         let url = "http://localhost:5000/major"
         if(containsNumbers(message) === true){
@@ -80,7 +80,7 @@ class MessageParser {
         await fetch(url, requestOptions)
         .then(response =>  response.json())
         .then(result => responseData = result)
-        .catch(error => console.log('error', error));
+        .catch(error => {return this.actionProvider.handleError()});
         console.log(responseData)
         if(containsNumbers(message) === true){
           if(message.includes("ไหน")){
@@ -95,7 +95,10 @@ class MessageParser {
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
-        
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
         
         let responseData
         let url = "http://localhost:5000/free-elective"
@@ -110,7 +113,7 @@ class MessageParser {
         await fetch(url, requestOptions)
         .then(response =>  response.json())
         .then(result => responseData = result)
-        .catch(error => console.log('error', error));
+        .catch(error => {return this.actionProvider.handleError();});
         if(containsNumbers(message) === true){
           return this.actionProvider.handleFreeElective(responseData)
         }else{
@@ -119,7 +122,10 @@ class MessageParser {
     }
 
     if (message.includes("ไหน") ||  message.includes("ห้อง") || message.includes("ตึกทั้งหมด")){
-      
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
         
       let responseData
       let url = "http://localhost:5000/place"
@@ -136,7 +142,7 @@ class MessageParser {
       await fetch(url, requestOptions)
       .then(response =>  response.json())
       .then(result => responseData = result)
-      .catch(error => console.log('error', error));
+      .catch(error => {return this.actionProvider.handleError();});
       
       if(message.includes("ห้อง")){
         return this.actionProvider.handleWhretoStudy(responseData);
@@ -149,7 +155,10 @@ class MessageParser {
     if (message.includes("อาจารย์") || message.includes("อ.")) {
       if (message.includes("ทั้งหมด") || message.includes("ทุกคน")){
         var test = {};
-
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
       await fetch("http://localhost:5000/teacher", requestOptions)
         .then((response) => response.json())
         .then((result) => {

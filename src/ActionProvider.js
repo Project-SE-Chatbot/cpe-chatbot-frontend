@@ -225,8 +225,8 @@ class ActionProvider {
       handleWhretoStudy = async(question) => {
         var text = ""
         var message
-        text = " สถานที่: " + question.building + "\n" 
-         + " ห้อง: " + question.room + "\n" 
+        text = " ห้อง: " + question.room + "\n"
+         + " อยู่ที่ " + question.building + " ครับ\n"  
          + " Location: " + question.location + "\n" 
         message = this.createChatBotMessage(
           text,
@@ -323,6 +323,18 @@ class ActionProvider {
           "ติดต่อเพิ่มเติมทางเฟซบุ๊คเพจตามลิ้งค์ข้างล่าง",
           {
             widget: "FBLink",
+            loading: true,
+            terminateLoading: true,
+            withAvatar: true
+          }
+        );
+        this.addMessageToState(message);
+      }
+
+      handleError = () =>{
+        const message = this.createChatBotMessage(
+          "ขออภัยครับ ไม่มีข้อมูลในระบบ",
+          {
             loading: true,
             terminateLoading: true,
             withAvatar: true
