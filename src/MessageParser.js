@@ -60,31 +60,37 @@ class MessageParser {
       return this.actionProvider.handleThanks();
     }
 
-    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")||message.includes("วิชา")) {
-        var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-        };
-        let responseData
-        let url = "http://localhost:5000/major"
-        if(containsNumbers(message) === true){
-          let onlyNum = message.replace(/\D/g, "")
-          console.log("Number : "+ onlyNum)
-          url =  url+"/"+ onlyNum.toString()
-          console.log("Url : "+ url)
-        }
-        //-----------------------------------fetch function
-        await fetch(url, requestOptions)
-        .then(response =>  response.json())
-        .then(result => responseData = result)
-        .catch(error => console.log('error', error));
-        console.log(responseData)
-        if(containsNumbers(message) === true){
-          return this.actionProvider.handleMajorElective(responseData)
+    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")||message.includes("วิชา")
+    || message.includes("ตัวเจอ") || message.includes("ตัวเมเจอ")) {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      let responseData
+      let url = "http://localhost:5000/major"
+      if(containsNumbers(message) === true){
+        let onlyNum = message.replace(/\D/g, "")
+        // console.log("Number : "+ onlyNum)
+        url =  url+"/"+ onlyNum.toString()
+        // console.log("Url : "+ url)
+      }
+      //-----------------------------------fetch function
+      await fetch(url, requestOptions)
+      .then(response =>  response.json())
+      .then(result => responseData = result)
+      .catch(error => console.log('error', error));
+      console.log(responseData)
+      if(containsNumbers(message) === true){
+        if(message.includes("ไหน")){
+          return this.actionProvider.handleMajorElectivePlace(responseData)
         }else{
-          return this.actionProvider.handleMajorElectiveAll(responseData)
+          return this.actionProvider.handleMajorElective(responseData)
         }
-      ;
+      }else{
+        return this.actionProvider.handleMajorElectiveAll()
+      }
+    ;
+      
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
@@ -114,7 +120,8 @@ class MessageParser {
         }
     }
 
-    if (message.includes("ที่ไหน" || "ตึก" || "อยู่ไหน")){
+    if (message.includes("ที่ไหน")|| message.includes("ตึก")|| message.includes("ห้อง")|| message.includes("อยู่ไหน")
+    || message.includes("อยู่ตรงไหน")|| message.includes("อยู่ที่ไหน")){
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -135,7 +142,7 @@ class MessageParser {
       .then(result => responseData = result)
       .catch(error => console.log('error', error));
       
-      return this.actionProvider.handleWhretoStudy(message);
+      return this.actionProvider.handleWhretoStudy(responseData);
     }
 
     if (message.includes("อาจารย์") || message.includes("อ.")) {

@@ -116,12 +116,11 @@ class ActionProvider {
        var text = ""
       var message
       responseData.forEach(element => {
-        text = "Course: " + element.course_code + "\n" 
-        + " Name: " + element.name + "\n" 
-        + " Teacher: " + element.name_teacher + "\n" 
-        + " Term: " + element.term + "\n" 
-        + " Place: " + element.place + "\n" 
-        + " Time: " + element.time + "\n" 
+        text = "รหัสวิชา: " + element.course_code + "\n" 
+          + " ชื่อวิชา: " + element.name + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
+          + " วัน: " + element.day + "\n"
+          + " เวลา: " + element.time + "\n" 
         message = this.createChatBotMessage(
           text,
           {
@@ -136,15 +135,14 @@ class ActionProvider {
     };
 
     handleMajorElective = async(question) => {
+      console.log(question)
       var text = ""
       var message
-      text = "Course: " + question.course_code + "\n" 
-       + " Name: " + question.name + "\n" 
-       + " Teacher: " + question.name_teacher + "\n" 
-       + " Term: " + question.term + "\n" 
-       + " Place: " + question.place + "\n" 
-       + " Day: " + question.day + "\n"
-       + " Time: " + question.time + "\n"
+      text = "รหัสวิชา: " + question.course_code + "\n" 
+          + " ชื่อวิชา: " + question.name + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + question.term + "\n" 
+          + " วัน: " + question.day + "\n"
+          + " เวลา: " + question.time + "\n" 
       message = this.createChatBotMessage(
       text,
       {
@@ -161,10 +159,9 @@ class ActionProvider {
       var text = ""
       var message
       question.forEach(element => {
-        text = "Course: " + element.id_free_elective + "\n" 
-       + " Name: " + element.name + "\n" 
-       + " Review: " + element.review + "\n" 
-       + " Major: " + element.major + "\n" 
+        text = "รหัสวิชา: " + element.id_free_elective + "\n" 
+         + " ชื่อวิชา: " + element.name + "\n" 
+         + " รีวิว: " + element.review + "\n" 
         message = this.createChatBotMessage(
           text,
           {
@@ -183,10 +180,9 @@ class ActionProvider {
     handleFreeElective = async(question) => {
       var text = ""
       var message
-      text = "Course: " + question.id_free_elective + "\n" 
-       + " Name: " + question.name + "\n" 
-       + " Review: " + question.review + "\n" 
-       + " Mojor: " + question.major + "\n" 
+      text = "รหัสวิชา: " + question.id_free_elective + "\n" 
+      + " ชื่อวิชา: " + question.name + "\n" 
+      + " รีวิว: " + question.review + "\n" 
        message = this.createChatBotMessage(
         text,
         {
@@ -202,9 +198,7 @@ class ActionProvider {
     handleWhretoStudy = async(question) => {
       var text = ""
       var message
-      text = " Building: " + question.building + "\n" 
-       + " Room: " + question.room + "\n" 
-       + " Location: " + question.location + "\n" 
+      text = "ห้องนี้อยู่ที่" + question.building + "ครับ" 
       message = this.createChatBotMessage(
         text,
         {
@@ -315,6 +309,20 @@ class ActionProvider {
       this.addMessageToState(message)
 
     }
+
+    handleMajorElectivePlace = async(question) => {
+      var text = ""
+      var message
+      text = " เรียนที่ " + question.place + " ครับ" +"\n"  
+      message = this.createChatBotMessage(
+      text,
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      })
+       this.addMessageToState(message)
+   };
   
     addMessageToState = (message) => {
       this.setState((state) => ({

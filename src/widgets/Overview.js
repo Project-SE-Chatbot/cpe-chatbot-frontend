@@ -24,7 +24,7 @@ const GeneralOptions = (props) => {
     //   id: 4
     // }
   ];
-  return <Options options={options} title="Options" {...props} />;
+  return <Options options={options} title="FAQ" {...props} />;
 };
 
 export default GeneralOptions;
