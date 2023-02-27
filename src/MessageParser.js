@@ -10,8 +10,6 @@ class MessageParser {
     message = message.toLowerCase();
     console.log(message);
 
-    
-
     function containsNumbers(str) {
       return /\d/.test(str);
     }
@@ -89,16 +87,11 @@ class MessageParser {
             return this.actionProvider.handleMajorElective(responseData)
           }
         }else{
-          return this.actionProvider.handleMajorElective(responseData)
+          return this.actionProvider.handleMajorElectiveAll()
         }
-      }else{
-        return this.actionProvider.handleMajorElectiveAll()
       }
-    ;
-      
-    }
 
-    if (message.includes("ตัวฟรี") || message.includes("free elective")) {
+      if(message.includes("ตัวฟรี") || message.includes("free elective")){
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -185,6 +178,6 @@ class MessageParser {
     return this.actionProvider.handleOptions({ withAvatar: true });
   }
 }
-
+  
 
 export default MessageParser;
