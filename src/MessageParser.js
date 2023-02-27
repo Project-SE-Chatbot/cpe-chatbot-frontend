@@ -62,8 +62,8 @@ class MessageParser {
       return this.actionProvider.handleThanks();
     }
 
-    
-    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์") || message.includes("วิชา"))  {
+    if (message.includes("ตัวเจอร์") || message.includes("ตัวเมเจอร์")||message.includes("วิชา")
+    || message.includes("ตัวเจอ") || message.includes("ตัวเมเจอ")) {
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -89,9 +89,13 @@ class MessageParser {
             return this.actionProvider.handleMajorElective(responseData)
           }
         }else{
-          return this.actionProvider.handleMajorElectiveAll(responseData)
+          return this.actionProvider.handleMajorElective(responseData)
         }
-      ;
+      }else{
+        return this.actionProvider.handleMajorElectiveAll()
+      }
+    ;
+      
     }
 
     if (message.includes("ตัวฟรี") || message.includes("free elective")) {
