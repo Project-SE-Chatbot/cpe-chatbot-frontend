@@ -420,6 +420,16 @@
   cursor: pointer;
 }
 
+.admin-type-answr-box-selected {
+  border: 2px solid #F47458;
+  border-radius: 12px;
+  background-color: #F47458;
+  color: black;
+  padding: 2px 16px;
+  margin: 6px;
+  cursor: pointer;
+}
+
 .admin-create-ans-box-info-container {
   height: 250px;
   width: 600px;
@@ -431,7 +441,7 @@
 .admin-create-ans-box-form-info-container {
   display: grid;
   text-align: left;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 60%;
   row-gap: 20px;
   padding: 10px;
 }
