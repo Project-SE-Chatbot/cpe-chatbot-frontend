@@ -10,7 +10,9 @@ import 'react-chatbot-kit/build/main.css';
 import background from "./img/CPEWebMockup.png";
 import BotAvatar from "./img/robot.png";
 import cpebg from "./img/logo-cpe.jpg";
-
+import { Route,Routes } from 'react-router-dom';
+import AdminPage from './AdminPages/Admin';
+import Home from './Home';
 
 function App() {
   const [showBot, toggleBot] = useState(false);
@@ -19,6 +21,10 @@ function App() {
     <div style={{ backgroundImage: `url(${background})`,
     height:'100vh',
     backgroundSize: 'cover'}}>
+      <Routes>
+      <Route path='/'element={<Home/>}></Route>
+        <Route path='/Admin'element={<AdminPage/>}></Route>
+      </Routes>
       {showBot && (
         <Fade big>
           <div className="app-chatbot-container">
