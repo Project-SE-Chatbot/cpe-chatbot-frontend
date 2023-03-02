@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Rating, } from 'semantic-ui-react'
 import '../css/AnswerBox.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faComment} from "@fortawesome/free-solid-svg-icons"
+import {faComments} from "@fortawesome/free-solid-svg-icons"
 
 const AnswerBox = () =>{
     const [over,setOver] = useState(false);
@@ -38,14 +38,14 @@ const AnswerBox = () =>{
             </div>
             <div className='Comment'>
                 <div className='CommuIcon'>
-                    <FontAwesomeIcon icon={faComment} />
+                    <FontAwesomeIcon icon={faComments} />
                 </div>
                 <div>
                     {comment}
                 </div>
                 <div className='star'>
-                <Rating  maxRating={5} defaultRating={value} icon='star' size='mini' disabled/>
-                </div> 
+                    <Rating  maxRating={5} defaultRating={value} icon='star' size='mini' disabled/>
+                </div>
             </div>
         </div>
     )
