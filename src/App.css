@@ -344,11 +344,15 @@
   top: 12.04%;
   bottom: -0.19%;
 
+  width: fit-content;
+
+  display: block;
+  padding: 5px;
   background: #C4CEED;
 }
 
 .admin-input-container {
-  padding: 40px;
+  padding: 20px;
   display: flex;
 }
 

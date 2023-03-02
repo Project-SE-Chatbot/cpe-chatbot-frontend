@@ -18,13 +18,16 @@ function App() {
   const [showBot, toggleBot] = useState(false);
 
   return (
-    <div style={{ backgroundImage: `url(${background})`,
-    height:'100vh',
-    backgroundSize: 'cover'}}>
-      <Routes>
-      <Route path='/'element={<Home/>}></Route>
-        <Route path='/Admin'element={<AdminPage/>}></Route>
-      </Routes>
+    <div style={{
+      backgroundImage: `url(${background})`,
+      height: '100vh',
+      backgroundSize: 'cover'
+    }}>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/Admin' element={<AdminPage />}></Route>
+        </Routes>
+
       {showBot && (
         <Fade big>
           <div className="app-chatbot-container">
