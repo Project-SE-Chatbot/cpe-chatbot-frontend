@@ -13,6 +13,7 @@ import cpebg from "./img/logo-cpe.jpg";
 import { Route,Routes } from 'react-router-dom';
 import AdminPage from './AdminPages/Admin';
 import Home from './Home';
+import LoginPage from './LoginPage/Login';
 
 function App() {
   const [showBot, toggleBot] = useState(false);
@@ -24,6 +25,7 @@ function App() {
       <Routes>
       <Route path='/'element={<Home/>}></Route>
         <Route path='/Admin'element={<AdminPage/>}></Route>
+        <Route path='/Login'element={<LoginPage/>}></Route>
       </Routes>
       {showBot && (
         <Fade big>
