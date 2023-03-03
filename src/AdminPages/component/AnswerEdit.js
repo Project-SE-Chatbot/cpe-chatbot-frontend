@@ -38,13 +38,13 @@ const AnswerEdit = () => {
                     </div>
                 </div>
                 <div className='Button'>
-                    <div className='ButtonEdit'>
+                    <div className='ButtonEdit' style={{cursor: 'pointer'}}>
                         <div className='EditText'>
                             Edit
                         </div>
                     </div>
 
-                    <div className='ButtonDelete'>
+                    <div className='ButtonDelete' style={{cursor: 'pointer'}}>
                         <div className='DeleteText'>
                             Delete
                         </div>

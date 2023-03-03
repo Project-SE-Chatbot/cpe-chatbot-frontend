@@ -23,7 +23,7 @@ const AnsContainer = (props) => {
                 </div>
                 <div className="FoundAns">
                     <p>We found {ansNum} Answer</p>
-                    <FontAwesomeIcon icon={faChevronDown} />
+                    <FontAwesomeIcon icon={faChevronDown} style={{cursor: 'pointer'}}/>
                 </div>
                 <AnswerBox></AnswerBox>
             </div>

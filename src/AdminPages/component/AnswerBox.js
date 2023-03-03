@@ -18,7 +18,8 @@ const AnswerBox = () =>{
     }
 
     const isOver = {
-        border: over ? '3px solid #6B7EB6':" "
+        border: over ? '3px solid #6B7EB6':" ",
+        cursor: 'pointer'
     }
 
     useEffect(() => {
