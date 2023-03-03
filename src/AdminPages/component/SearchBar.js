@@ -1,17 +1,24 @@
 import plus from "../img/plus (1).png";
 import '../css/SearchBar.css'
+import { useState } from "react";
 const SearchBar = () => {
+    const [keyNum,setKeyNum] = useState(0);
     return (
         <div className='SearchBar'>
             <form>
                 <label>
-                    <input className="admin-input-search-keyword"
-                        type="text" name="name" placeholder="Search keywords" />
+                    <input className="inputBar"
+                        type="text" name="name" placeholder="   Search keywords..." />
                 </label>
             </form>
-            <button className="admin-add-create-ans-button">
-                <img src={plus} style={{ width: "35px", height: "35px" }}></img>
-            </button>
+            <div className="button" style={{cursor: 'pointer'}}>
+                <img src={plus} style={{ width: "35px", height: "35px" ,cursor: 'pointer'}}>
+                    
+                </img>
+            </div>
+            <div className="Detail">
+                We’ve found {keyNum} Keywords
+            </div>
         </div>
     )
 }
