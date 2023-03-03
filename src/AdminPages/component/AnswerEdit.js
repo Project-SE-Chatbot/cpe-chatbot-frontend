@@ -4,6 +4,9 @@ import 'semantic-ui-css/semantic.min.css'
 // import * as React from 'react';
 import { Rating, } from 'semantic-ui-react'
 import SearchBar from './SearchBar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import KeywordBox from './KeywordBox'
 
 
 const AnswerEdit = () => {
@@ -51,6 +54,24 @@ const AnswerEdit = () => {
             </div>
             <div >
                 <SearchBar></SearchBar>
+            </div>
+            
+            <div className='collumText'>
+                <div className='keywordCollum'>
+                    Keywords
+                    <FontAwesomeIcon icon={faChevronDown} style={{cursor: 'pointer'}}/>
+                </div>
+                <div className='accuracyCollum'>
+                    Accuracy 
+                    <FontAwesomeIcon icon={faChevronDown} style={{cursor: 'pointer'}}/>
+                </div>
+                <div className='lastEditedCollum'>
+                    Last edited
+                    <FontAwesomeIcon icon={faChevronDown} style={{cursor: 'pointer'}}/>
+                </div>
+            </div>
+            <div>
+                <KeywordBox/>
             </div>
         </div>
 
