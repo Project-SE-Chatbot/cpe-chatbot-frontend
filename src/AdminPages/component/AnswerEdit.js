@@ -7,6 +7,10 @@ import SearchBar from './SearchBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import KeywordBox from './KeywordBox'
+import CreateKeyWord from '../PopupEditKeyword/CreateKeyword'
+import EditKeyword from '../PopupEditKeyword/EditKeyword'
+import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
+import ConfirmDeleteQuestion from '../PopupEditKeyword/ConfirmDeleteQuestion'
 
 
 const AnswerEdit = () => {
@@ -17,9 +21,13 @@ const AnswerEdit = () => {
     const [detailText, setDT] = useState("braaaaaa");
     const [date, setDate] = useState("Yesterday");
 
+    const [edit,setEdit] = useState(false)
+
+
     useEffect(() => {
 
     }, [value, comment, detailText, date, headText])
+
     return (
         <div>
             <div className="AnswerEdit">
@@ -72,6 +80,19 @@ const AnswerEdit = () => {
             </div>
             <div>
                 <KeywordBox/>
+            </div>
+            
+            <div>
+                {/* <CreateKeyWord/> */}
+            </div>
+            <div>
+                {/* <EditKeyword/> */}
+            </div>
+            <div>
+                {/* <ConfirmDeleteKeyword/> */}
+            </div>
+            <div>
+            {/* <ConfirmDeleteQuestion/> */}
             </div>
         </div>
 
