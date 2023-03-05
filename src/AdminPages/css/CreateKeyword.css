@@ -1,0 +1,107 @@
+.createKeywordContainer {
+    position: absolute;
+    width: 630px;
+    height: 290px;
+    left: 644px;
+    top: 361px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px #10B993;
+
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.createKeywordContainer .exit{
+    align-self: flex-end;
+    padding-right: 5px;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.createKeywordContainer .titleText {
+    justify-content: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #363636;
+    padding: 20px;
+}
+
+.createKeywordContainer .inputContainer{
+    align-self: center;
+    padding: 10px;
+}
+
+.createKeywordContainer .inputContainer .inputCKbar {
+    box-sizing: border-box;
+    border: 2px solid #5B5B5B;
+    border-radius: 5px;
+    width: 370px;
+    height: 40px;
+}
+
+.createKeywordContainer .buttonContainer{
+    display: flex;
+    height: 100%;
+    justify-content: end;
+    align-content: end;
+    
+    padding-top: 20px;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.createKeywordContainer .buttonContainer .editButton {
+    align-self: flex-end;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #5B5B5B;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: fit-content;
+    width: 100px;
+    padding: 4px;
+}
+
+.createKeywordContainer .buttonContainer .editButton .editText {
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #5B5B5B;
+}
+
+.createKeywordContainer .buttonContainer .doneButton {
+    cursor: pointer;
+    align-self: flex-end;
+    background: #10B993;
+    border-radius: 4px;
+    height: fit-content;
+    width: 120px;
+    padding: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.createKeywordContainer .buttonContainer .doneButton .doneText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
