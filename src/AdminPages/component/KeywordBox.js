@@ -7,7 +7,7 @@ import { faFilePen } from "@fortawesome/free-solid-svg-icons"
 
 const KeywordBox = () => {
     const [key, setKey] = useState("ซอฟแวร์ไงโจ๊ะๆ")
-    const [acc, setAcc] = useState(90)
+    const [acc, setAcc] = useState(20)
     const [color, setColor] = useState("")
     const [date, setDate] = useState("yesterday")
 
