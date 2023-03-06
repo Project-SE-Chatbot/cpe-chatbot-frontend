@@ -22,7 +22,7 @@ const AnsContainer = (props) => {
                         </label>
                     </form>
                     <button className="admin-add-create-ans-button"
-                        onClick={() => togglePopup((prev) => !prev)}>
+                        onClick={() => togglePopup((prev) => !prev)} style={{cursor:'pointer'}}>
                         <img src={plus} style={{ width: "35px", height: "35px" }}></img>
                     </button>
                 </div>
