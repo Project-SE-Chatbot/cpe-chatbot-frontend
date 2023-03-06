@@ -83,20 +83,14 @@ const AnswerEdit = () => {
             </div>
             
             <div>
-                {/* <CreateKeyWord/> */}
+                <CreateKeyWord trigger = {create} setTrigger={setCreate}/>
             </div>
             <div>
-                {/* <EditKeyword/> */}
-            </div>
-            <div>
-                {/* <ConfirmDeleteKeyword/> */}
-            </div>
-            <div>
-            {/* <ConfirmDeleteQuestion/> */}
+                <ConfirmDeleteQuestion trigger = {delAnswer} setTrigger={setDelAnswer}/>
             </div>
         </div>
 
-    )
+    ):""
 }
 
 export default AnswerEdit

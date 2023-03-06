@@ -2,10 +2,10 @@ import '../css/CreateKeyword.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
-const CreateKeyWord = () => {
-    return (
+const CreateKeyWord = (props) => {
+    return (props.trigger) ? (
         <div className="createKeywordContainer">
-            <div className='exit'>
+            <div className='exit' onClick={()=> props.setTrigger(false)}>
                 <FontAwesomeIcon icon={faXmark} />
             </div>
             <div className='titleText'>
@@ -20,19 +20,19 @@ const CreateKeyWord = () => {
                 </form>
             </div>
             <div className='buttonContainer'>
-                <div className='editButton'>
+                <div className='editButton' onClick={()=> props.setTrigger(false)}>
                     <div className='editText'>
-                        Edit
+                        cancle
                     </div>
                 </div>
                 <div className='doneButton'>
                     <div className='doneText'>
-                        Done
+                        Create
                     </div>
                 </div>
             </div>
         </div>
-    )
+    ):""
 }
 
 export default CreateKeyWord

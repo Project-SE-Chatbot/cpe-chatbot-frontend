@@ -2,10 +2,10 @@ import '../css/ConfirmDelete.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
-const ConfirmDeleteQuestion = () => {
-    return (
+const ConfirmDeleteQuestion = (props) => {
+    return (props.trigger) ? (
         <div className="confirmDeleteContainer">
-            <div className='exit'>
+            <div className='exit' onClick={() =>props.setTrigger(false)}>
                 <FontAwesomeIcon icon={faXmark} />
             </div>
             <div className='titleText'>
@@ -17,9 +17,9 @@ const ConfirmDeleteQuestion = () => {
                 </div>
             </div>
             <div className='buttonContainer'>
-                <div className='editButton'>
-                    <div className='editText'>
-                        Edit
+                <div className='editButton' onClick={() =>props.setTrigger(false)}>
+                    <div className='editText' >
+                        Cancle
                     </div>
                 </div>
                 <div className='deleteButton'>
@@ -29,7 +29,7 @@ const ConfirmDeleteQuestion = () => {
                 </div>
             </div>
         </div>
-    )
+    ):""
 }
 
 export default ConfirmDeleteQuestion
