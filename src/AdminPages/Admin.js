@@ -15,7 +15,6 @@ const AdminPage = (props) => {
     <div className="admin-background">
       <Navbar/>
       <AnsContainer/>
-
     </div>
   );
 };

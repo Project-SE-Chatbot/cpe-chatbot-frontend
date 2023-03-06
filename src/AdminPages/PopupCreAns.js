@@ -52,10 +52,6 @@ const PopupCreAns = (props) => {
                     }
                 </div>
             </div>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <div className="admin-create-answer-cancle-button ">Cancle</div>
-                <div className="admin-create-answer-done-button">Done</div>
-            </div>
         </div>
     );
 };

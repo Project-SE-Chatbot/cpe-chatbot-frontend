@@ -338,7 +338,7 @@
 }
 
 .admin-ans-box-container {
-  position: absolute;
+  position: fixed;
   left: 0%;
   right: 72.76%;
   top: 12.04%;

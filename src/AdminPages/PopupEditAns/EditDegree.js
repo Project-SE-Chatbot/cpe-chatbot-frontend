@@ -1,7 +1,33 @@
 import React from "react";
 import close from "../../img/close (3).png";
+import { useState } from 'react';
 
-const EditDegree= (props) => {
+const EditDegree = (props) => {
+    const [Name, setName] = useState('');
+    const [Degree, setDegree] = useState('');
+    const [Term, setTerm] = useState('');
+    const [More, setMore] = useState('');
+    const onCancle = e => {
+        e.preventDefault()
+        setName('')
+        setDegree('')
+        setTerm('')
+        setMore('')
+    }
+    const onSubmit = e => {
+        e.preventDefault()
+        const payload = {
+            Name,
+            Degree,
+            Term,
+            More
+        }
+        console.log('submit value', payload)
+        setName('')
+        setDegree('')
+        setTerm('')
+        setMore('')
+    }
     return (
         <div className="admin-popup-edit-ans-box">
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -23,8 +49,8 @@ const EditDegree= (props) => {
                 </form>
             </div>
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <div className="admin-create-answer-cancle-button ">Cancle</div>
-                <div className="admin-create-answer-done-button">Save Changed</div>
+                <div className="admin-create-answer-cancle-button " onClick={onCancle}>Cancle</div>
+                <div className="admin-create-answer-done-button" onClick={onSubmit}>Save Changed</div>
             </div>
         </div>
     );
