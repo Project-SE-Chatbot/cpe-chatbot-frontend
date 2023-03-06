@@ -13,7 +13,7 @@ import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
 import ConfirmDeleteQuestion from '../PopupEditKeyword/ConfirmDeleteQuestion'
 
 
-const AnswerEdit = () => {
+const AnswerEdit = (props) => {
     const [over, setOver] = useState(false);
     const [value, setValue] = useState(5);
     const [comment, setComment] = useState(20);
@@ -23,12 +23,16 @@ const AnswerEdit = () => {
 
     const [edit,setEdit] = useState(false)
 
+    const [create,setCreate] = useState(false)
+
+    const [delAnswer,setDelAnswer] = useState(false)
+
 
     useEffect(() => {
 
     }, [value, comment, detailText, date, headText])
 
-    return (
+    return (props.trigger) ? (
         <div>
             <div className="AnswerEdit">
                 <div className="Date">
@@ -61,7 +65,7 @@ const AnswerEdit = () => {
                 
             </div>
             <div >
-                <SearchBar></SearchBar>
+                <SearchBar setTrigger = {setCreate}></SearchBar>
             </div>
             
             <div className='collumText'>
