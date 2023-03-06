@@ -301,34 +301,50 @@
 
 
 .admin-background {
-  position: absolute;
+  /* position: absolute;
   left: 0%;
   right: 0%;
   top: 0%;
-  bottom: 0%;
+  bottom: 0%; */
 
+  display: flex;
+  flex-direction: column;
   background: #ECF1FF;
 }
 
+.admin-background .container{
+  display: flex;
+}
+
+.admin-background .container .edit{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
 .admin-navbar-container {
-  position: absolute;
+  /* position: absolute;
   left: 0%;
   right: 0%;
   top: 0%;
-  bottom: 87.96%;
+  bottom: 87.96%; */
+  height: 100px;
   display: flex;
   align-items: center;
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
-  padding: 40px;
+  padding-left: 40px;
 }
 
 .admin-info-container {
   display: flex;
   align-items: center;
+  height: fit-content;
   justify-content: space-around;
-  padding: 40px;
+  padding: 20px;
 }
 
 .admin-button {
@@ -338,17 +354,21 @@
 }
 
 .admin-ans-box-container {
-  position: fixed;
+  position: absolute;
   left: 0%;
   right: 72.76%;
   top: 12.04%;
-  bottom: -0.19%;
+  bottom: -0.19%; 
 
+  width: fit-content;
+  height: 100vh;
+  display: block;
+  padding: 5px;
   background: #C4CEED;
 }
 
 .admin-input-container {
-  padding: 40px;
+  padding: 20px;
   display: flex;
 }
 

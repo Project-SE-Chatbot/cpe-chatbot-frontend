@@ -1,6 +1,7 @@
 import React from "react";
 import AnsContainer from "./AnsContainer";
 import ConfirmDelAns from "./ConfirmDelAns";
+import AnswerEdit from "./component/AnswerEdit";
 import Navbar from "./Navbar";
 import PopupCreAns from "./PopupCreAns";
 import EditDegree from "./PopupEditAns/EditDegree";
@@ -15,6 +16,7 @@ const AdminPage = (props) => {
     <div className="admin-background">
       <Navbar/>
       <AnsContainer/>
+
     </div>
   );
 };

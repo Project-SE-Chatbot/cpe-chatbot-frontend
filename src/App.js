@@ -18,13 +18,37 @@ import LoginPage from './LoginPage/Login';
 function App() {
 
   return (
-    <div>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/Admin' element={<AdminPage />}></Route>
-        <Route path='/Login' element={<LoginPage />}></Route>
-      </Routes>
+    <div style={{
+      backgroundImage: `url(${background})`,
+      height: '100vh',
+      backgroundSize: 'cover'
+    }}>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/Admin' element={<AdminPage />}></Route>
+          <Route path='/Login' element={<LoginPage />}></Route>
+        </Routes>
 
+      {showBot && (
+        <Fade big>
+          <div className="app-chatbot-container">
+            <Chatbot
+              config={config}
+              messageParser={MessageParser}
+              actionProvider={ActionProvider}
+            />
+          </div>
+        </Fade>
+      )}
+      <Flip left cascade>
+        <button
+          className="app-chatbot-button"
+          onClick={() => toggleBot((prev) => !prev)}
+          style={{ backgroundImage: `url(${cpebg})` ,backgroundRepeat:"no-repeat",backgroundSize:"contain"}}
+        >
+          <img alt="BotAvatar" src={BotAvatar} style={{width: "90%"}}/>
+        </button>
+      </Flip>
     </div>
   );
 }

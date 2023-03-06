@@ -1,0 +1,18 @@
+.FoundAns {
+    /* position: absolute;
+    left: 3.65%;
+    right: 79.95%;
+    top: 22.96%;
+    bottom: 73.43%;
+*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    color: #848484;
+    display: flex;
+    justify-content: space-between;
+}

@@ -8,11 +8,14 @@ const CustomChatbotMessage = (props) => {
   const handleClick = (e) => {
     console.log(props.message)
   };
+
   return (
     <div>
+      
       <div className="chatbot-chat-bot-message">
       <NewlineText text={props.message}/>
     </div>
+      
       <Reaction message={props.message} />
     </div>
   );
