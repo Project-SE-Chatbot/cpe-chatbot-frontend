@@ -48,6 +48,7 @@ const KeywordBox = () => {
             <div className='keywordText'>
                 {key}
             </div>
+
             <div className='accContainer'>
                 <div className='accuracy' style={{ 'background': color }}>
                     <div className='accText' >
@@ -55,9 +56,11 @@ const KeywordBox = () => {
                     </div>
                 </div>
             </div>
+
             <div className='lastEditText'>
                 {date}
             </div>
+            
             <div className='editDelContainer'>
                 <div className='editIcon'>
                     <FontAwesomeIcon icon={faFilePen} />

@@ -10,13 +10,20 @@ import EditMajor from "./PopupEditAns/EditMajor";
 import EditPlace from "./PopupEditAns/EditPlace";
 import EditPlan from "./PopupEditAns/EditPlan";
 import EditTeacher from "./PopupEditAns/EditTeacher";
+import AnswerBox from "./component/AnswerBox";
 
 const AdminPage = (props) => {
   return (
-    <div className="admin-background">
-      <Navbar/>
-      <AnsContainer/>
-
+    <div className="admin-background" >
+      <Navbar />
+      <div className="container">
+        <div>
+          <AnsContainer />
+        </div>
+        <div className="edit">
+          <AnswerEdit />
+        </div>
+      </div>
     </div>
   );
 };

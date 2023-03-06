@@ -301,12 +301,6 @@
 
 
 .admin-background {
-  /* position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%; */
-
   display: flex;
   flex-direction: column;
   background: #ECF1FF;
@@ -354,11 +348,6 @@
 }
 
 .admin-ans-box-container {
-  position: absolute;
-  left: 0%;
-  right: 72.76%;
-  top: 12.04%;
-  bottom: -0.19%; 
 
   width: fit-content;
   height: 100vh;
@@ -399,7 +388,7 @@
   top: 180px;
   left: 420px;
   padding: 30px;
-  height: 406px;
+  height: 435px;
   width: 669px;
   border-radius: 0px;
   background: #FFFFFF;
