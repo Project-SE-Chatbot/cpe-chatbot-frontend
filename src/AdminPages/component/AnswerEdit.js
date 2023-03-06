@@ -52,8 +52,8 @@ const AnswerEdit = () => {
                         </div>
                     </div>
 
-                    <div className='ButtonDelete' style={{cursor: 'pointer'}}>
-                        <div className='DeleteText'>
+                    <div className='ButtonDelete' style={{cursor: 'pointer'}} onClick = {()=> setDelAnswer(true)}>
+                        <div className='DeleteText' >
                             Delete
                         </div>
                     </div>
