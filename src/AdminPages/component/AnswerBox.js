@@ -5,10 +5,11 @@ import { Rating, } from 'semantic-ui-react'
 import '../css/AnswerBox.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComments} from "@fortawesome/free-solid-svg-icons"
+import AnswerEdit from './AnswerEdit'
 
-const AnswerBox = () =>{
+const AnswerBox = (props) =>{
     const [over,setOver] = useState(false);
-    const [value, setValue] = useState(1);
+    const [value, setValue] = useState(4);
     const [comment, setComment] = useState(20);
     const [headText, setHT] = useState("Major");
     const [detailText, setDT] = useState("braaaaaaaaaaaaaaaaaaaaaa");
@@ -27,7 +28,7 @@ const AnswerBox = () =>{
     },[value,comment,detailText,date,headText])
 
     return (
-        <div className="AnswerBox" onClick={handleOver} style={isOver}>
+        <div className="AnswerBox" onClick={() => {handleOver();}} style={isOver}>
             <div className='Date'>
                     {date}
             </div>
@@ -48,6 +49,9 @@ const AnswerBox = () =>{
                     <Rating  maxRating={5} defaultRating={value} icon='star' size='mini' disabled/>
                 </div>
             </div>
+            {/* <div className='edit'>
+                <AnswerEdit></AnswerEdit>
+            </div> */}
         </div>
     )
 }
