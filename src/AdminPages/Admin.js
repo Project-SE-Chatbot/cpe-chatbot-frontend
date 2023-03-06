@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnsContainer from "./AnsContainer";
 import ConfirmDelAns from "./ConfirmDelAns";
 import AnswerEdit from "./component/AnswerEdit";
@@ -13,6 +13,12 @@ import EditTeacher from "./PopupEditAns/EditTeacher";
 import AnswerBox from "./component/AnswerBox";
 
 const AdminPage = (props) => {
+  const [title,setTitle] = useState();
+  const [detail,setDetail] = useState();
+  const [star,setStar] = useState();
+  const [day,setDate] = useState();
+  const [AnsEdit,setAnsEdit] = useState(false);
+
   return (
     <div className="admin-background" >
       <Navbar />
@@ -21,7 +27,7 @@ const AdminPage = (props) => {
           <AnsContainer />
         </div>
         <div className="edit">
-          <AnswerEdit />
+          <AnswerEdit trigger = {true} />
         </div>
       </div>
     </div>
