@@ -90,3 +90,8 @@
 .AnswerBox .Comment .star{
     padding-left: 7px;
 }
+
+.AnswerBox .edit{
+    position: absolute;
+    
+}

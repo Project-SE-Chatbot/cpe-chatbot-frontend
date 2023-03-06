@@ -4,6 +4,8 @@ import '../css/KeywordBox.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { faFilePen } from "@fortawesome/free-solid-svg-icons"
+import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
+import EditKeyword from '../PopupEditKeyword/EditKeyword'
 
 const KeywordBox = () => {
     const [key, setKey] = useState("ซอฟแวร์ไงโจ๊ะๆ")
@@ -11,12 +13,15 @@ const KeywordBox = () => {
     const [color, setColor] = useState("")
     const [date, setDate] = useState("yesterday")
 
+    const [editKeypop,setEditPop] = useState(false)
+    const [delKeypop,setDelPop] = useState(false)
+
     function check(acc) {
         if (acc > 0) {
             if (acc > 79) {
                 return setColor("#4caf50")
             }
-            if (acc = 50) {
+            if (acc > 50) {
                 return setColor("#cddc39")
             }
             if (acc > 39) {
@@ -63,13 +68,14 @@ const KeywordBox = () => {
             
             <div className='editDelContainer'>
                 <div className='editIcon'>
-                    <FontAwesomeIcon icon={faFilePen} />
+                    <FontAwesomeIcon icon={faFilePen} onClick={() => setEditPop(true)}/>
                 </div>
-                <div className='delIcon'>
+                <div className='delIcon' onClick={() => setDelPop(true)}>
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>
-
             </div>
+            <EditKeyword trigger = {editKeypop} setTrigger = {setEditPop} keyname = {key} setKeyName = {setKey}/>
+            <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop}/>
         </div>
     )
 }

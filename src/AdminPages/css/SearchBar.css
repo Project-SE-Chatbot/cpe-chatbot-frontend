@@ -1,10 +1,9 @@
 .SearchBar {
     padding: 30px;
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    
+    
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -12,6 +11,14 @@
     line-height: 24px;
 
     color: #848484;
+}
+
+.SearchBar .SearchContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .SearchBar .inputBar {
@@ -32,8 +39,9 @@
 }
 
 .SearchBar .Detail {
-    position:absolute;
-    padding-left: 850px;
+    /* position:absolute; */
+    /* padding-left: 850px; */
+    align-self: flex-end;
     width: fit-content;
     font-family: 'Inter';
     font-style: normal;
