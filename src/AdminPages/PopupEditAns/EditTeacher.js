@@ -1,7 +1,7 @@
 import React from "react";
 import close from "../../img/close (3).png";
 
-const EditTeacher= (props) => {
+const EditTeacher = (props) => {
     return (
         <div className="admin-popup-edit-ans-box">
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -29,6 +29,7 @@ const EditTeacher= (props) => {
                 <div className="admin-create-answer-done-button">Save Changed</div>
             </div>
         </div>
+
     );
 };
 

@@ -10,7 +10,7 @@ import KeywordBox from './KeywordBox'
 import CreateKeyWord from '../PopupEditKeyword/CreateKeyword'
 
 import ConfirmDeleteQuestion from '../PopupEditKeyword/ConfirmDeleteQuestion'
-import PopupEditAns from '../PopupEditAns'
+import PopupEditAns from '../PopupEditAns/PopupEditAns'
 
 
 const AnswerEdit = (props) => {
@@ -21,11 +21,12 @@ const AnswerEdit = (props) => {
     const [detailText, setDT] = useState("braaaaaa");
     const [date, setDate] = useState("Yesterday");
 
-    const [edit,setEdit] = useState(false)
+    const [editAns,setEditAns] = useState(false)
 
     const [create,setCreate] = useState(false)
 
     const [delAnswer,setDelAnswer] = useState(false)
+
 
 
     useEffect(() => {
@@ -56,7 +57,7 @@ const AnswerEdit = (props) => {
                     </div>
                 </div>
                 <div className='Button'>
-                    <div className='ButtonEdit' style={{cursor: 'pointer'}} onClick = {()=> setEdit(true)}>
+                    <div className='ButtonEdit' style={{cursor: 'pointer'}} onClick = {()=> setEditAns(true)}>
                         <div className='EditText'>
                             Edit
                         </div>
@@ -99,7 +100,7 @@ const AnswerEdit = (props) => {
                 <ConfirmDeleteQuestion trigger = {delAnswer} setTrigger={setDelAnswer}/>
             </div>
             <div>
-                <PopupEditAns trigger={edit} type={props.title} setTrigger={setEdit}/>
+                <PopupEditAns type={headText} trigger = {editAns} setTrigger={setEditAns}/>
             </div>
         </div>
 

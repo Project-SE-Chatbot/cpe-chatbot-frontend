@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { getData } from "../data";
-import Reaction from "./reaction";
+
 
 const Statistics = () => {
   const [stats, setStats] = useState([]);
