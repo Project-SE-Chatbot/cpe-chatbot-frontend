@@ -14,13 +14,9 @@ const CreateMajor = (props) => {
                 setTerm('')
                 setPlace('')
                 setTime('')
-<<<<<<< HEAD
-        }
-=======
                 props.trigger(false)
               }
               
->>>>>>> 8a151ece2da677070ab711a537c99f0ad46c09be
         const onSubmit = e => {
                 e.preventDefault()
 
