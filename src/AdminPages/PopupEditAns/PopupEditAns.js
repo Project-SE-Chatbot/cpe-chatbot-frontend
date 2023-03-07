@@ -1,37 +1,37 @@
-import React from "react";
-import close from "../../img/close (3).png";
-import EditDegree from './EditDegree'
-import EditFreeElective from './EditFreeElective'
-import EditMajor from './EditMajor'
-import EditPlan from './EditPlan'
-import EditPlace from './EditPlace'
-import EditTeacher from './EditTeacher'
+import { useEffect, useState } from "react";
+import EditDegree from "./EditDegree";
+import EditFreeElective from "./EditFreeElective";
+import EditMajor from "./EditMajor";
+import EditPlace from "./EditPlace";
+import EditPlan from "./EditPlan";
+import EditTeacher from "./EditTeacher";
+const PopupEditAns = (props) =>{
+    const [type, setType] = useState("");
+    
 
-const PopupEditAns= (props) => {
-    return (props.trigger) ?(
-        <div className="admin-popup-edit-ans-box">
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button className="admin-button"
-                onClick={() =>props.setTrigger(false)}>
-                    <img src={close} style={{ width: "15px", height: "15px" }}></img>
-                </button>
-            </div>
-            <p style={{fontFamily:"Inter",fontWeight:"600",fontSize:"24px"}}>Edit answer</p>
-            {props.type === "Teacher"
-                        ? <EditTeacher/>
-                        : props.type === "Free Elective"
-                            ? <EditFreeElective/>
-                            : props.type === "Place"
-                                ? <EditPlace/>
-                                : props.type === "Degree"
-                                    ? <EditDegree/>
-                                    : props.type === "Plan"
-                                        ? <EditPlan />
-                                        : <EditMajor />
+    useEffect(()=>{
+        setType(props.type);
+        // console.log(type)
+    },[props.type])
+
+    return (props.trigger) ? (
+        <div>
+            {type === "Degree"
+                        ? <EditDegree trigger={props.setTrigger}/>
+                        : type === "Major"
+                            ?   <EditMajor trigger={props.setTrigger}/>
+                            : type === "Place"
+                                ? <EditPlace trigger={props.setTrigger}/>
+                                : type === "Plan"
+                                    ? <EditPlan trigger={props.setTrigger}/>
+                                    : type === "FreeElective"
+                                        ? <EditFreeElective trigger={props.setTrigger}/>
+                                        : type === "Teacher" ?
+                                        <EditTeacher trigger={props.setTrigger}/>
+                                        :""
                     }
-
         </div>
-    ):""
-};
+    ): ""
+}
 
-export default PopupEditAns;
+export default PopupEditAns

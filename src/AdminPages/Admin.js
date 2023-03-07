@@ -28,7 +28,7 @@ const AdminPage = (props) => {
   const [showPopup, togglePopup] = useState(false);
   const [ansNum, setNum] = useState(0);
 
-  const checkValue = () =>{
+  const checkValue = () => {
     console.log("title: " + title)
     console.log("detail: " + detail)
     console.log("star: " + star)
@@ -36,38 +36,38 @@ const AdminPage = (props) => {
     console.log("AnsEdit: " + AnsEdit)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  },[AnsEdit])
+  }, [AnsEdit])
 
-  return(
-    
+  return (
+
     <div className="admin-background" >
       {/* {checkValue()} */}
       <Navbar />
       <div className="container">
         <div>
           {/* <AnsContainer /> */}
-          {showPopup && <PopupCreAns togglePopup={togglePopup} />}
-            <div className="admin-ans-box-container">
-                <div className="admin-input-container">
-                    <form>
-                        <label>
-                            <input className="admin-input-search-keyword"
-                                type="text" name="name" placeholder="Search keywords" />
-                        </label>
-                    </form>
-                    <button className="admin-add-create-ans-button"
-                        onClick={() => togglePopup((prev) => !prev)} style={{cursor:'pointer'}}>
-                        <img src={plus} style={{ width: "35px", height: "35px" }}></img>
-                    </button>
-                </div>
-                <div className="FoundAns">
-                    <p>We found {ansNum} Answer</p>
-                    <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
-                </div>
-                <AnswerBox setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+          <PopupCreAns trigger = {showPopup} togglePopup={togglePopup} />
+          <div className="admin-ans-box-container">
+            <div className="admin-input-container">
+              <form>
+                <label>
+                  <input className="admin-input-search-keyword"
+                    type="text" name="name" placeholder="Search keywords" />
+                </label>
+              </form>
+              <button className="admin-add-create-ans-button"
+                onClick={() => togglePopup((prev) => !prev)} style={{ cursor: 'pointer' }}>
+                <img src={plus} style={{ width: "35px", height: "35px" }}></img>
+              </button>
             </div>
+            <div className="FoundAns">
+              <p>We found {ansNum} Answer</p>
+              <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
+            </div>
+            <AnswerBox setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+          </div>
         </div>
         <div className="edit">
           <AnswerEdit trigger={AnsEdit} title={title} detail={detail} star={star} date={day} />
