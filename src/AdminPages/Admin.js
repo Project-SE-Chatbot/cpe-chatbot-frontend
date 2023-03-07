@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnsContainer from "./AnsContainer";
 import ConfirmDelAns from "./ConfirmDelAns";
 import AnswerEdit from "./component/AnswerEdit";
