@@ -11,7 +11,7 @@ const CreatePlace = (props) => {
                 setRoom('')
                 setLoc('')
                 props.trigger(false)
-              }
+        }
         const onSubmit = e => {
                 e.preventDefault()
 
@@ -46,7 +46,7 @@ const CreatePlace = (props) => {
                         </div>
 
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                        <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
                                 <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
                 </div>

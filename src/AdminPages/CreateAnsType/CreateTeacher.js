@@ -7,6 +7,24 @@ const CreateTeacher = (props) => {
         const [Place, setPlace] = useState('');
         const [Address, setAddress] = useState('');
         const [Time, setTime] = useState('');
+        const onSubmit = e => {
+                e.preventDefault()
+
+                const payload = {
+                        Name,
+                        Pic,
+                        Place,
+                        Address,
+                        Time
+                }
+
+                console.log('submit value', payload)
+                setName('')
+                setPic('')
+                setPlace('')
+                setAddress('')
+                setTime('')
+        }
         return (
                 <div>
                         <div className="admin-create-ans-box-info-container">
@@ -25,7 +43,7 @@ const CreateTeacher = (props) => {
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 <div className="admin-create-answer-cancle-button " onClick={()=> props.trigger(false)}>Cancle</div>
-                                <div className="admin-create-answer-done-button">Done</div>
+                                <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
                 </div>
 

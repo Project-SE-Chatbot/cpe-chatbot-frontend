@@ -67,7 +67,7 @@ const EditMajor = (props) => {
             </div>
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <div className="admin-create-answer-cancle-button " onClick={() => {props.trigger(false)}}>Cancle</div>
-                <div className="admin-create-answer-done-button">Save Changed</div>
+                <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
             </div>
         </div>
     );
