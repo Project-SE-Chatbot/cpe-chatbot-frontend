@@ -8,11 +8,11 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import AnswerEdit from "./component/AnswerEdit";
 
 const AnsContainer = (props) => {
-    const [showPopup, togglePopup] = useState(false);
     const [ansNum, setNum] = useState(0);
+    const [creAnspop,setAnspop] = useState(false) ;
     return (
         <div>
-            {showPopup && <PopupCreAns />}
+            <PopupCreAns trigger = {creAnspop} setTrigger = {setAnspop} />
             <div className="admin-ans-box-container">
                 <div className="admin-input-container">
                     <form>
@@ -22,7 +22,7 @@ const AnsContainer = (props) => {
                         </label>
                     </form>
                     <button className="admin-add-create-ans-button"
-                        onClick={() => togglePopup((prev) => !prev)} style={{cursor:'pointer'}}>
+                        onClick={() => setAnspop(true)} style={{cursor:'pointer'}}>
                         <img src={plus} style={{ width: "35px", height: "35px" }}></img>
                     </button>
                 </div>

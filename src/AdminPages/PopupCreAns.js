@@ -14,10 +14,10 @@ const PopupCreAns = (props) => {
     const handleClick = (e) => {
         setType(e.target.id)
     };
-    return (
+    return (props.trigger) ?(
         <div className="admin-create-ans-box">
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button className="admin-button">
+                <button className="admin-button" onClick={() =>props.setTrigger(false)}>
                     <img alt="close" src={close} style={{ width: "15px", height: "15px" }}></img>
                 </button>
             </div>
@@ -53,7 +53,7 @@ const PopupCreAns = (props) => {
                 </div>
             </div>
         </div>
-    );
+    ):""
 };
 
 export default PopupCreAns;
