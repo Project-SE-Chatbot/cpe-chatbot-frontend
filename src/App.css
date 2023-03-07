@@ -412,7 +412,7 @@
   top: 180px;
   left: 420px;
   padding: 30px;
-  height: 406px;
+  height: fit-content;
   width: 669px;
   border-radius: 0px;
   background: #FFFFFF;

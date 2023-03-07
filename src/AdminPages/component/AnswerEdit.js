@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import KeywordBox from './KeywordBox'
 import CreateKeyWord from '../PopupEditKeyword/CreateKeyword'
-import EditKeyword from '../PopupEditKeyword/EditKeyword'
-import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
+
 import ConfirmDeleteQuestion from '../PopupEditKeyword/ConfirmDeleteQuestion'
+import PopupEditAns from '../PopupEditAns'
 
 
 const AnswerEdit = (props) => {
@@ -36,21 +36,27 @@ const AnswerEdit = (props) => {
         <div>
             <div className="AnswerEdit">
                 <div className="Date">
-                    {date}
+                    {/* {date} */}
+                    {props.date}
                 </div>
                 <div className='HeadText'>
-                    {headText}
+                    {/* {headText} */}
+                    {props.title}
                 </div>
                 <div className='Detail'>
                     <div className='DetailText'>
-                        {detailText}
+                        {/* {detailText} */}
+                        {props.detail}
                     </div>
                     <div className='star'>
-                        <Rating maxRating={5} defaultRating={value} icon='star' size='massive' disabled />
+                        <Rating maxRating={5} defaultRating={
+                            // value
+                            props.star
+                        } icon='star' size='massive' disabled />
                     </div>
                 </div>
                 <div className='Button'>
-                    <div className='ButtonEdit' style={{cursor: 'pointer'}}>
+                    <div className='ButtonEdit' style={{cursor: 'pointer'}} onClick = {()=> setEdit(true)}>
                         <div className='EditText'>
                             Edit
                         </div>
@@ -91,6 +97,9 @@ const AnswerEdit = (props) => {
             </div>
             <div>
                 <ConfirmDeleteQuestion trigger = {delAnswer} setTrigger={setDelAnswer}/>
+            </div>
+            <div>
+                <PopupEditAns trigger={edit} type={props.title} setTrigger={setEdit}/>
             </div>
         </div>
 
