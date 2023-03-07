@@ -16,7 +16,7 @@ const PopupEditAns= (props) => {
                     <img src={close} style={{ width: "15px", height: "15px" }}></img>
                 </button>
             </div>
-            <h2>Edit answer</h2>
+            <p style={{fontFamily:"Inter",fontWeight:"600",fontSize:"24px"}}>Edit answer</p>
             {props.type === "Teacher"
                         ? <EditTeacher/>
                         : props.type === "Free Elective"

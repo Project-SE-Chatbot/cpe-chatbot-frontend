@@ -41,7 +41,7 @@ const EditMajor = (props) => {
                                 <input className="admin-input-info-container" id="name" type="text" 
                                 value={Name}
                                 onChange={e => setName(e.target.value)}/>
-                                <label >อาจารย์ผูสอน</label>
+                                <label >อาจารย์ผู้สอน</label>
                                 <input className="admin-input-info-container" id="teacher" type="text" 
                                 value={Teacher}
                                 onChange={e => setTeacher(e.target.value)}/>
