@@ -17,7 +17,7 @@ const PopupCreAns = (props) => {
     return (
         <div className="admin-create-ans-box">
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button className="admin-button">
+                <button className="admin-button" onClick={() => props.togglePopup(false)}>
                     <img alt="close" src={close} style={{ width: "15px", height: "15px" }}></img>
                 </button>
             </div>
@@ -39,16 +39,16 @@ const PopupCreAns = (props) => {
                 </div>
                 <div className="admin-create-ans-box-info-container">
                     {type === "teacher"
-                        ? <CreateTeacher/>
+                        ? <CreateTeacher trigger={props.togglePopup}/>
                         : type === "freeelective"
-                            ? <CreateFreeElective/>
+                            ? <CreateFreeElective trigger={props.togglePopup}/>
                             : type === "place"
-                                ? <CreatePlace/>
+                                ? <CreatePlace trigger={props.togglePopup}/>
                                 : type === "degree"
-                                    ? <CreateDegree/>
+                                    ? <CreateDegree trigger={props.togglePopup}/>
                                     : type === "plan"
-                                        ? <CreatePlan/>
-                                        : <CreateMajor/>
+                                        ? <CreatePlan trigger={props.togglePopup}/>
+                                        : <CreateMajor trigger={props.togglePopup}/>
                     }
                 </div>
             </div>
