@@ -1,15 +1,10 @@
 import React from "react";
 import close from "../../img/close (3).png";
 
-const EditTeacher= (props) => {
+const EditTeacher = (props) => {
     return (
-        <div className="admin-popup-edit-ans-box">
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button className="admin-button">
-                    <img src={close} style={{ width: "15px", height: "15px" }}></img>
-                </button>
-            </div>
-            <h2>Edit answer</h2>
+
+        <div>
             <div className="admin-create-ans-box-info-container">
                 <form className="admin-create-ans-box-form-info-container">
                     <label >ชื่อ-นามสกุล</label>
@@ -29,6 +24,7 @@ const EditTeacher= (props) => {
                 <div className="admin-create-answer-done-button">Save Changed</div>
             </div>
         </div>
+
     );
 };
 
