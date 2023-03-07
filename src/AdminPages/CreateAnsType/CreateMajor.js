@@ -14,7 +14,13 @@ const CreateMajor = (props) => {
                 setTerm('')
                 setPlace('')
                 setTime('')
+<<<<<<< HEAD
         }
+=======
+                props.trigger(false)
+              }
+              
+>>>>>>> 8a151ece2da677070ab711a537c99f0ad46c09be
         const onSubmit = e => {
                 e.preventDefault()
 
@@ -60,7 +66,7 @@ const CreateMajor = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button " onClick={onCancle}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
                                 <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
 

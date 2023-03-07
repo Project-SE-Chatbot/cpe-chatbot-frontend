@@ -11,11 +11,16 @@ const AnswerBox = (props) =>{
     const [over,setOver] = useState(false);
     const [value, setValue] = useState(4);
     const [comment, setComment] = useState(20);
-    const [headText, setHT] = useState("Major");
+    const [headText, setHT] = useState("Teacher");
     const [detailText, setDT] = useState("braaaaaaaaaaaaaaaaaaaaaa");
     const [date, setDate] = useState("Yesterday");
     let handleOver = () =>{
         setOver(!over);
+        props.editTrigger(!over);
+        props.setTitle(headText);
+        props.setDetail(detailText);
+        props.setStar(value);
+        props.setDate(date);
     }
 
     const isOver = {

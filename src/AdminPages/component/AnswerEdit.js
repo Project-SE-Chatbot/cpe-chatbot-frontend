@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import KeywordBox from './KeywordBox'
 import CreateKeyWord from '../PopupEditKeyword/CreateKeyword'
-import EditKeyword from '../PopupEditKeyword/EditKeyword'
-import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
+
 import ConfirmDeleteQuestion from '../PopupEditKeyword/ConfirmDeleteQuestion'
 import PopupEditAns from '../PopupEditAns/PopupEditAns'
 
@@ -38,17 +37,23 @@ const AnswerEdit = (props) => {
         <div>
             <div className="AnswerEdit">
                 <div className="Date">
-                    {date}
+                    {/* {date} */}
+                    {props.date}
                 </div>
                 <div className='HeadText'>
-                    {headText}
+                    {/* {headText} */}
+                    {props.title}
                 </div>
                 <div className='Detail'>
                     <div className='DetailText'>
-                        {detailText}
+                        {/* {detailText} */}
+                        {props.detail}
                     </div>
                     <div className='star'>
-                        <Rating maxRating={5} defaultRating={value} icon='star' size='massive' disabled />
+                        <Rating maxRating={5} defaultRating={
+                            // value
+                            props.star
+                        } icon='star' size='massive' disabled />
                     </div>
                 </div>
                 <div className='Button'>

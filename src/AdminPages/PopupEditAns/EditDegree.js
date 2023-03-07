@@ -29,7 +29,13 @@ const EditDegree = (props) => {
         setMore('')
     }
     return (
-        <div >
+        <div className="admin-popup-edit-ans-box">
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button className="admin-button" onClick={() => {props.trigger(false)}}>
+                    <img src={close} style={{ width: "15px", height: "15px" }}></img>
+                </button>
+            </div>
+            <h2>Edit answer</h2>
             <div className="admin-create-ans-box-info-container">
                 <form className="admin-create-ans-box-form-info-container">
                     <label >ระดับชั้นปริญญา</label>
@@ -43,7 +49,7 @@ const EditDegree = (props) => {
                 </form>
             </div>
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <div className="admin-create-answer-cancle-button " onClick={onCancle}>Cancle</div>
+                <div className="admin-create-answer-cancle-button " onClick={() => {props.trigger(false);onCancle()}} >Cancle</div>
                 <div className="admin-create-answer-done-button" onClick={onSubmit}>Save Changed</div>
             </div>
         </div>

@@ -24,7 +24,7 @@ const CreateTeacher = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button ">Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={()=> props.trigger(false)}>Cancle</div>
                                 <div className="admin-create-answer-done-button">Done</div>
                         </div>
                 </div>
