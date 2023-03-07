@@ -37,7 +37,7 @@ const PopupCreAns = (props) => {
                     <div className={type !== "major" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="major"
                         onClick={handleClick}>Major</div>
                 </div>
-                <div className="admin-create-ans-box-info-container">
+    
                     {type === "teacher"
                         ? <CreateTeacher/>
                         : type === "freeelective"
@@ -50,7 +50,7 @@ const PopupCreAns = (props) => {
                                         ? <CreatePlan/>
                                         : <CreateMajor/>
                     }
-                </div>
+                
             </div>
         </div>
     ):""
