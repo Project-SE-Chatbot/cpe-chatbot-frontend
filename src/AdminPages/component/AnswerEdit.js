@@ -100,7 +100,7 @@ const AnswerEdit = (props) => {
                 <ConfirmDeleteQuestion trigger = {delAnswer} setTrigger={setDelAnswer}/>
             </div>
             <div>
-                <PopupEditAns type={headText} trigger = {editAns} setTrigger={setEditAns}/>
+                <PopupEditAns type={props.title} trigger = {editAns} setTrigger={setEditAns}/>
             </div>
         </div>
 
