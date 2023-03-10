@@ -7,7 +7,7 @@ import { faFilePen } from "@fortawesome/free-solid-svg-icons"
 import ConfirmDeleteKeyword from '../PopupEditKeyword/ConfirmDeleteKeyword'
 import EditKeyword from '../PopupEditKeyword/EditKeyword'
 
-const KeywordBox = () => {
+const KeywordBox = (props) => {
     const [key, setKey] = useState("ซอฟแวร์ไงโจ๊ะๆ")
     const [acc, setAcc] = useState(20)
     const [color, setColor] = useState("")
@@ -43,21 +43,25 @@ const KeywordBox = () => {
     }
 
     useEffect(() => {
-        limit(acc)
-        check(acc)
-    }, [acc])
+        limit(props.acc)
+        check(props.acc)
+    }, [props.acc])
+
+    // const set = () =>{
+    //     props.setCount(1)
+    // }  
 
 
-    return (
+    return (props.name != "") ? (
         <div className='keywordContainer'>
             <div className='keywordText'>
-                {key}
+                {props.name}
             </div>
 
             <div className='accContainer'>
                 <div className='accuracy' style={{ 'background': color }}>
                     <div className='accText' >
-                        {acc}%
+                        {props.acc}%
                     </div>
                 </div>
             </div>
@@ -77,7 +81,7 @@ const KeywordBox = () => {
             <EditKeyword trigger = {editKeypop} setTrigger = {setEditPop} keyname = {key} setKeyName = {setKey}/>
             <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop}/>
         </div>
-    )
+    ):"" 
 }
 
 export default KeywordBox

@@ -20,6 +20,12 @@
     padding-right: 40px;
 }
 
+.keywordBoxContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
 .AnswerEdit .star {
     /* position: absolute;
     left: 77%;

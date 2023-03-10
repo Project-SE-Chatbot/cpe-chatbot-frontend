@@ -27,11 +27,55 @@ const AnswerEdit = (props) => {
 
     const [delAnswer,setDelAnswer] = useState(false)
 
+    const [key1,setKey1] = useState(0)
+    const [key2,setKey2] = useState(0)
+    const [key3,setKey3] = useState(0)
+    const [key4,setKey4] = useState(0)
+    const [key5,setKey5] = useState(0)
+    const [key6,setKey6] = useState(0)
+    
 
+    let countKey = 0
+
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+
+    const url = "http://localhost:5000/major-key/"+props.id
+
+    const [data,setData] = useState(null);
+    const [keyList, setList] = useState(null);
 
     useEffect(() => {
+        countKey = key1+key2+key3+key4+key5+key6
+        console.log(countKey)
+    }, [value, comment, detailText, date, headText,countKey])
 
-    }, [value, comment, detailText, date, headText])
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetch(url, requestOptions)
+              .then(response => response.json())
+              .then(result => {setList(result);setData(result)})
+              .catch(e => console.log(e))
+          }
+          fetchData()
+    }, [props.date,props.title,props.detail,props.star])
+
+    let showKey
+    if(data !== null){
+        showKey =
+        <div className='keywordBoxContainer'>
+            <KeywordBox name={keyList.key_1} acc={20} setCount={setKey1}/>
+            <KeywordBox name={keyList.key_2} acc={30} setCount={setKey2}/>
+            <KeywordBox name={keyList.key_3} acc={80} setCount={setKey3}/>
+            <KeywordBox name={keyList.key_4} acc={90} setCount={setKey4}/>
+            <KeywordBox name={keyList.key_5} acc={10} setCount={setKey5}/>
+            <KeywordBox name={keyList.key_6} acc={20} setCount={setKey6}/>
+        </div>
+    }
+            
+      
 
     return (props.trigger) ? (
         <div>
@@ -71,8 +115,9 @@ const AnswerEdit = (props) => {
                 </div>
                 
             </div>
+
             <div >
-                <SearchBar setTrigger = {setCreate}></SearchBar>
+                <SearchBar setTrigger = {setCreate} keyNum={countKey}></SearchBar>
             </div>
             
             <div className='collumText'>
@@ -89,12 +134,11 @@ const AnswerEdit = (props) => {
                     <FontAwesomeIcon icon={faChevronDown} style={{cursor: 'pointer'}}/>
                 </div>
             </div>
-            <div>
-                <KeywordBox/>
-            </div>
+
+            {data && showKey}
             
             <div>
-                <CreateKeyWord trigger = {create} setTrigger={setCreate}/>
+                <CreateKeyWord id={props.key} title={props.title} trigger = {create} setTrigger={setCreate}/>
             </div>
             <div>
                 <ConfirmDeleteQuestion trigger = {delAnswer} setTrigger={setDelAnswer}/>

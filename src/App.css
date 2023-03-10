@@ -308,6 +308,7 @@
 
 .admin-background .container {
   display: flex;
+  height: 100%;
 }
 
 .admin-background .container .edit {
@@ -350,7 +351,7 @@
 .admin-ans-box-container {
   
   width: 350px;
-  height: 100vh;
+  height: 100%;
   display: block;
   padding: 5px;
   background: #C4CEED;
