@@ -8,10 +8,12 @@ const CustomChatbotMessage = (props) => {
   const handleClick = (e) => {
     console.log(props.message)
   };
+  const url= (p) =>{
+
+  }
 
   return (
     <div>
-      
       <div className="chatbot-chat-bot-message">
       <NewlineText text={props.message}/>
     </div>
