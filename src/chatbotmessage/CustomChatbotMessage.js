@@ -14,7 +14,6 @@ const CustomChatbotMessage = (props) => {
 
   return (
     <div>
-      {console.log(props)}
       <div className="chatbot-chat-bot-message">
       <NewlineText text={props.message}/>
     </div>
