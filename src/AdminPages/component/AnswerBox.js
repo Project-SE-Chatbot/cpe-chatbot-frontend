@@ -34,6 +34,8 @@ const AnswerBox = (props) =>{
 
     },[props.star,props.detail,props.title,props.date])
 
+    
+
     return (
         <div className="AnswerBox" onClick={() => {handleOver();}} style={isOver}>
             <div className='Date'>

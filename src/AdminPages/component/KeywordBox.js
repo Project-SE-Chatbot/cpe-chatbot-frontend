@@ -16,6 +16,8 @@ const KeywordBox = (props) => {
     const [editKeypop,setEditPop] = useState(false)
     const [delKeypop,setDelPop] = useState(false)
 
+    
+
     function check(acc) {
         if (acc > 0) {
             if (acc > 79) {
@@ -45,7 +47,7 @@ const KeywordBox = (props) => {
     useEffect(() => {
         limit(props.acc)
         check(props.acc)
-    }, [props.acc])
+    }, [props.acc,props.name,props.refresh])
 
 
 
@@ -75,8 +77,8 @@ const KeywordBox = (props) => {
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>
             </div>
-            <EditKeyword trigger = {editKeypop} setTrigger = {setEditPop} keyname = {key} setKeyName = {setKey}/>
-            <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop}/>
+            <EditKeyword id={props.id} trigger = {editKeypop} setTrigger = {setEditPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh}/>
+            <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh}/>
         </div>
     ):"" 
 }

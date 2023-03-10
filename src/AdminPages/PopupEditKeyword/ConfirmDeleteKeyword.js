@@ -1,9 +1,36 @@
 import '../css/ConfirmDelete.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const ConfirmDeleteKeyword = (props) => {
+    const [course,setCourse] = useState(props.keyID)
+    const [name,setName] = useState("")
+    var putOptions = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            [course] : ""
+        }),
+    };
+    
+
+    const url = "http://localhost:5000/major-key/" + props.id
+
+    const delfetchData = async () => {
+        console.log(url)
+        console.log(course)
+        fetch(url, putOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(e => console.log(e))
+      }
+
+    useEffect(()=>{
+        
+        
+    },[])
+
     return (props.trigger) ? (
         <div className="confirmDeleteContainer">
             <div className='exit' >
@@ -24,7 +51,7 @@ const ConfirmDeleteKeyword = (props) => {
                     </div>
                 </div>
                 <div className='deleteButton'>
-                    <div className='deleteText'>
+                    <div className='deleteText' onClick={()=> {delfetchData();props.setTrigger(false);props.refresh()}}>
                         Delete
                     </div>
                 </div>
