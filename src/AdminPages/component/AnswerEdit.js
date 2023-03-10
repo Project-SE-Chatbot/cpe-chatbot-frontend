@@ -35,7 +35,7 @@ const AnswerEdit = (props) => {
     const [key6,setKey6] = useState(0)
     
 
-    let countKey = 0
+    
 
     var requestOptions = {
         method: 'GET',
@@ -48,9 +48,9 @@ const AnswerEdit = (props) => {
     const [keyList, setList] = useState(null);
 
     useEffect(() => {
-        countKey = key1+key2+key3+key4+key5+key6
-        console.log(countKey)
-    }, [value, comment, detailText, date, headText,countKey])
+        
+    }, [value, comment, detailText, date, headText])
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,15 +66,16 @@ const AnswerEdit = (props) => {
     if(data !== null){
         showKey =
         <div className='keywordBoxContainer'>
-            <KeywordBox name={keyList.key_1} acc={20} setCount={setKey1}/>
-            <KeywordBox name={keyList.key_2} acc={30} setCount={setKey2}/>
-            <KeywordBox name={keyList.key_3} acc={80} setCount={setKey3}/>
-            <KeywordBox name={keyList.key_4} acc={90} setCount={setKey4}/>
-            <KeywordBox name={keyList.key_5} acc={10} setCount={setKey5}/>
-            <KeywordBox name={keyList.key_6} acc={20} setCount={setKey6}/>
+            <KeywordBox name={keyList.key_1} acc={20} />
+            <KeywordBox name={keyList.key_2} acc={30} />
+            <KeywordBox name={keyList.key_3} acc={80} />
+            <KeywordBox name={keyList.key_4} acc={90} />
+            <KeywordBox name={keyList.key_5} acc={10} />
+            <KeywordBox name={keyList.key_6} acc={20} />
         </div>
+
+        
     }
-            
       
 
     return (props.trigger) ? (
@@ -117,7 +118,7 @@ const AnswerEdit = (props) => {
             </div>
 
             <div >
-                <SearchBar setTrigger = {setCreate} keyNum={countKey}></SearchBar>
+                <SearchBar setTrigger = {setCreate} keyNum={3}></SearchBar>
             </div>
             
             <div className='collumText'>

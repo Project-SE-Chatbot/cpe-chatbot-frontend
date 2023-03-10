@@ -47,9 +47,6 @@ const KeywordBox = (props) => {
         check(props.acc)
     }, [props.acc])
 
-    // const set = () =>{
-    //     props.setCount(1)
-    // }  
 
 
     return (props.name != "") ? (
