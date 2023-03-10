@@ -25,10 +25,11 @@ const AdminPage = (props) => {
   const [star, setStar] = useState();
   const [day, setDate] = useState();
   const [AnsEdit, setAnsEdit] = useState(false);
-
+  const [id,setID] = useState("")
   const [showPopup, togglePopup] = useState(false);
   
-
+  const [keyNum,setKeyNum] = useState(0);
+  
   const checkValue = () => {
     console.log("title: " + title)
     console.log("detail: " + detail)
@@ -54,15 +55,18 @@ const AdminPage = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true)
+      
       await fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {setList(result);setData(result)})
-        .then(() => setLoading(false))
+        
         .catch(e => console.log(e))
     }
     fetchData()
   }, [url])
+
+
+
 
   let text = null
   let showMajorAnsBox = null
@@ -72,12 +76,13 @@ const AdminPage = (props) => {
       AnsboxList.map(element => {
         ansNum++
         text = "วิชา: " + element.name + " " + element.course_code + " "
-          + "ผู้สอน: " + element.teacher + " "
+          // + "ผู้สอน: " + element.teacher == null ? "ไม่มี":element.map(element => element.name) + " "
           + "ภาคเรียนที่เปิดสอน: " + element.term + " "
-          + "Location: " + element.place.building + " " + "Room " + element.place.room + " "
+          // + "Location: " + element.place == null? "ไม่มี":element.place.building + " " 
+          // + "Room " + element.place == null? "ไม่มี":element.place.room + " "
           + "วัน: " + element.day + " " + element.time;
 
-        return <AnswerBox key={element.id_major} title={"Major"} star={5} detail={text} date={"Yesterday"} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_major} course_id={element.course_code} title={"Major"} star={3} detail={text} date={"Yesterday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
       }
       )
   }
@@ -116,7 +121,7 @@ const AdminPage = (props) => {
           </div>
         </div>
         <div className="edit">
-          <AnswerEdit trigger={AnsEdit} title={title} detail={detail} star={star} date={day} />
+          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} />
           {/* {checkValue()} */}
         </div>
       </div>
