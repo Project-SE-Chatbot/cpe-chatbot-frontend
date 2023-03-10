@@ -16,3 +16,10 @@
     display: flex;
     justify-content: space-between;
 }
+.FoundAns .number{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: #2a1eff;
+}

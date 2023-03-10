@@ -350,12 +350,18 @@
 }
 
 .admin-ans-box-container {
-
-  width: fit-content;
+  
+  width: 350px;
   height: 100vh;
   display: block;
   padding: 5px;
   background: #C4CEED;
+}
+
+.admin-ans-list{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
 }
 
 .admin-input-container {

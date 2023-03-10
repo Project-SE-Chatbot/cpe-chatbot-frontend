@@ -5,7 +5,7 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
     background: #FFFFFF;
-    height: 100px;
+    height: fit-content;
     /* height: fit-content; */
     padding: 10px;
     margin-left: 2vw;
@@ -37,8 +37,11 @@
     right: 14.39%;
     top: 37.5%;
     bottom: 19.12%; */
-    word-wrap: break-word;
-    max-width: 100%;
+    /* word-wrap: break-word; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -54,7 +57,7 @@
     right: 4.47%;
     top: 13.97%;
     bottom: 68.38%; */
-
+    
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;

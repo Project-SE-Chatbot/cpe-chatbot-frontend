@@ -14,13 +14,14 @@ const AnswerBox = (props) =>{
     const [headText, setHT] = useState("Teacher");
     const [detailText, setDT] = useState("braaaaaaaaaaaaaaaaaaaaaa");
     const [date, setDate] = useState("Yesterday");
+
     let handleOver = () =>{
         setOver(!over);
         props.editTrigger(!over);
-        props.setTitle(headText);
-        props.setDetail(detailText);
-        props.setStar(value);
-        props.setDate(date);
+        props.setTitle(props.title);
+        props.setDetail(props.detail);
+        props.setStar(props.star);
+        props.setDate(props.date);
     }
 
     const isOver = {
@@ -35,13 +36,13 @@ const AnswerBox = (props) =>{
     return (
         <div className="AnswerBox" onClick={() => {handleOver();}} style={isOver}>
             <div className='Date'>
-                    {date}
+                    {props.date}
             </div>
             <div className="HeadText">
-                    {headText}
+                    {props.title}
             </div>
             <div className="DetailText">
-                    {detailText}
+                    {props.detail}
             </div>
             <div className='Comment'>
                 <div className='CommuIcon'>
@@ -51,7 +52,7 @@ const AnswerBox = (props) =>{
                     {comment}
                 </div>
                 <div className='star'>
-                    <Rating  maxRating={5} defaultRating={value} icon='star' size='mini' disabled/>
+                    <Rating  maxRating={5} defaultRating={props.star} icon='star' size='mini' disabled/>
                 </div>
             </div>
             {/* <div className='edit'>

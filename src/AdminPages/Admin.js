@@ -17,6 +17,7 @@ import plus from "../img/plus (1).png";
 import './css/AnswerCon.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { padding } from "@mui/system";
 
 const AdminPage = (props) => {
   const [title, setTitle] = useState();
@@ -26,7 +27,7 @@ const AdminPage = (props) => {
   const [AnsEdit, setAnsEdit] = useState(false);
 
   const [showPopup, togglePopup] = useState(false);
-  const [ansNum, setNum] = useState(0);
+  
 
   const checkValue = () => {
     console.log("title: " + title)
@@ -36,19 +37,60 @@ const AdminPage = (props) => {
     console.log("AnsEdit: " + AnsEdit)
   }
 
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+
+
+
+  const [AnsboxList, setList] = useState(null);
+  const url = "http://localhost:5000/major"
+  const [loading , setLoading] = useState(false)
+  const [data,setData] = useState(null);
+
+  
+
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true)
+      await fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(result => {setList(result);setData(result)})
+        .then(() => setLoading(false))
+        .catch(e => console.log(e))
+    }
+    fetchData()
+  }, [url])
 
-  }, [AnsEdit])
+  let text = null
+  let showMajorAnsBox = null
+  let ansNum = 0
+  if(data){
+    showMajorAnsBox = 
+      AnsboxList.map(element => {
+        ansNum++
+        text = "วิชา: " + element.name + " " + element.course_code + " "
+          + "ผู้สอน: " + element.teacher + " "
+          + "ภาคเรียนที่เปิดสอน: " + element.term + " "
+          + "Location: " + element.place.building + " " + "Room " + element.place.room + " "
+          + "วัน: " + element.day + " " + element.time;
 
+        return <AnswerBox key={element.id_major} title={"Major"} star={5} detail={text} date={"Yesterday"} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+      }
+      )
+  }
+  
   return (
-
     <div className="admin-background" >
       {/* {checkValue()} */}
+      {console.log(AnsboxList)}
       <Navbar />
       <div className="container">
         <div>
           {/* <AnsContainer /> */}
-          <PopupCreAns trigger = {showPopup} togglePopup={togglePopup} />
+          <PopupCreAns trigger={showPopup} togglePopup={togglePopup} />
           <div className="admin-ans-box-container">
             <div className="admin-input-container">
               <form>
@@ -66,7 +108,11 @@ const AdminPage = (props) => {
               <p>We found {ansNum} Answer</p>
               <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
             </div>
-            <AnswerBox setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+            <div className="admin-ans-list">
+              {
+                data && showMajorAnsBox
+              }
+            </div>
           </div>
         </div>
         <div className="edit">
