@@ -49,6 +49,7 @@
   padding-bottom: 1px;
   padding-right: 10px;
   padding-left: 10px;
+  width: 170px;
   border-radius: 5px;
   font-size: 0.9rem;
   color: #000000;
@@ -56,6 +57,7 @@
   position: relative;
   margin-left: auto;
   text-align: left;
+  word-wrap:break-word
 }
 
 .react-chatbot-kit-chat-bot-message-container {
