@@ -87,13 +87,13 @@ class ActionProvider {
       handleMajorElective = async(question) => {
         var text = ""
         var message
-        text = "รหัสวิชา: " + element.course_code + "\n" 
-          + " ชื่อวิชา: " + element.name + "\n" 
-          + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
-          + " เรียนที่: " + element.place + "\n"
-          + " ผู้สอน: " + element.teacher + "\n"
-          + " เวลา: " + element.day + "\n" 
-          + " เวลา: " + element.time + "\n"  
+        text = "รหัสวิชา: " + question.course_code + "\n" 
+          + " ชื่อวิชา: " + question.name + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + question.term + "\n" 
+          + " เรียนที่: " + question.place + "\n"
+          + " ผู้สอน: " + question.teacher + "\n"
+          + " เวลา: " + question.day + "\n" 
+          + " เวลา: " + question.time + "\n"  
         message = this.createChatBotMessage(
         text,
         {
@@ -125,13 +125,14 @@ class ActionProvider {
         var text = ""
         var message
         question.forEach(element => {
-          text = "รหัสวิชา: " + element.id_free_elective + "\n" 
+          text = "รหัสวิชา: " + element.course_code + "\n" 
          + " ชื่อวิชา: " + element.name + "\n" 
-         + " รีวิว: " + element.review + "\n" 
-         + " คณะ: " + element.major + "\n" 
+         + element.name_thai+ "\n"
+         + " รีวิว: " + element.link_description + "\n" 
           message = this.createChatBotMessage(
             text,
             {
+              url: element.link_description ,
               loading: true,
               terminateLoading: true,
               withAvatar: true
