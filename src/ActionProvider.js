@@ -67,9 +67,9 @@ class ActionProvider {
           text = "รหัสวิชา: " + element.course_code + "\n" 
           + " ชื่อวิชา: " + element.name + "\n" 
           + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
-          + " เรียนที่: " + element.place.building + "\n"
-          + " ห้อง: " + element.place.room + "\n"
-          + " ผู้สอน: " + element.teacher.map(x => x.name) + "\n"
+          + " เรียนที่: " + element.place + "\n"
+          + " ผู้สอน: " + element.teacher + "\n"
+          + " เวลา: " + element.day + "\n" 
           + " เวลา: " + element.time + "\n" 
           message = this.createChatBotMessage(
             text,
@@ -87,14 +87,13 @@ class ActionProvider {
       handleMajorElective = async(question) => {
         var text = ""
         var message
-        text = "รหัสวิชา: " + question.course_code + "\n" 
-          + " ชื่อวิชา: " + question.name + "\n" 
-          
-          + " ภาคเรียนที่เปิดสอน: " + question.term + "\n" 
-          + " สถานที่: " + question.place.building + "\n"
-          + " ห้อง: " + question.place.room + "\n"
-          + " ผู้สอน: " + await question.teacher.map(x => x.name) + "\n"
-          + " เวลา: " + question.time + "\n" 
+        text = "รหัสวิชา: " + element.course_code + "\n" 
+          + " ชื่อวิชา: " + element.name + "\n" 
+          + " ภาคเรียนที่เปิดสอน: " + element.term + "\n" 
+          + " เรียนที่: " + element.place + "\n"
+          + " ผู้สอน: " + element.teacher + "\n"
+          + " เวลา: " + element.day + "\n" 
+          + " เวลา: " + element.time + "\n"  
         message = this.createChatBotMessage(
         text,
         {
@@ -109,7 +108,7 @@ class ActionProvider {
       handleMajorElectivePlace = async(question) => {
         var text = ""
         var message
-        text = " เรียนที่ " + question.place.building +" ห้อง " + question.place.room + " ครับ" +"\n"  
+        text = " เรียนที่ " + question.place + " ครับ" +"\n"  
         message = this.createChatBotMessage(
         text,
         {

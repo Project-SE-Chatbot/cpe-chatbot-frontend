@@ -87,7 +87,7 @@ class MessageParser {
             return this.actionProvider.handleMajorElective(responseData)
           }
         }else{
-          return this.actionProvider.handleMajorElectiveAll()
+          return this.actionProvider.handleMajorElectiveAll(responseData)
         }
       }
 
