@@ -15,7 +15,18 @@ const ConfirmDeleteKeyword = (props) => {
     };
     
 
-    const url = "http://localhost:5000/major-key/" + props.id
+    let url
+    if (props.title === "Major") {
+        url = "http://localhost:5000/major-key/" + props.id
+    } else if (props.title === "Place") {
+        url = "http://localhost:5000/place-key/" + props.id
+    } else if (props.title === "Teacher") {
+        url = "http://localhost:5000/teacher-key/" + props.id
+    } else if (props.title === "Major Elective"){
+        url = "http://localhost:5000/major-elec-key/" + props.id
+    } else if (props.title === "Free elective"){
+        url = "http://localhost:5000/free-elec-key/" + props.id
+    }
 
     const delfetchData = async () => {
         console.log(url)

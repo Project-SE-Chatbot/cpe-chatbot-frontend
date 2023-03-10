@@ -77,8 +77,8 @@ const KeywordBox = (props) => {
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>
             </div>
-            <EditKeyword id={props.id} trigger = {editKeypop} setTrigger = {setEditPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh}/>
-            <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh}/>
+            <EditKeyword id={props.id} trigger = {editKeypop} setTrigger = {setEditPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh} title={props.title}/>
+            <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh} title={props.title}/>
         </div>
     ):"" 
 }
