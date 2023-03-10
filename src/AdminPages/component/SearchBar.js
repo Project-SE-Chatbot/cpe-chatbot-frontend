@@ -20,7 +20,7 @@ const SearchBar = (props) => {
             </div>
 
             <div className="Detail">
-                We’ve found {keyNum} Keywords
+                We’ve found {props.keyNum} Keywords
             </div>
 
         </div>
