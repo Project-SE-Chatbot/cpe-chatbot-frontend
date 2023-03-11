@@ -1,11 +1,50 @@
 import '../css/EditKeyword.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getValue } from '@mui/system'
 
 const EditKeyword = (props) => {
-    const [name,setName] = useState()
+    const [name,setName] = useState("")
+    const [course,setCourse] = useState(props.keyID)
+
+    var putOptions = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            [course] : name
+        }),
+    };
+    
+
+    let url
+    if (props.title === "Major") {
+        url = "http://localhost:5000/major-key/" + props.id
+    } else if (props.title === "Place") {
+        url = "http://localhost:5000/place-key/" + props.id
+    } else if (props.title === "Teacher") {
+        url = "http://localhost:5000/teacher-key/" + props.id
+    } else if (props.title === "Major Elective"){
+        url = "http://localhost:5000/major-elec-key/" + props.id
+    } else if (props.title === "Free elective"){
+        url = "http://localhost:5000/free-elec-key/" + props.id
+    }
+
+    const fetchData = async () => {
+        console.log(url)
+        console.log(course)
+        console.log(name)
+        fetch(url, putOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(e => console.log(e))
+      }
+
+    useEffect(()=>{
+        
+        
+    },[])
+
     return (props.trigger) ? (<div className="editKeywordContainer">
         <div className='exit'>
             <FontAwesomeIcon icon={faXmark} onClick={()=> props.setTrigger(false)}/>
@@ -26,7 +65,7 @@ const EditKeyword = (props) => {
                 </div>
             </div>
             <div className='doneButton'>
-                <div className='doneText' onClick={()=> props.setKeyName(name)}>
+                <div className='doneText' onClick={()=> {fetchData();props.setTrigger(false);props.refresh()}}>
                     Save Changed
                 </div>
             </div>

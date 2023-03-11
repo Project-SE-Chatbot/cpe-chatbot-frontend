@@ -22,6 +22,7 @@ const AnswerBox = (props) =>{
         props.setDetail(props.detail);
         props.setStar(props.star);
         props.setDate(props.date);
+        props.setID(props.course_id);
     }
 
     const isOver = {
@@ -31,7 +32,9 @@ const AnswerBox = (props) =>{
 
     useEffect(() => {
 
-    },[value,comment,detailText,date,headText])
+    },[props.star,props.detail,props.title,props.date])
+
+    
 
     return (
         <div className="AnswerBox" onClick={() => {handleOver();}} style={isOver}>
