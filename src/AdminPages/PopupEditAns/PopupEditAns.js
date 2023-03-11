@@ -3,8 +3,9 @@ import EditDegree from "./EditDegree";
 import EditFreeElective from "./EditFreeElective";
 import EditMajor from "./EditMajor";
 import EditPlace from "./EditPlace";
-import EditPlan from "./EditPlan";
+import EditRegister from "./EditRegister";
 import EditTeacher from "./EditTeacher";
+import EditMajorElective from "./EditMajorElective";
 const PopupEditAns = (props) =>{
     const [type, setType] = useState("");
     
@@ -22,13 +23,15 @@ const PopupEditAns = (props) =>{
                             ?   <EditMajor trigger={props.setTrigger}/>
                             : type === "Place"
                                 ? <EditPlace trigger={props.setTrigger}/>
-                                : type === "Plan"
-                                    ? <EditPlan trigger={props.setTrigger}/>
+                                : type === "Register"
+                                    ? <EditRegister trigger={props.setTrigger}/>
                                     : type === "FreeElective"
                                         ? <EditFreeElective trigger={props.setTrigger}/>
-                                        : type === "Teacher" ?
-                                        <EditTeacher trigger={props.setTrigger}/>
-                                        :""
+                                        : type === "Teacher" 
+                                            ? <EditTeacher trigger={props.setTrigger}/>
+                                            : type === "MajorElective" 
+                                                ? <EditMajorElective trigger={props.setTrigger}/>
+                                                :""
                     }
         </div>
     ): ""

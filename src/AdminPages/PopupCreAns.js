@@ -5,9 +5,10 @@ import { useState } from 'react';
 import CreateTeacher from "./CreateAnsType/CreateTeacher";
 import CreateFreeElective from "./CreateAnsType/CreateFreeElective";
 import CreatePlace from "./CreateAnsType/CreatePlace";
-import CreatePlan from "./CreateAnsType/CreatePlan";
 import CreateDegree from "./CreateAnsType/CreateDegree";
 import CreateMajor from "./CreateAnsType/CreateMajor";
+import CreateRegister from "./CreateAnsType/CreateRegister";
+import CreateMajorElective from "./CreateAnsType/CreateMajorElective";
 
 const PopupCreAns = (props) => {
     const [type, setType] = useState("teacher");
@@ -32,10 +33,12 @@ const PopupCreAns = (props) => {
                         onClick={handleClick}>Place</div>
                     <div className={type !== "degree" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="degree"
                         onClick={handleClick}>Degree</div>
-                    <div className={type !== "plan" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="plan"
-                        onClick={handleClick}>Plan</div>
+                    <div className={type !== "register" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="register"
+                        onClick={handleClick}>Register</div>
                     <div className={type !== "major" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="major"
                         onClick={handleClick}>Major</div>
+                        <div className={type !== "majorelective" ? "admin-type-answr-box" : "admin-type-answr-box-selected"} id="majorelective"
+                        onClick={handleClick}>Major Elective</div>
                 </div>
     
                     {type === "teacher"
@@ -46,9 +49,11 @@ const PopupCreAns = (props) => {
                                 ? <CreatePlace trigger={props.togglePopup}/>
                                 : type === "degree"
                                     ? <CreateDegree trigger={props.togglePopup}/>
-                                    : type === "plan"
-                                        ? <CreatePlan trigger={props.togglePopup}/>
-                                        : <CreateMajor trigger={props.togglePopup}/>
+                                    : type === "register"
+                                        ? <CreateRegister trigger={props.togglePopup}/>
+                                        : type === "major"
+                                            ? <CreateMajor trigger={props.togglePopup}/>
+                                            : <CreateMajorElective trigger={props.togglePopup}/>
                     }
                 
             </div>

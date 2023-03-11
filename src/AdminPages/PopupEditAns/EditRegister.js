@@ -1,34 +1,25 @@
 import React, { useState } from "react";
 import close from "../../img/close (3).png";
 
-const EditPlace = (props) => {
-  const [Room, setRoom] = useState("");
-  const [Building, setBuilding] = useState("");
-  const [Floor, setFloor] = useState("");
-  const [urlLocation, seturlLocation] = useState("");
+const EditPlan = (props) => {
+  const [Name, setName] = useState("");
+  const [url, seturl] = useState("");
   const onCancle = (e) => {
     e.preventDefault();
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
-    props.trigger(false);
+    setName("");
+    seturl("");
   };
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-      Room,
-      Building,
-      Floor,
-      urlLocation,
+      Name,
+      url,
     };
 
     console.log("submit value", payload);
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
+    setName("");
+    seturl("");
   };
   return (
     <div className="admin-popup-edit-ans-box">
@@ -45,37 +36,21 @@ const EditPlace = (props) => {
       <h2>Edit answer</h2>
       <div className="admin-create-ans-box-info-container">
         <form className="admin-create-ans-box-form-info-container">
-          <label>ห้อง</label>
+          <label>หัวข้อเกี่ยวกับการรับเข้าเรียน</label>
           <input
             className="admin-input-info-container"
-            id="room"
+            id="name"
             type="text"
-            value={Room}
-            onChange={(e) => setRoom(e.target.value)}
+            value={Name}
+            onChange={(e) => setName(e.target.value)}
           />
-          <label>ตึก(สถานที่)</label>
+          <label>urlสำหรับข้อมูลเพิ่มเติม</label>
           <input
             className="admin-input-info-container"
-            id="building"
+            id="link"
             type="text"
-            value={Building}
-            onChange={(e) => setBuilding(e.target.value)}
-          />
-          <label>ชั้น</label>
-          <input
-            className="admin-input-info-container"
-            id="floor"
-            type="text"
-            value={Floor}
-            onChange={(e) => setFloor(e.target.value)}
-          />
-          <label>urlพิกัดตึก(สถานที่)</label>
-          <input
-            className="admin-input-info-container"
-            id="link_location"
-            type="text"
-            value={urlLocation}
-            onChange={(e) => seturlLocation(e.target.value)}
+            value={url}
+            onChange={(e) => seturl(e.target.value)}
           />
         </form>
       </div>
@@ -96,4 +71,4 @@ const EditPlace = (props) => {
   );
 };
 
-export default EditPlace;
+export default EditPlan;

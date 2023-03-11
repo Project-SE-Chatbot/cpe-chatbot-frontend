@@ -2,38 +2,54 @@ import React from "react";
 import { useState } from 'react';
 
 const CreateFreeElective = (props) => {
-        const [Name, setName] = useState('');
-        const [Review, setReview] = useState('');
+        const [CourseCode, setCourseCode] = useState('');
+        const [engName, setengName] = useState('');
+        const [thaiName, setthaiName] = useState('');
+        const [urlDesc, seturlDesc] = useState('');
         const onCancle = e => {
                 e.preventDefault()
-                setName('')
-                setReview('')
+                setCourseCode('')
+                setengName('')
+                setthaiName('')
+                seturlDesc('')
                 
               }
         const onSubmit = e => {
                 e.preventDefault()
 
                 const payload = {
-                        Name,
-                        Review
+                        CourseCode,
+                        engName,
+                        thaiName,
+                        urlDesc
                 }
 
                 console.log('submit value', payload)
-                setName('')
-                setReview('')
+                setCourseCode('')
+                setengName('')
+                setthaiName('')
+                seturlDesc('')
         }
         return (
                 <div>
                         <div className="admin-create-ans-box-info-container">
                                 <form onSubmit={onSubmit} className="admin-create-ans-box-form-info-container">
-                                        <label >วิชา</label>
+                                        <label >รหัสวิชา</label>
+                                        <input className="admin-input-info-container" id="course_code" type="text"
+                                                value={CourseCode}
+                                                onChange={e => setCourseCode(e.target.value)} />
+                                        <label >ชื่อวิชา(อังกฤษ)</label>
                                         <input className="admin-input-info-container" id="name" type="text"
-                                                value={Name}
-                                                onChange={e => setName(e.target.value)} />
-                                        <label >รีวิว</label>
-                                        <input className="admin-input-info-container" id="FreeElective" type="text"
-                                                value={Review}
-                                                onChange={e => setReview(e.target.value)} />
+                                                value={engName}
+                                                onChange={e => setengName(e.target.value)} />
+                                        <label >ชื่อวิชา(ไทย)</label>
+                                        <input className="admin-input-info-container" id="name_thai" type="text"
+                                                value={thaiName}
+                                                onChange={e => setthaiName(e.target.value)} />
+                                        <label >urlสำหรับdescription</label>
+                                        <input className="admin-input-info-container" id="link_description" type="text"
+                                                value={urlDesc}
+                                                onChange={e => seturlDesc(e.target.value)} />
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>

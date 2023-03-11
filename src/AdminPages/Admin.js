@@ -8,7 +8,7 @@ import EditDegree from "./PopupEditAns/EditDegree";
 import EditFreeElective from "./PopupEditAns/EditFreeElective";
 import EditMajor from "./PopupEditAns/EditMajor";
 import EditPlace from "./PopupEditAns/EditPlace";
-import EditPlan from "./PopupEditAns/EditPlan";
+import EditRegister from "./PopupEditAns/EditRegister";
 import EditTeacher from "./PopupEditAns/EditTeacher";
 import AnswerBox from "./component/AnswerBox";
 

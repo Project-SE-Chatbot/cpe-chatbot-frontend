@@ -1,34 +1,29 @@
 import React, { useState } from "react";
 import close from "../../img/close (3).png";
 
-const EditPlace = (props) => {
-  const [Room, setRoom] = useState("");
-  const [Building, setBuilding] = useState("");
-  const [Floor, setFloor] = useState("");
-  const [urlLocation, seturlLocation] = useState("");
+const EditMajorElective = (props) => {
+  const [CourseCode, setCourseCode] = useState("");
+  const [Name, setName] = useState("");
+  const [urlDesc, seturlDesc] = useState("");
   const onCancle = (e) => {
     e.preventDefault();
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
-    props.trigger(false);
+    setCourseCode("");
+    setName("");
+    seturlDesc("");
   };
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-      Room,
-      Building,
-      Floor,
-      urlLocation,
+      CourseCode,
+      Name,
+      urlDesc,
     };
 
     console.log("submit value", payload);
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
+    setCourseCode("");
+    setName("");
+    seturlDesc("");
   };
   return (
     <div className="admin-popup-edit-ans-box">
@@ -45,37 +40,29 @@ const EditPlace = (props) => {
       <h2>Edit answer</h2>
       <div className="admin-create-ans-box-info-container">
         <form className="admin-create-ans-box-form-info-container">
-          <label>ห้อง</label>
+          <label>รหัสวิชา</label>
           <input
             className="admin-input-info-container"
-            id="room"
+            id="course_code"
             type="text"
-            value={Room}
-            onChange={(e) => setRoom(e.target.value)}
+            value={CourseCode}
+            onChange={(e) => setCourseCode(e.target.value)}
           />
-          <label>ตึก(สถานที่)</label>
+          <label>ชื่อวิชา</label>
           <input
             className="admin-input-info-container"
-            id="building"
+            id="name"
             type="text"
-            value={Building}
-            onChange={(e) => setBuilding(e.target.value)}
+            value={Name}
+            onChange={(e) => setName(e.target.value)}
           />
-          <label>ชั้น</label>
+          <label>urlสำหรับdescription</label>
           <input
             className="admin-input-info-container"
-            id="floor"
+            id="link_description"
             type="text"
-            value={Floor}
-            onChange={(e) => setFloor(e.target.value)}
-          />
-          <label>urlพิกัดตึก(สถานที่)</label>
-          <input
-            className="admin-input-info-container"
-            id="link_location"
-            type="text"
-            value={urlLocation}
-            onChange={(e) => seturlLocation(e.target.value)}
+            value={urlDesc}
+            onChange={(e) => seturlDesc(e.target.value)}
           />
         </form>
       </div>
@@ -96,4 +83,4 @@ const EditPlace = (props) => {
   );
 };
 
-export default EditPlace;
+export default EditMajorElective;
