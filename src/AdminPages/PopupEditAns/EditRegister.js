@@ -1,26 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../../img/close (3).png";
 
 const EditPlan = (props) => {
   const [Name, setName] = useState("");
   const [url, seturl] = useState("");
-  const onCancle = (e) => {
-    e.preventDefault();
-    setName("");
-    seturl("");
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
+  
+  const [data, setData] = useState(null);
 
-    const payload = {
-      Name,
-      url,
-    };
+    var geturl = "http://localhost:5000/register/" + props.courseID
+    var puturl = "http://localhost:5000/register/name"
 
-    console.log("submit value", payload);
-    setName("");
-    seturl("");
-  };
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    }
+
+    var requestPut = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              name: Name,
+              link: url
+            })
+      }
+
+    const setValue = () => {
+        setName(data.name)
+        seturl(data.link)
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            console.log(geturl)
+            await fetch(geturl, requestOptions)
+                .then(response => response.json())
+                .then(result => setData(result))
+                .catch(e => console.log(e))
+        }
+        if (props.title === "Register") {
+            fetchData()
+        }
+
+    }, [props.trigger])
+
+
+    const fetchPutData = async () => {
+        fetch(puturl, requestPut)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
+    useEffect(() => {
+
+
+    }, [])
+
+    useEffect(() => {
+        if (data) {
+            setValue()
+        }
+    }, [data])
+
   return (
     <div className="admin-popup-edit-ans-box">
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -42,7 +83,7 @@ const EditPlan = (props) => {
             id="name"
             type="text"
             value={Name}
-            onChange={(e) => setName(e.target.value)}
+            readOnly
           />
           <label>urlสำหรับข้อมูลเพิ่มเติม</label>
           <input
@@ -63,7 +104,7 @@ const EditPlan = (props) => {
         >
           Cancle
         </div>
-        <div className="admin-create-answer-done-button" onClick={onSubmit}>
+        <div className="admin-create-answer-done-button" onClick={()=>{fetchPutData(); props.trigger(false); props.refresh()}}>
           Done
         </div>
       </div>

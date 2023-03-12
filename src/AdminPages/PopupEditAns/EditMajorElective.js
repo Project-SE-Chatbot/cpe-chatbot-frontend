@@ -83,7 +83,7 @@ const EditMajorElective = (props) => {
             className="admin-input-info-container"
             id="course_code"
             type="text"
-            value={CourseCode}
+            value={CourseCode} readOnly
             
           />
           <label>ชื่อวิชา</label>

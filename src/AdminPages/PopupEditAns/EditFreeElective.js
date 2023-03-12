@@ -81,7 +81,7 @@ const EditFreeElective = (props) => {
                 <form className="admin-create-ans-box-form-info-container">
                     <label >รหัสวิชา</label>
                     <input className="admin-input-info-container" id="course_code" type="text"
-                        value={CourseCode}
+                        value={CourseCode} readOnly
                         />
                     <label >ชื่อวิชา(อังกฤษ)</label>
                     <input className="admin-input-info-container" id="name" type="text"

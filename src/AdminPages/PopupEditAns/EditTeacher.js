@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import close from "../../img/close (3).png";
 
@@ -8,24 +8,70 @@ const EditTeacher = (props) => {
   const [OfficeRoom, setOfficeRoom] = useState("");
   const [Contact, setContact] = useState("");
   const [urlMoreInfo, seturlMoreInfo] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
+  
+  const [data, setData] = useState(null);
 
-    const payload = {
-      Name,
-      Pic,
-      OfficeRoom,
-      Contact,
-      urlMoreInfo,
-    };
+    var geturl = "http://localhost:5000/teacher/" + props.courseID
+    var puturl = "http://localhost:5000/teacher/name"
 
-    console.log("submit value", payload);
-    setName("");
-    setPic("");
-    setOfficeRoom("");
-    setContact("");
-    seturlMoreInfo("");
-  };
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    }
+
+    var requestPut = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              name: Name,
+              picture: Pic,
+              location: OfficeRoom,
+              email: Contact,
+              link: urlMoreInfo
+            })
+      }
+
+    const setValue = () => {
+        setName(data.name)
+        setPic(data.picture)
+        setOfficeRoom(data.location)
+        setContact(data.email)
+        seturlMoreInfo(data.link)
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            console.log(geturl)
+            await fetch(geturl, requestOptions)
+                .then(response => response.json())
+                .then(result => setData(result))
+                .catch(e => console.log(e))
+        }
+        if (props.title === "Teacher") {
+            fetchData()
+        }
+
+    }, [props.trigger])
+
+
+    const fetchPutData = async () => {
+        fetch(puturl, requestPut)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
+    useEffect(() => {
+
+
+    }, [])
+
+    useEffect(() => {
+        if (data) {
+            setValue()
+        }
+    }, [data])
+
   return (
     <div className="admin-popup-edit-ans-box">
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -47,7 +93,7 @@ const EditTeacher = (props) => {
             id="name"
             type="text"
             value={Name}
-            onChange={(e) => setName(e.target.value)}
+            readOnly
           />
           <label>urlสำหรับรูปภาพ</label>
           <input
@@ -92,7 +138,7 @@ const EditTeacher = (props) => {
         >
           Cancle
         </div>
-        <div className="admin-create-answer-done-button" onClick={onSubmit}>
+        <div className="admin-create-answer-done-button" onClick={()=>{fetchPutData(); props.trigger(false); props.refresh()}}>
           Save Changed
         </div>
       </div>

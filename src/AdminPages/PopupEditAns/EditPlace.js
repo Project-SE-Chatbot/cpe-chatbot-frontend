@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../../img/close (3).png";
 
 const EditPlace = (props) => {
@@ -6,30 +6,68 @@ const EditPlace = (props) => {
   const [Building, setBuilding] = useState("");
   const [Floor, setFloor] = useState("");
   const [urlLocation, seturlLocation] = useState("");
-  const onCancle = (e) => {
-    e.preventDefault();
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
-    props.trigger(false);
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
+  
+  const [data, setData] = useState(null);
 
-    const payload = {
-      Room,
-      Building,
-      Floor,
-      urlLocation,
-    };
+    var geturl = "http://localhost:5000/place/" + props.courseID
+    var puturl = "http://localhost:5000/place/room"
 
-    console.log("submit value", payload);
-    setRoom("");
-    setBuilding("");
-    setFloor("");
-    seturlLocation("");
-  };
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    }
+
+    var requestPut = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              building: Building,
+              floor: Floor,
+              room: Room,
+              link_location: urlLocation
+            })
+      }
+
+    const setValue = () => {
+        setBuilding(data.building)
+        setRoom(data.room)
+        setFloor(data.floor)
+        seturlLocation(data.link_location)
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            console.log(geturl)
+            await fetch(geturl, requestOptions)
+                .then(response => response.json())
+                .then(result => setData(result))
+                .catch(e => console.log(e))
+        }
+        if (props.title === "Place") {
+            fetchData()
+        }
+
+    }, [props.trigger])
+
+
+    const fetchPutData = async () => {
+        fetch(puturl, requestPut)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
+    useEffect(() => {
+
+
+    }, [])
+
+    useEffect(() => {
+        if (data) {
+            setValue()
+        }
+    }, [data])
+
   return (
     <div className="admin-popup-edit-ans-box">
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -51,7 +89,7 @@ const EditPlace = (props) => {
             id="room"
             type="text"
             value={Room}
-            onChange={(e) => setRoom(e.target.value)}
+            readOnly
           />
           <label>ตึก(สถานที่)</label>
           <input
@@ -88,7 +126,7 @@ const EditPlace = (props) => {
         >
           Cancle
         </div>
-        <div className="admin-create-answer-done-button" onClick={onSubmit}>
+        <div className="admin-create-answer-done-button" onClick={()=>{fetchPutData(); props.trigger(false); props.refresh()}}>
           Done
         </div>
       </div>

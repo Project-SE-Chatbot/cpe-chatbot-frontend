@@ -1,25 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 import close from "../../img/close (3).png";
 import { useState } from 'react';
 
 const EditDegree = (props) => {
     const [Name, setName] = useState('');
     const [More, setMore] = useState('');
-    const onCancle = e => {
-        e.preventDefault()
-        setName('')
-        setMore('')
+    const [data, setData] = useState(null);
+    
+    var geturl = "http://localhost:5000/degree/" + props.courseID
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
     }
-    const onSubmit = e => {
-        e.preventDefault()
-        const payload = {
-            Name,
-            More
+
+    var requestPut = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                name: Name,
+                link: More
+            })
+      }
+
+    const setValue = () => {
+        setName(data.name)
+        setMore(data.link)
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            console.log(geturl)
+            await fetch(geturl, requestOptions)
+                .then(response => response.json())
+                .then(result => setData(result))
+                .then(result => console.log(result))
+                .catch(e => console.log(e))
         }
-        console.log('submit value', payload)
-        setName('')
-        setMore('')
+        if (props.title === "Degree") {
+            fetchData()
+        }
+
+    }, [props.trigger])
+
+
+    const fetchPutData = async () => {
+        fetch(geturl, requestPut)
+            .then(response => response.json())
+            .catch(e => console.log(e))
     }
+
+    useEffect(() => {
+
+
+    }, [])
+    
+
+    useEffect(() => {
+        if (data) {
+            setValue()
+        }
+    }, [data])
+
     return (
         <div className="admin-popup-edit-ans-box">
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -32,8 +73,8 @@ const EditDegree = (props) => {
                 <form className="admin-create-ans-box-form-info-container">
                 <label >ระดับชั้นปริญญา</label>
                     <input className="admin-input-info-container" id="name" type="text"
-                        value={Name}
-                        onChange={e => setName(e.target.value)} />
+                        value={Name} readOnly
+                        />
                 <label >urlสำหรับข้อมูลเพิ่มเติม</label>
                     <input className="admin-input-info-container" id="link" type="text"
                         value={More}
@@ -41,8 +82,8 @@ const EditDegree = (props) => {
                 </form>
             </div>
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <div className="admin-create-answer-cancle-button " onClick={() => { props.trigger(false); onCancle() }} >Cancle</div>
-                <div className="admin-create-answer-done-button" onClick={onSubmit}>Save Changed</div>
+                <div className="admin-create-answer-cancle-button " onClick={() => { props.trigger(false);}} >Cancle</div>
+                <div className="admin-create-answer-done-button" onClick={() => { fetchPutData(); props.trigger(false); props.refresh()}}>Save Changed</div>
             </div>
         </div>
     );
