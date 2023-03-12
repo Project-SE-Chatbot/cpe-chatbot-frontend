@@ -2,28 +2,47 @@ import React from "react";
 import { useState } from "react";
 
 const CreateTeacher = (props) => {
-  const [Name, setName] = useState("");
-  const [Pic, setPic] = useState("");
-  const [OfficeRoom, setOfficeRoom] = useState("");
-  const [Contact, setContact] = useState("");
-  const [urlMoreInfo, seturlMoreInfo] = useState("");
+  const [name, setname] = useState("");
+  const [pictue, setpictue] = useState("");
+  const [location, setlocation] = useState("");
+  const [time, settime] = useState('');
+  const [email, setemail] = useState("");
+  const [link, setlink] = useState("");
+  const onCancle = (e) => {
+    setname("");
+    setpictue("");
+    setlocation("");
+    settime("");
+    setemail("");
+    setlink("");
+  };
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-      Name,
-      Pic,
-      OfficeRoom,
-      Contact,
-      urlMoreInfo,
+      name,
+      pictue,
+      location,
+      time,
+      email,
+      link,
     };
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    };
+    fetch('http://localhost:5000/teacher', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ postId: data.id }));
 
     console.log("submit value", payload);
-    setName("");
-    setPic("");
-    setOfficeRoom("");
-    setContact("");
-    seturlMoreInfo("");
+    setname("");
+    setpictue("");
+    setlocation("");
+    settime("");
+    setemail("");
+    setlink("");
   };
   return (
     <div>
@@ -34,47 +53,58 @@ const CreateTeacher = (props) => {
             className="admin-input-info-container"
             id="name"
             type="text"
-            value={Name}
-            onChange={(e) => setName(e.target.value)}
+            value={name}
+            onChange={(e) => setname(e.target.value)}
           />
           <label>urlสำหรับรูปภาพ</label>
           <input
             className="admin-input-info-container"
-            id="picture"
+            id="pictueture"
             type="text"
-            value={Pic}
-            onChange={(e) => setPic(e.target.value)}
+            value={pictue}
+            onChange={(e) => setpictue(e.target.value)}
           />
           <label>ออฟฟิศประจำ</label>
           <input
             className="admin-input-info-container"
             id="location"
             type="text"
-            value={OfficeRoom}
-            onChange={(e) => setOfficeRoom(e.target.value)}
+            value={location}
+            onChange={(e) => setlocation(e.target.value)}
+          />
+          <label>เวลาที่สามารถติดต่อได้</label>
+          <input
+            className="admin-input-info-container"
+            id="time"
+            type="text"
+            value={time}
+            onChange={(e) => settime(e.target.value)}
           />
           <label>ช่องทางการติดต่อ</label>
           <input
             className="admin-input-info-container"
             id="email"
             type="text"
-            value={Contact}
-            onChange={(e) => setContact(e.target.value)}
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
           />
           <label>urlสำหรับข้อมูลเพิ่มเติม</label>
           <input
             className="admin-input-info-container"
             id="link"
             type="text"
-            value={urlMoreInfo}
-            onChange={(e) => seturlMoreInfo(e.target.value)}
+            value={link}
+            onChange={(e) => setlink(e.target.value)}
           />
         </form>
       </div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <div
           className="admin-create-answer-cancle-button "
-          onClick={() => props.trigger(false)}
+          onClick={(e) => {
+            props.trigger(false);
+            onCancle(e);
+          }}
         >
           Cancle
         </div>

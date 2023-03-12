@@ -2,29 +2,36 @@ import React from "react";
 import { useState } from 'react';
 
 const CreateMajorElective = (props) => {
-        const [CourseCode, setCourseCode] = useState('');
-        const [Name, setName] = useState('');
-        const [urlDesc, seturlDesc] = useState('');
+        const [course_code, setcourse_code] = useState('');
+        const [name, setname] = useState('');
+        const [link_description, setlink_description] = useState('');
         const onCancle = e => {
                 e.preventDefault()
-                setCourseCode('')
-                setName('')
-                seturlDesc('')
-                
+                setcourse_code('')
+                setname('')
+                setlink_description('')   
               }
         const onSubmit = e => {
                 e.preventDefault()
 
                 const payload = {
-                        CourseCode,
-                        Name,
-                        urlDesc
+                        course_code,
+                        name,
+                        link_description
                 }
+                const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    };
+                    fetch('http://localhost:5000/major-elective', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
 
                 console.log('submit value', payload)
-                setCourseCode('')
-                setName('')
-                seturlDesc('')
+                setcourse_code('')
+                setname('')
+                setlink_description('')
         }
         return (
                 <div>
@@ -32,16 +39,16 @@ const CreateMajorElective = (props) => {
                                 <form onSubmit={onSubmit} className="admin-create-ans-box-form-info-container">
                                         <label >รหัสวิชา</label>
                                         <input className="admin-input-info-container" id="course_code" type="text"
-                                                value={CourseCode}
-                                                onChange={e => setCourseCode(e.target.value)} />
+                                                value={course_code}
+                                                onChange={e => setcourse_code(e.target.value)} />
                                         <label >ชื่อวิชา</label>
                                         <input className="admin-input-info-container" id="name" type="text"
-                                                value={Name}
-                                                onChange={e => setName(e.target.value)} />
+                                                value={name}
+                                                onChange={e => setname(e.target.value)} />
                                         <label >urlสำหรับdescription</label>
                                         <input className="admin-input-info-container" id="link_description" type="text"
-                                                value={urlDesc}
-                                                onChange={e => seturlDesc(e.target.value)} />
+                                                value={link_description}
+                                                onChange={e => setlink_description(e.target.value)} />
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>

@@ -2,22 +2,30 @@ import React from "react";
 import { useState } from 'react';
 
 const CreateDegree = (props) => {
-        const [Name, setName] = useState('');
-        const [More, setMore] = useState('');
+        const [name, setname] = useState('');
+        const [link, setlink] = useState('');
         const onCancle = e => {
                 e.preventDefault()
-                setName('')
-                setMore('')
+                setname('')
+                setlink('')
               }   
         const onSubmit = e => {
                 e.preventDefault()
                 const payload = {
-                        Name,
-                        More
+                        name,
+                        link
                 }
+                const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    };
+                    fetch('http://localhost:5000/degree', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
                 console.log('submit value', payload)
-                setName('')
-                setMore('')
+                setname('')
+                setlink('')
         }
         return (
                 <div>
@@ -25,12 +33,12 @@ const CreateDegree = (props) => {
                                 <form onSubmit={onSubmit} className="admin-create-ans-box-form-info-container">
                                         <label >ระดับชั้นปริญญา</label>
                                         <input className="admin-input-info-container" id="name" type="text"
-                                                value={Name}
-                                                onChange={e => setName(e.target.value)} />
+                                                value={name}
+                                                onChange={e => setname(e.target.value)} />
                                         <label >urlสำหรับข้อมูลเพิ่มเติม</label>
                                         <input className="admin-input-info-container" id="link" type="text"
-                                                value={More}
-                                                onChange={e => setMore(e.target.value)} />
+                                                value={link}
+                                                onChange={e => setlink(e.target.value)} />
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>

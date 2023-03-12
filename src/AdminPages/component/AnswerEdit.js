@@ -19,7 +19,7 @@ const AnswerEdit = (props) => {
     const [comment, setComment] = useState(20);
     const [titleUrl, setT] = useState(props.title);
     const [detailText, setDT] = useState("braaaaaa");
-    const [date, setDate] = useState("Yesterday");
+    // const [date, setDate] = useState("Yesterday");
 
     const [editAns, setEditAns] = useState(false)
 
@@ -40,6 +40,7 @@ const AnswerEdit = (props) => {
         redirect: 'follow'
     };
     let url
+    let urlAns
     if (props.title === "Major") {
         url = "http://localhost:5000/major-key/" + props.id
     } else if (props.title === "Place") {
@@ -50,8 +51,11 @@ const AnswerEdit = (props) => {
         url = "http://localhost:5000/major-elec-key/" + props.id
     } else if (props.title === "Free elective"){
         url = "http://localhost:5000/free-elec-key/" + props.id
+    } else if (props.title === "Register"){
+        url = "http://localhost:5000/register-key/" + props.id
+    }else if (props.title === "Degree"){
+        url = "http://localhost:5000/degree-key/" + props.id
     }
-
 
     const [data, setData] = useState(null);
     const [keyList, setList] = useState(null);

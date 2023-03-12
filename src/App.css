@@ -404,7 +404,7 @@
   padding: 30px;
   padding-left: 60px;
   padding-bottom: 60px;
-  width: 669px;
+  width: 700px;
   border-radius: 0px;
   background: #FFFFFF;
   box-shadow: 0px 4px 4px #10B993;
@@ -440,7 +440,7 @@
   border-radius: 12px;
   background-color: transparent;
   color: black;
-  padding: 2px 16px;
+  padding: 6px 7px;
   margin: 6px;
   cursor: pointer;
 }
@@ -450,13 +450,13 @@
   border-radius: 12px;
   background-color: #F47458;
   color: black;
-  padding: 2px 16px;
+  padding: 6px 7px;
   margin: 6px;
   cursor: pointer;
 }
 
 .admin-create-ans-box-info-container {
-  height: 250px;
+  height: 270px;
   width: 600px;
   display: block;
   margin-left: auto;
