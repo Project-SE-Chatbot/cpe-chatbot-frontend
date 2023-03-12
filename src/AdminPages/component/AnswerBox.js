@@ -31,9 +31,12 @@ const AnswerBox = (props) =>{
     }
 
     useEffect(() => {
-
-    },[props.star,props.detail,props.title,props.date])
-
+        props.setTitle(props.title);
+        props.setDetail(props.detail);
+        props.setStar(props.star);
+        props.setDate(props.date);
+        props.setID(props.course_id);
+    },[props.star,props.detail,props.title,props.date,])
     
 
     return (
