@@ -95,7 +95,7 @@ const EditMajor = (props) => {
             id="course_code"
             type="text"
             value={CourseCode}
-            onChange={(e) => setCourseCode(e.target.value)}
+            
           />
           <label>ชื่อวิชา</label>
           <input
