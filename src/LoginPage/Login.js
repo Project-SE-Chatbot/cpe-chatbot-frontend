@@ -1,17 +1,57 @@
-import React,{useState} from "react";
+import React,{useEffect,useState} from "react";
 
 const LoginPage = (props) => {
+
+
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+
+    const urlAdmin = "http://localhost:5000/admin"
+
+    const [AdminList, setAdminList] = useState(null);
+    const [dataAdmin, setDataAdmin] = useState(null);
+
+
     const [username,setUser] = useState("")
     const [password,setPassword] = useState("")
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+    
+          await fetch(urlAdmin, requestOptions)
+            .then(response => response.json())
+            .then(result => { setAdminList(result); setDataAdmin(result) })
+            .catch(e => console.log(e))
+        }
+        fetchData()
+      }, [urlAdmin])
+
+
+    let text = null
+
+
+
     const handleSubmit = (e) =>{
         e.preventDefault()
         const info ={
             username,
             password
         }
-        setUser("")
-        setPassword("")
+        // setUser("")
+        // setPassword("")
+        AdminList.map(element =>{
+            if(element.name == info.username && element.password == info.password){
+                console.log("LoginSusess")
+            }       
+        })
+        // text
         console.log(info)
+        console.log(AdminList)
+
+
     }
     return (
         <div className="login-background">
