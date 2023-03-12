@@ -2,24 +2,39 @@ import React from "react";
 import { useState } from "react";
 
 const CreateRegister = (props) => {
-  const [Name, setName] = useState("");
-  const [url, seturl] = useState("");
+  const [name, setname] = useState("");
+  const [link, setlink] = useState("");
+  const [tcas_round, settcas_round] = useState("");
+  const [degree, setdegree] = useState("");
   const onCancle = (e) => {
     e.preventDefault();
-    setName("");
-    seturl("");
+    setname("");
+    setlink("");
+    settcas_round("");
   };
   const onSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-      Name,
-      url,
+      name,
+      link,
+      tcas_round,
+      degree
+
     };
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+  };
+  fetch('http://localhost:5000/register', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ postId: data.id }));
 
     console.log("submit value", payload);
-    setName("");
-    seturl("");
+    setname("");
+    setlink("");
+    settcas_round("");
   };
   return (
     <div>
@@ -30,16 +45,24 @@ const CreateRegister = (props) => {
             className="admin-input-info-container"
             id="name"
             type="text"
-            value={Name}
-            onChange={(e) => setName(e.target.value)}
+            value={name}
+            onChange={(e) => setname(e.target.value)}
           />
-          <label>urlสำหรับข้อมูลเพิ่มเติม</label>
+          <label>linkสำหรับข้อมูลเพิ่มเติม</label>
           <input
             className="admin-input-info-container"
             id="link"
             type="text"
-            value={url}
-            onChange={(e) => seturl(e.target.value)}
+            value={link}
+            onChange={(e) => setlink(e.target.value)}
+          />
+          <label>รอบTCAS</label>
+          <input
+            className="admin-input-info-container"
+            id="tacs_round"
+            type="text"
+            value={tcas_round}
+            onChange={(e) => settcas_round(e.target.value)}
           />
         </form>
       </div>
