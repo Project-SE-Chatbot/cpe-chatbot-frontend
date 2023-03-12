@@ -12,7 +12,8 @@ const Navbar = (props) => {
         <p>Benyapa k.</p>
         </div>
         <button className="admin-button">
-            <img src={logout} style={{width: "35px",height: "35px"}}></img>
+            <img src={logout} style={{width: "35px",height: "35px"}}
+            onClick={()=>window.location.href = "/Login"}></img>
         </button>
       </div>
     </div>

@@ -1,5 +1,3 @@
-
-
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, createClientMessage) {
     this.createChatBotMessage = createChatBotMessage;
@@ -60,16 +58,14 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
-  handleMajorElectiveAll = async (question) => {
+  handleMajorAll = async (question) => {
     var text = ""
     var message
     await question.forEach(element => {
       text = "รหัสวิชา: " + element.course_code + "\n"
-        + " ชื่อวิชา: " + element.name + "\n"
-        + " ภาคเรียนที่เปิดสอน: " + element.term + "\n"
-        + " เรียนที่: " + element.place + "\n"
-        + " ผู้สอน: " + element.teacher + "\n"
-        + " เวลา: " + element.day + "\n"
+        + " วิชา: " + element.name + "\n"
+        + " ภาคเรียน: " + element.term + "\n"
+        + " วัน: " + element.day + "\n"
         + " เวลา: " + element.time + "\n"
       message = this.createChatBotMessage(
         text,
@@ -84,31 +80,14 @@ class ActionProvider {
     })
   };
 
-  handleMajorElective = async (question) => {
+  handleMajor = async (question) => {
     var text = ""
     var message
     text = "รหัสวิชา: " + question.course_code + "\n"
-      + " ชื่อวิชา: " + question.name + "\n"
-      + " ภาคเรียนที่เปิดสอน: " + question.term + "\n"
-      + " เรียนที่: " + question.place + "\n"
-      + " ผู้สอน: " + question.teacher + "\n"
-      + " เวลา: " + question.day + "\n"
+      + " วิชา: " + question.name + "\n"
+      + " ภาคเรียน: " + question.term + "\n"
+      + " วัน: " + question.day + "\n"
       + " เวลา: " + question.time + "\n"
-    message = this.createChatBotMessage(
-      text,
-      {
-        loading: true,
-        terminateLoading: true,
-        withAvatar: true
-      })
-    this.addMessageToState(message)
-    // console.log(text)
-  };
-
-  handleMajorElectivePlace = async (question) => {
-    var text = ""
-    var message
-    text = " เรียนที่ " + question.place + " ครับ" + "\n"
     message = this.createChatBotMessage(
       text,
       {
@@ -126,7 +105,7 @@ class ActionProvider {
     var message
     question.forEach(element => {
       text = "รหัสวิชา: " + element.course_code + "\n"
-        + " ชื่อวิชา: " + element.name + "\n"
+        + " วิชา: " + element.name + "\n"
         + element.name_thai + "\n"
         + " รีวิว: " + element.link_description + "\n"
       message = this.createChatBotMessage(
@@ -146,8 +125,8 @@ class ActionProvider {
     var text = ""
     var message
     text = "รหัสวิชา: " + question.course_code + "\n"
-        + " ชื่อวิชา: " + question.name + "\n"
-        + question.name_thai + "\n"
+        + " วิชา(อังกฤษ): " + question.name + "\n"
+        + " วิชา(ไทย): " +question.name_thai + "\n"
         + " รีวิว: " + question.link_description + "\n"
     message = this.createChatBotMessage(
       text,
@@ -187,7 +166,7 @@ class ActionProvider {
     var message
     text = " ห้อง: " + question.room + "\n"
       + " อยู่ที่ " + question.building + " ครับ\n"
-      + " Location: " + question.location + "\n"
+      + " Location: " + question.liink_location + "\n"
     message = this.createChatBotMessage(
       text,
       {
@@ -202,47 +181,52 @@ class ActionProvider {
 
 
   //-------------------------------------------------
-  handleAllProfesser = (info) => {
-    var text = ""
-    var message
-    info.forEach(element => {
-      text = " Name: " + element.name + "\n"
-        + "location : " + element.location + "\n"
-        + "Address: " + element.address + "\n"
-        + "Time: " + element.time + "\n"
-      message = this.createChatBotMessage(
-        text,
-        {
-          loading: true,
-          terminateLoading: true,
-          withAvatar: true
-        }
-      )
-      this.addMessageToState(message)
-      console.log(text)
-    })
-  };
+  // handleAllProfesser = (info) => {
+  //   var text = ""
+  //   var message
+  //   info.forEach(element => {
+  //     text = "อาจารย์: " + element.name + "\n"
+  //       + "ออฟฟิศประจำ: " + element.location + "\n"
+  //       + "ช่องทางการติดต่อ: " + element.email + "\n"
+  //       + "ช่วงเวลาที่สามารถติดต่อได้: " + element.time + "\n"
+  //       + "urlรูปภาพ: " + element.picture + "\n"
+  //       + "urlข้อมูลเพิ่มเติม: " + element.link
+  //     message = this.createChatBotMessage(
+  //       text,
+  //       {
+  //         loading: true,
+  //         terminateLoading: true,
+  //         withAvatar: true
+  //       }
+  //     )
+  //     this.addMessageToState(message)
+  //     console.log(text)
+  //   })
+  // };
 
-  handleProfesser = (info) => {
-    var text = ""
-    var message
-    info.forEach(element => {
-      text = " Name: " + element.name + "\n"
-        + " location : " + element.location + "\n"
-        + " Address: " + element.address + "\n"
-        + " Time: " + element.time
-      message = this.createChatBotMessage(
-        text,
-        {
-          loading: true,
-          terminateLoading: true,
-          withAvatar: true
-        }
-      )
-      this.addMessageToState(message)
-      console.log(text)
-    })
-  };
+  // handleProfesser = (info) => {
+  //   var text = ""
+  //   var message
+  //   info.forEach(element => {
+  //     text = "อาจารย์: " + element.name + "\n"
+  //       + "ออฟฟิศประจำ: " + element.location + "\n"
+  //       + "ช่องทางการติดต่อ: " + element.email + "\n"
+  //       + "ช่วงเวลาที่สามารถติดต่อได้: " + element.time + "\n"
+  //       + "urlรูปภาพ: " + element.picture + "\n"
+  //       + "urlข้อมูลเพิ่มเติม: " + element.link
+  //     message = this.createChatBotMessage(
+  //       text,
+  //       {
+  //         loading: true,
+  //         terminateLoading: true,
+  //         withAvatar: true
+  //       }
+  //     )
+  //     this.addMessageToState(message)
+  //     console.log(text)
+  //   })
+  // };
+
   handleBachelorCurriculum() {
     let message1
     message1 = this.createChatBotMessage(
@@ -318,20 +302,6 @@ class ActionProvider {
     );
     this.addMessageToState(message);
   }
-
-  handleMajorElectivePlace = async (question) => {
-    var text = ""
-    var message
-    text = " เรียนที่ " + question.place + " ครับ" + "\n"
-    message = this.createChatBotMessage(
-      text,
-      {
-        loading: true,
-        terminateLoading: true,
-        withAvatar: true
-      })
-    this.addMessageToState(message)
-  };
 
   addMessageToState = (message) => {
     this.setState((state) => ({
