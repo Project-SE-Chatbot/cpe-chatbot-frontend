@@ -19,7 +19,6 @@ const AnswerEdit = (props) => {
     const [comment, setComment] = useState(20);
     const [titleUrl, setT] = useState(props.title);
     const [detailText, setDT] = useState("braaaaaa");
-    // const [date, setDate] = useState("Yesterday");
 
     const [editAns, setEditAns] = useState(false)
 
@@ -40,7 +39,7 @@ const AnswerEdit = (props) => {
         redirect: 'follow'
     };
     let url
-    let urlAns
+
     if (props.title === "Major") {
         url = "http://localhost:5000/major-key/" + props.id
     } else if (props.title === "Place") {
@@ -60,11 +59,12 @@ const AnswerEdit = (props) => {
     const [data, setData] = useState(null);
     const [keyList, setList] = useState(null);
 
-    const setDataValue = () =>{
-        setValue()
-        setT()
-        setDT()
+    const [clickCreate,setCC] = useState(false);
+
+    const clickCC = () =>{
+        setCC(!clickCreate)
     }
+
 
     useEffect(() => {
         
@@ -146,7 +146,7 @@ const AnswerEdit = (props) => {
             </div>
 
             <div >
-                <SearchBar setTrigger={setCreate} keyNum={3}></SearchBar>
+                <SearchBar setTrigger={setCreate} keyNum={3} clickCC = {clickCC}></SearchBar>
             </div>
 
             <div className='collumText'>
@@ -169,13 +169,13 @@ const AnswerEdit = (props) => {
 
 
             <div>
-                <CreateKeyWord id={props.key} title={props.title} trigger={create} setTrigger={setCreate} />
+                <CreateKeyWord  id={props.id} title={props.title} trigger={create} setTrigger={setCreate} refresh={handleRefresh} clickCC={clickCreate}/>
             </div>
             <div>
-                <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} />
+                <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} refresh={handleRefresh}/>
             </div>
             <div>
-                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh}/>
+                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh} trigRefresh={refresh}/>
             </div>
         </div>
 

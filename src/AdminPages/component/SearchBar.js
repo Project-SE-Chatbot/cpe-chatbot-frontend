@@ -12,7 +12,7 @@ const SearchBar = (props) => {
                             type="text" name="name" placeholder="   Search keywords..." />
                     </label>
                 </form>
-                <div className="button" style={{ cursor: 'pointer' }} onClick = {()=> props.setTrigger(true)}>
+                <div className="button" style={{ cursor: 'pointer' }} onClick = {()=> {props.setTrigger(true); props.clickCC()}}>
                     <img src={plus} style={{ width: "35px", height: "35px", cursor: 'pointer' }}>
 
                     </img>

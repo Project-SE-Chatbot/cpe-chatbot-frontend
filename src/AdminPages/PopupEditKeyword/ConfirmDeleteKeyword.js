@@ -30,10 +30,10 @@ const ConfirmDeleteKeyword = (props) => {
     
 
     const delfetchData = async () => {
-        console.log(url)
-        console.log(course)
-        console.log(props.title)
-        console.log(props.id)
+        // console.log(url)
+        // console.log(course)
+        // console.log(props.title)
+        // console.log(props.id)
         fetch(url, putOptions)
           .then(response => response.text())
           .then(result => console.log(result))
