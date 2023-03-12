@@ -69,16 +69,20 @@ const KeywordBox = (props) => {
                 {date}
             </div>
             
-            <div className='editDelContainer'>
+            {(props.enableEdit) ? (<div className='editDelContainer'>
                 <div className='editIcon'>
                     <FontAwesomeIcon icon={faFilePen} onClick={() => setEditPop(true)}/>
                 </div>
                 <div className='delIcon' onClick={() => setDelPop(true)}>
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>
-            </div>
+            </div>):""}
+            <div>
             <EditKeyword id={props.id} trigger = {editKeypop} setTrigger = {setEditPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh} title={props.title}/>
             <ConfirmDeleteKeyword trigger = {delKeypop} setTrigger = {setDelPop} keyname = {props.name} keyID={props.keyID} setKeyName = {setKey} refresh={props.refresh} title={props.title}/>
+            </div>
+            
+            
         </div>
     ):"" 
 }

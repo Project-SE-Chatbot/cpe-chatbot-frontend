@@ -68,7 +68,13 @@ const AdminPage = (props) => {
   const [dataRegister,setDataRegister] = useState(null);
   const [dataTeacher,setDataTeacher] = useState(null);
 
-  const [loading , setLoading] = useState(false)
+  const [refresh , setRefresh ] = useState(false)
+
+  const handleRefresh = () =>{
+    setRefresh(!refresh)
+  }
+
+  useEffect(()=>{},[refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,7 +85,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlMajor])
+  }, [urlMajor,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,7 +96,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlMajorElec])
+  }, [urlMajorElec,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,7 +107,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlDegree])
+  }, [urlDegree,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -112,7 +118,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlFreeElec])
+  }, [urlFreeElec,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -123,7 +129,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlPlace])
+  }, [urlPlace,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -134,7 +140,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlRegister])
+  }, [urlRegister,refresh])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,7 +151,7 @@ const AdminPage = (props) => {
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlTeacher])
+  }, [urlTeacher,refresh])
 
   let text = null
   let ansNum = 0
@@ -198,7 +204,7 @@ const AdminPage = (props) => {
     AnsboxFreeElecList.map(element => {
       ansNum++
       text = "วิชา:" + element.name + " " + element.name_thai +" "+ element.course_code + "Description:" + element.link_description;
-      return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+      return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -239,7 +245,7 @@ const AdminPage = (props) => {
   return (
     <div className="admin-background" >
       {/* {checkValue()} */}
-      {console.log(AnsboxMajorList)}
+      {/* {console.log(AnsboxMajorList)} */}
       <Navbar />
       <div className="container">
         <div>
@@ -288,7 +294,7 @@ const AdminPage = (props) => {
           </div>
         </div>
         <div className="edit">
-          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} />
+          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh}/>
           {/* {checkValue()} */}
         </div>
       </div>

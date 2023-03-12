@@ -11,26 +11,26 @@ const PopupEditAns = (props) =>{
     
 
     useEffect(()=>{
-        setType(props.type);
+        setType(props.title);
         // console.log(type)
-    },[props.type])
+    },[props.title,props.refresh])
 
     return (props.trigger) ? (
         <div>
             {type === "Degree"
-                        ? <EditDegree trigger={props.setTrigger}/>
+                        ? <EditDegree trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
                         : type === "Major"
-                            ?   <EditMajor trigger={props.setTrigger}/>
+                            ?   <EditMajor trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
                             : type === "Place"
-                                ? <EditPlace trigger={props.setTrigger}/>
+                                ? <EditPlace trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
                                 : type === "Register"
-                                    ? <EditRegister trigger={props.setTrigger}/>
-                                    : type === "FreeElective"
-                                        ? <EditFreeElective trigger={props.setTrigger}/>
+                                    ? <EditRegister trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
+                                    : type === "Free elective"
+                                        ? <EditFreeElective trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
                                         : type === "Teacher" 
-                                            ? <EditTeacher trigger={props.setTrigger}/>
-                                            : type === "MajorElective" 
-                                                ? <EditMajorElective trigger={props.setTrigger}/>
+                                            ? <EditTeacher trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
+                                            : type === "Major Elective" 
+                                                ? <EditMajorElective trigger={props.setTrigger} courseID={props.courseID} title={props.title} refresh={props.refresh}/>
                                                 :""
                     }
         </div>

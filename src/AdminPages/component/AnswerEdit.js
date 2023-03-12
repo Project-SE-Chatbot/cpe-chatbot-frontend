@@ -19,7 +19,7 @@ const AnswerEdit = (props) => {
     const [comment, setComment] = useState(20);
     const [titleUrl, setT] = useState(props.title);
     const [detailText, setDT] = useState("braaaaaa");
-    const [date, setDate] = useState("Yesterday");
+    // const [date, setDate] = useState("Yesterday");
 
     const [editAns, setEditAns] = useState(false)
 
@@ -31,6 +31,7 @@ const AnswerEdit = (props) => {
 
     const handleRefresh = () => {
         setRefresh(!refresh)
+        props.refresh()
     }
 
 
@@ -39,6 +40,7 @@ const AnswerEdit = (props) => {
         redirect: 'follow'
     };
     let url
+    let urlAns
     if (props.title === "Major") {
         url = "http://localhost:5000/major-key/" + props.id
     } else if (props.title === "Place") {
@@ -49,20 +51,30 @@ const AnswerEdit = (props) => {
         url = "http://localhost:5000/major-elec-key/" + props.id
     } else if (props.title === "Free elective"){
         url = "http://localhost:5000/free-elec-key/" + props.id
+    } else if (props.title === "Register"){
+        url = "http://localhost:5000/register-key/" + props.id
+    }else if (props.title === "Degree"){
+        url = "http://localhost:5000/degree-key/" + props.id
     }
-
 
     const [data, setData] = useState(null);
     const [keyList, setList] = useState(null);
 
+    const setDataValue = () =>{
+        setValue()
+        setT()
+        setDT()
+        setDate()
+    }
+
     useEffect(() => {
-        console.log(titleUrl)
+        
     }, [refresh])
 
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(url)
+            // console.log(url)
             await fetch(url, requestOptions)
                 .then(response => response.json())
                 .then(result => { setList(result); setData(result); })
@@ -85,12 +97,12 @@ const AnswerEdit = (props) => {
         // })
         showKey =
             <div className='keywordBoxContainer'>
-                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title}/>
+                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={false}/>
+                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={true}/>
             </div>
     }
 
@@ -164,7 +176,7 @@ const AnswerEdit = (props) => {
                 <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} />
             </div>
             <div>
-                <PopupEditAns type={props.title} trigger={editAns} setTrigger={setEditAns} />
+                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh}/>
             </div>
         </div>
 
