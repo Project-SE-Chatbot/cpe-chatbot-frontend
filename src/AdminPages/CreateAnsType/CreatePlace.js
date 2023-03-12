@@ -2,33 +2,42 @@ import React from "react";
 import { useState } from 'react';
 
 const CreatePlace = (props) => {
-        const [Room, setRoom] = useState('');
-        const [Building, setBuilding] = useState('');
-        const [Floor, setFloor] = useState('');
-        const [urlLocation, seturlLocation] = useState('');
+        const [room, setroom] = useState('');
+        const [building, setbuilding] = useState('');
+        const [floor, setfloor] = useState('');
+        const [link_location, setlink_location] = useState('');
         const onCancle = e => {
                 e.preventDefault()
-                setRoom('')
-                setBuilding('')
-                setFloor('')
-                seturlLocation('')
+                setroom('')
+                setbuilding('')
+                setfloor('')
+                setlink_location('')
                 props.trigger(false)
         }
         const onSubmit = e => {
                 e.preventDefault()
 
                 const payload = {
-                        Room,
-                        Building,
-                        Floor,
-                        urlLocation
+                        building,
+                        floor,
+                        room,
+                        link_location
                 }
 
+                const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    };
+                    fetch('http://localhost:5000/place', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
                 console.log('submit value', payload)
-                setRoom('')
-                setBuilding('')
-                setFloor('')
-                seturlLocation('')
+                setroom('')
+                setbuilding('')
+                setfloor('')
+                setlink_location('')
         }
         return (
                 <div>
@@ -36,20 +45,20 @@ const CreatePlace = (props) => {
                                 <form className="admin-create-ans-box-form-info-container">
                                         <label >ห้อง</label>
                                         <input className="admin-input-info-container" id="room" type="text"
-                                                value={Room}
-                                                onChange={e => setRoom(e.target.value)} />
+                                                value={room}
+                                                onChange={e => setroom(e.target.value)} />
                                         <label >ตึก(สถานที่)</label>
                                         <input className="admin-input-info-container" id="building" type="text"
-                                                value={Building}
-                                                onChange={e => setBuilding(e.target.value)} />
+                                                value={building}
+                                                onChange={e => setbuilding(e.target.value)} />
                                         <label >ชั้น</label>
                                         <input className="admin-input-info-container" id="floor" type="text"
-                                                value={Floor}
-                                                onChange={e => setFloor(e.target.value)} />
+                                                value={floor}
+                                                onChange={e => setfloor(e.target.value)} />
                                         <label >urlพิกัดตึก(สถานที่)</label>
                                         <input className="admin-input-info-container" id="link_location" type="text"
-                                                value={urlLocation}
-                                                onChange={e => seturlLocation(e.target.value)} />
+                                                value={link_location}
+                                                onChange={e => setlink_location(e.target.value)} />
                                 </form>
                         </div>
 
