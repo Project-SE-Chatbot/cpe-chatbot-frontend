@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from 'react';
 
 const CreateFreeElective = (props) => {
-        const [CourseCode, setCourseCode] = useState('');
-        const [engName, setengName] = useState('');
-        const [thaiName, setthaiName] = useState('');
-        const [urlDesc, seturlDesc] = useState('');
+        const [course_code, setCourseCode] = useState('');
+        const [name, setengName] = useState('');
+        const [name_thai, setthaiName] = useState('');
+        const [link_description, seturlDesc] = useState('');
         const onCancle = e => {
                 e.preventDefault()
                 setCourseCode('')
@@ -18,11 +18,19 @@ const CreateFreeElective = (props) => {
                 e.preventDefault()
 
                 const payload = {
-                        CourseCode,
-                        engName,
-                        thaiName,
-                        urlDesc
+                        course_code,
+                        name,
+                        name_thai,
+                        link_description
                 }
+                const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    };
+                    fetch('http://localhost:5000/free-elective', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
 
                 console.log('submit value', payload)
                 setCourseCode('')
@@ -36,19 +44,19 @@ const CreateFreeElective = (props) => {
                                 <form onSubmit={onSubmit} className="admin-create-ans-box-form-info-container">
                                         <label >รหัสวิชา</label>
                                         <input className="admin-input-info-container" id="course_code" type="text"
-                                                value={CourseCode}
+                                                value={course_code}
                                                 onChange={e => setCourseCode(e.target.value)} />
                                         <label >ชื่อวิชา(อังกฤษ)</label>
                                         <input className="admin-input-info-container" id="name" type="text"
-                                                value={engName}
+                                                value={name}
                                                 onChange={e => setengName(e.target.value)} />
                                         <label >ชื่อวิชา(ไทย)</label>
                                         <input className="admin-input-info-container" id="name_thai" type="text"
-                                                value={thaiName}
+                                                value={name_thai}
                                                 onChange={e => setthaiName(e.target.value)} />
                                         <label >urlสำหรับdescription</label>
                                         <input className="admin-input-info-container" id="link_description" type="text"
-                                                value={urlDesc}
+                                                value={link_description}
                                                 onChange={e => seturlDesc(e.target.value)} />
                                 </form>
                         </div>
