@@ -44,9 +44,11 @@ const LoginPage = (props) => {
         // setPassword("")
         AdminList.map(element =>{
             if(element.name == info.username && element.password == info.password){
+                window.location.href = "/Admin";
                 console.log("LoginSusess")
             }       
         })
+
         // text
         console.log(info)
         console.log(AdminList)
