@@ -25,11 +25,17 @@ const AdminPage = (props) => {
   const [star, setStar] = useState();
   const [day, setDate] = useState();
   const [AnsEdit, setAnsEdit] = useState(false);
-  const [id,setID] = useState("")
+  const [id, setID] = useState("")
   const [showPopup, togglePopup] = useState(false);
-  
-  const [keyNum,setKeyNum] = useState(0);
-  
+
+  const [keyNum, setKeyNum] = useState(0);
+
+  const [type, settypeAns] = useState("Major")
+
+  const handleTypeChange = (event) => {
+    settypeAns(event.target.value)
+  }
+
   const checkValue = () => {
     console.log("title: " + title)
     console.log("detail: " + detail)
@@ -59,99 +65,99 @@ const AdminPage = (props) => {
   const [AnsboxPlaceList, setPlaceList] = useState(null);
   const [AnsboxRegisterList, setRegisterList] = useState(null);
   const [AnsboxTeacherList, setTeacherList] = useState(null);
-  
-  const [dataMajor,setDataMajor] = useState(null);
-  const [dataMajorElec,setDataMajorElec] = useState(null);
-  const [dataDegree,setDataDegree] = useState(null);
-  const [dataFreeElec,setDataFreeElec] = useState(null);
-  const [dataPlace,setDataPlace] = useState(null);
-  const [dataRegister,setDataRegister] = useState(null);
-  const [dataTeacher,setDataTeacher] = useState(null);
 
-  const [refresh , setRefresh ] = useState(false)
+  const [dataMajor, setDataMajor] = useState(null);
+  const [dataMajorElec, setDataMajorElec] = useState(null);
+  const [dataDegree, setDataDegree] = useState(null);
+  const [dataFreeElec, setDataFreeElec] = useState(null);
+  const [dataPlace, setDataPlace] = useState(null);
+  const [dataRegister, setDataRegister] = useState(null);
+  const [dataTeacher, setDataTeacher] = useState(null);
 
-  const handleRefresh = () =>{
+  const [refresh, setRefresh] = useState(false)
+
+  const handleRefresh = () => {
     setRefresh(!refresh)
   }
 
-  useEffect(()=>{},[refresh])
+  useEffect(() => { }, [refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlMajor, requestOptions)
         .then(response => response.json())
-        .then(result => {setMajorList(result);setDataMajor(result)})
+        .then(result => { setMajorList(result); setDataMajor(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlMajor,refresh])
+  }, [urlMajor, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlMajorElec, requestOptions)
         .then(response => response.json())
-        .then(result => {setMajorElecList(result);setDataMajorElec(result)})
+        .then(result => { setMajorElecList(result); setDataMajorElec(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlMajorElec,refresh])
+  }, [urlMajorElec, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlDegree, requestOptions)
         .then(response => response.json())
-        .then(result => {setDegreeList(result);setDataDegree(result)})
+        .then(result => { setDegreeList(result); setDataDegree(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlDegree,refresh])
+  }, [urlDegree, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlFreeElec, requestOptions)
         .then(response => response.json())
-        .then(result => {setFreeElecList(result);setDataFreeElec(result)})
+        .then(result => { setFreeElecList(result); setDataFreeElec(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlFreeElec,refresh])
+  }, [urlFreeElec, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlPlace, requestOptions)
         .then(response => response.json())
-        .then(result => {setPlaceList(result);setDataPlace(result)})
+        .then(result => { setPlaceList(result); setDataPlace(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlPlace,refresh])
+  }, [urlPlace, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlRegister, requestOptions)
         .then(response => response.json())
-        .then(result => {setRegisterList(result);setDataRegister(result)})
+        .then(result => { setRegisterList(result); setDataRegister(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlRegister,refresh])
+  }, [urlRegister, refresh])
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       await fetch(urlTeacher, requestOptions)
         .then(response => response.json())
-        .then(result => {setTeacherList(result);setDataTeacher(result)})
+        .then(result => { setTeacherList(result); setDataTeacher(result) })
         .catch(e => console.log(e))
     }
     fetchData()
-  }, [urlTeacher,refresh])
+  }, [urlTeacher, refresh])
 
   let text = null
   let ansNum = 0
@@ -162,86 +168,86 @@ const AdminPage = (props) => {
   let showPlaceAnsBox = null
   let showRegisterAnsBox = null
   let showTeacherAnsBox = null
-  
-  if(dataMajor){
-    showMajorAnsBox = 
+
+  if (dataMajor) {
+    showMajorAnsBox =
       AnsboxMajorList.map(element => {
         ansNum++
         text = "วิชา: " + element.name + " " + element.course_code + " "
           + "ภาคเรียนที่เปิดสอน: " + element.term + " "
           + "วัน: " + element.day + " " + element.time;
 
-        return <AnswerBox key={element.id_major} course_id={element.course_code} title={"Major"} star={3} detail={text} date={"Yesterday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_major} course_id={element.course_code} title={"Major"} star={3} detail={text} date={"Yesterday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataMajorElec){
-    showMajorElecAnsBox = 
-    AnsboxMajorElecList.map(element => {
-      ansNum++
-      text = "วิชา: " + element.name + " " + element.course_code + " "
+  if (dataMajorElec) {
+    showMajorElecAnsBox =
+      AnsboxMajorElecList.map(element => {
+        ansNum++
+        text = "วิชา: " + element.name + " " + element.course_code + " "
           + "Description and review: " + element.link_description;
 
-      return <AnswerBox key={element.id_major_elective} course_id={element.course_code} title={"Major Elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_major_elective} course_id={element.course_code} title={"Major Elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataDegree){
-    showDegreeAnsBox = 
-    AnsboxDegreeList.map(element => {
-      ansNum++
-      text = element.name + " " + "Description:" + element.link;
+  if (dataDegree) {
+    showDegreeAnsBox =
+      AnsboxDegreeList.map(element => {
+        ansNum++
+        text = element.name + " " + "Description:" + element.link;
 
-      return <AnswerBox key={element.id_degree} course_id={element.name} title={"Degree"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_degree} course_id={element.name} title={"Degree"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataFreeElec){
-    showFreeElecAnsBox = 
-    AnsboxFreeElecList.map(element => {
-      ansNum++
-      text = "วิชา:" + element.name + " " + element.name_thai +" "+ element.course_code + "Description:" + element.link_description;
-      return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+  if (dataFreeElec) {
+    showFreeElecAnsBox =
+      AnsboxFreeElecList.map(element => {
+        ansNum++
+        text = "วิชา:" + element.name + " " + element.name_thai + " " + element.course_code + "Description:" + element.link_description;
+        return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataPlace){
-    showPlaceAnsBox = 
-    AnsboxPlaceList.map(element => {
-      ansNum++
-      text = "Room: " +element.room + " Buildiing: " + element.building + " Floor: " + element.floor + " Link locattion: " + element.link_location; 
+  if (dataPlace) {
+    showPlaceAnsBox =
+      AnsboxPlaceList.map(element => {
+        ansNum++
+        text = "Room: " + element.room + " Buildiing: " + element.building + " Floor: " + element.floor + " Link locattion: " + element.link_location;
 
-      return <AnswerBox key={element.id_place} course_id={element.room} title={"Place"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_place} course_id={element.room} title={"Place"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataRegister){
-    showRegisterAnsBox = 
-    AnsboxRegisterList.map(element => {
-      ansNum++
-      text = element.name + " Link: " + element.link ; 
+  if (dataRegister) {
+    showRegisterAnsBox =
+      AnsboxRegisterList.map(element => {
+        ansNum++
+        text = element.name + " Link: " + element.link;
 
-      return <AnswerBox key={element.id_register} course_id={element.name} title={"Register"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_register} course_id={element.name} title={"Register"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
 
-  if(dataTeacher){
-    showTeacherAnsBox = 
-    AnsboxTeacherList.map(element => {
-      ansNum++
-      text = "ชื่อ: "+ element.name + " Office: " + element.location + " Contact: " +element.email + " Image: " + element.picture + " More Info: " + element.link ; 
+  if (dataTeacher) {
+    showTeacherAnsBox =
+      AnsboxTeacherList.map(element => {
+        ansNum++
+        text = "ชื่อ: " + element.name + " Office: " + element.location + " Contact: " + element.email + " Image: " + element.picture + " More Info: " + element.link;
 
-      return <AnswerBox key={element.id_teacher} course_id={element.name} title={"Teacher"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit}/>
+        return <AnswerBox key={element.id_teacher} course_id={element.name} title={"Teacher"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
-  
+
   return (
     <div className="admin-background" >
       {/* {checkValue()} */}
@@ -254,10 +260,15 @@ const AdminPage = (props) => {
           <div className="admin-ans-box-container">
             <div className="admin-input-container">
               <form>
-                <label>
-                  <input className="admin-input-search-keyword"
-                    type="text" name="name" placeholder="Search keywords" />
-                </label>
+                <select value={type} onChange={handleTypeChange}>
+                  <option value="major">Major</option>
+                  <option value="majorelective">Major Elective</option>
+                  <option value="freeelective">Free Elective</option>
+                  <option value="degree">Degree</option>
+                  <option value="place">Place</option>
+                  <option value="register">Register</option>
+                  <option value="teacher">Teacher</option>
+                </select>
               </form>
               <button className="admin-add-create-ans-button"
                 onClick={() => togglePopup((prev) => !prev)} style={{ cursor: 'pointer' }}>
@@ -269,32 +280,25 @@ const AdminPage = (props) => {
               <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
             </div>
             <div className="admin-ans-list">
-              {
-                dataMajor && showMajorAnsBox 
-              }
-              { 
-                dataMajorElec && showMajorElecAnsBox
-              }
-              {
-                dataDegree && showDegreeAnsBox
-              }
-              {
-                dataFreeElec && showFreeElecAnsBox
-              }
-              {
-                dataPlace && showPlaceAnsBox
-              }
-              {
-                dataRegister && showRegisterAnsBox
-              }
-              {
-                dataTeacher && showTeacherAnsBox
+              {type === "teacher"
+                ? dataTeacher && showTeacherAnsBox
+                : type === "freeelective"
+                  ? dataFreeElec && showFreeElecAnsBox
+                  : type === "place"
+                    ? dataPlace && showPlaceAnsBox
+                    : type === "degree"
+                      ? dataDegree && showDegreeAnsBox
+                      : type === "register"
+                        ? dataRegister && showRegisterAnsBox
+                        : type === "major"
+                          ? dataMajor && showMajorAnsBox
+                          : dataMajorElec && showMajorElecAnsBox
               }
             </div>
           </div>
         </div>
         <div className="edit">
-          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh}/>
+          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh} />
           {/* {checkValue()} */}
         </div>
       </div>
