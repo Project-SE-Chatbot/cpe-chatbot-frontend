@@ -25,11 +25,11 @@ const PopupEditAns = (props) =>{
                                 ? <EditPlace trigger={props.setTrigger}/>
                                 : type === "Register"
                                     ? <EditRegister trigger={props.setTrigger}/>
-                                    : type === "FreeElective"
+                                    : type === "Free elective"
                                         ? <EditFreeElective trigger={props.setTrigger}/>
                                         : type === "Teacher" 
                                             ? <EditTeacher trigger={props.setTrigger}/>
-                                            : type === "MajorElective" 
+                                            : type === "Major Elective" 
                                                 ? <EditMajorElective trigger={props.setTrigger}/>
                                                 :""
                     }
