@@ -4,9 +4,9 @@ import { useState } from 'react';
 const CreateMajor = (props) => {
         const [course_code, setcourse_code] = useState('');
         const [name, setname] = useState('');
-        const [teacher,setteacher] = useState('');
+        const [teacher, setteacher] = useState('');
         const [term, setterm] = useState('');
-        const [place,setplace] = useState('');
+        const [place, setplace] = useState('');
         const [day, setday] = useState('');
         const [time, settime] = useState('');
         const onCancle = e => {
@@ -16,8 +16,8 @@ const CreateMajor = (props) => {
                 setterm('')
                 setday('')
                 settime('')
-              }
-              
+        }
+
         const onSubmit = e => {
                 e.preventDefault()
 
@@ -33,8 +33,25 @@ const CreateMajor = (props) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
-                    };
-                    fetch('http://localhost:5000/major', requestOptions)
+                };
+                fetch('http://localhost:5000/major', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
+                const requestKey = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(
+                                { 
+                                        key_1:course_code,
+                                        key_2:name,
+                                        key_3:"",
+                                        key_4:"",
+                                        key_5:"",
+                                        key_6:"" 
+                                })
+                };
+                fetch('http://localhost:5000/major-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -72,7 +89,7 @@ const CreateMajor = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
                                 <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
 

@@ -9,8 +9,8 @@ const CreateMajorElective = (props) => {
                 e.preventDefault()
                 setcourse_code('')
                 setname('')
-                setlink_description('')   
-              }
+                setlink_description('')
+        }
         const onSubmit = e => {
                 e.preventDefault()
 
@@ -23,8 +23,25 @@ const CreateMajorElective = (props) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
-                    };
-                    fetch('http://localhost:5000/major-elective', requestOptions)
+                };
+                fetch('http://localhost:5000/major-elective', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
+                const requestKey = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(
+                                {
+                                        key_1: course_code,
+                                        key_2: name,
+                                        key_3:"",
+                                        key_4:"",
+                                        key_5:"",
+                                        key_6:""
+                                })
+                };
+                fetch('http://localhost:5000/major-elec-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -52,7 +69,7 @@ const CreateMajorElective = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
                                 <div type="submit" className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
                 </div>

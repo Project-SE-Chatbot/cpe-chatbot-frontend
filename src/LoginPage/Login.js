@@ -1,6 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 
 const LoginPage = (props) => {
+    const [username,setUser] = useState("")
+    const [password,setPassword] = useState("")
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        const info ={
+            username,
+            password
+        }
+        setUser("")
+        setPassword("")
+        console.log(info)
+    }
     return (
         <div className="login-background">
             <div className="login-container">
@@ -15,9 +27,11 @@ const LoginPage = (props) => {
                     <form >
                         <div className="login-form-input-container">
                             <label >Email</label>
-                            <input className="login-input_feild" id="email" type="text" />
+                            <input className="login-input_feild" id="email" type="text" 
+                            onChange={e => setUser(e.target.value)}/>
                             <label >password</label>
-                            <input className="login-input_feild" id="password" type="password" />
+                            <input className="login-input_feild" id="password" type="password"
+                            onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className="login-remember-foget-container">
                             <div style={{display:"flex"}}>
@@ -26,7 +40,7 @@ const LoginPage = (props) => {
                             </div>
                             <button className="login-forgetpassword-button">Forget password</button>
                         </div>
-                        <button className="login-login-button">Login</button>
+                        <button className="login-login-button" onClick={handleSubmit}>Login</button>
                     </form>
                 </div>
             </div>

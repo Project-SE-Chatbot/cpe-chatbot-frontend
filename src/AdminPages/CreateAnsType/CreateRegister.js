@@ -5,7 +5,7 @@ const CreateRegister = (props) => {
   const [name, setname] = useState("");
   const [link, setlink] = useState("");
   const [tcas_round, settcas_round] = useState("");
-  const [degree, setdegree] = useState("");
+  const [degree, setdegree] = useState("4");
   const onCancle = (e) => {
     e.preventDefault();
     setname("");
@@ -28,6 +28,23 @@ const CreateRegister = (props) => {
       body: JSON.stringify(payload)
     };
     fetch('http://localhost:5000/register', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ postId: data.id }));
+
+    const requestKey = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        {
+          key_1: name,
+          key_2:"",
+          key_3:"",
+          key_4:"",
+          key_5:"",
+          key_6:""
+        })
+    };
+    fetch('http://localhost:5000/register-key', requestKey)
       .then(response => response.json())
       .then(data => this.setState({ postId: data.id }));
 
