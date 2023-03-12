@@ -9,7 +9,7 @@ const ConfirmDeleteQuestion = (props) => {
                 <FontAwesomeIcon icon={faXmark} />
             </div>
             <div className='titleText'>
-                Are you sure want to delete this Question?
+                Are you sure want to delete this answer?
             </div>
             <div className='detailContainer'>
                 <div className='detailText'>
