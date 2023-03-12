@@ -11,8 +11,7 @@ const CreateFreeElective = (props) => {
                 setCourseCode('')
                 setengName('')
                 setthaiName('')
-                seturlDesc('')
-                
+                seturlDesc('')    
               }
         const onSubmit = e => {
                 e.preventDefault()

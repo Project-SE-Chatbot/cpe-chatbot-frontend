@@ -12,7 +12,6 @@ const CreatePlace = (props) => {
                 setbuilding('')
                 setfloor('')
                 setlink_location('')
-                props.trigger(false)
         }
         const onSubmit = e => {
                 e.preventDefault()

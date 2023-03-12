@@ -9,8 +9,7 @@ const CreateMajorElective = (props) => {
                 e.preventDefault()
                 setcourse_code('')
                 setname('')
-                setlink_description('')
-                
+                setlink_description('')   
               }
         const onSubmit = e => {
                 e.preventDefault()

@@ -26,8 +26,8 @@ const CreateRegister = (props) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
-  };
-  fetch('http://localhost:5000/register', requestOptions)
+    };
+    fetch('http://localhost:5000/register', requestOptions)
       .then(response => response.json())
       .then(data => this.setState({ postId: data.id }));
 

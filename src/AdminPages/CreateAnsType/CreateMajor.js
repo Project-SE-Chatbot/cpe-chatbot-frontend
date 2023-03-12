@@ -16,7 +16,6 @@ const CreateMajor = (props) => {
                 setterm('')
                 setday('')
                 settime('')
-                props.trigger(false)
               }
               
         const onSubmit = e => {
