@@ -18,7 +18,7 @@ const EditKeyword = (props) => {
     
 
     let url
-    if (props.title === "Major") {
+        if (props.title === "Major") {
         url = "http://localhost:5000/major-key/" + props.id
     } else if (props.title === "Place") {
         url = "http://localhost:5000/place-key/" + props.id
@@ -28,6 +28,10 @@ const EditKeyword = (props) => {
         url = "http://localhost:5000/major-elec-key/" + props.id
     } else if (props.title === "Free elective"){
         url = "http://localhost:5000/free-elec-key/" + props.id
+    } else if (props.title === "Register"){
+        url = "http://localhost:5000/register-key/" + props.id
+    } else if (props.title === "Degree"){
+        url = "http://localhost:5000/degree-key/" + props.id
     }
 
     const fetchData = async () => {
