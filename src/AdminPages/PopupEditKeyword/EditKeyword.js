@@ -31,9 +31,9 @@ const EditKeyword = (props) => {
     }
 
     const fetchData = async () => {
-        console.log(url)
-        console.log(course)
-        console.log(name)
+        // console.log(url)
+        // console.log(course)
+        // console.log(name)
         fetch(url, putOptions)
           .then(response => response.text())
           .then(result => console.log(result))
@@ -45,6 +45,10 @@ const EditKeyword = (props) => {
         
     },[])
 
+    useEffect(()=>{
+          setName(props.keyname)
+      },[])
+
     return (props.trigger) ? (<div className="editKeywordContainer">
         <div className='exit'>
             <FontAwesomeIcon icon={faXmark} onClick={()=> props.setTrigger(false)}/>
@@ -55,7 +59,7 @@ const EditKeyword = (props) => {
         <div className='inputContainer'>
             <form>
                 <input className="inputCKbar"
-                        type="text" name="name" placeholder={props.keyname} onChange = {(e) => setName(e.target.value)}/>
+                        type="text" name="name" value={name} onChange = {(e) => setName(e.target.value)}/>
             </form>
         </div>
         <div className='buttonContainer'>

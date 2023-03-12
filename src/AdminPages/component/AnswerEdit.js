@@ -31,6 +31,7 @@ const AnswerEdit = (props) => {
 
     const handleRefresh = () => {
         setRefresh(!refresh)
+        props.refresh()
     }
 
 
@@ -55,14 +56,21 @@ const AnswerEdit = (props) => {
     const [data, setData] = useState(null);
     const [keyList, setList] = useState(null);
 
+    const setDataValue = () =>{
+        setValue()
+        setT()
+        setDT()
+        setDate()
+    }
+
     useEffect(() => {
-        console.log(titleUrl)
+        
     }, [refresh])
 
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(url)
+            // console.log(url)
             await fetch(url, requestOptions)
                 .then(response => response.json())
                 .then(result => { setList(result); setData(result); })
@@ -164,7 +172,7 @@ const AnswerEdit = (props) => {
                 <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} />
             </div>
             <div>
-                <PopupEditAns type={props.title} trigger={editAns} setTrigger={setEditAns} />
+                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh}/>
             </div>
         </div>
 
