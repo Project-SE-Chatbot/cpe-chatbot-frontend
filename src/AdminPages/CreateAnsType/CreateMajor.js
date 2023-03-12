@@ -2,18 +2,20 @@ import React from "react";
 import { useState } from 'react';
 
 const CreateMajor = (props) => {
-        const [CourseCode, setCourseCode] = useState('');
-        const [Name, setName] = useState('');
-        const [Term, setTerm] = useState('');
-        const [Day, setDay] = useState('');
-        const [Time, setTime] = useState('');
+        const [course_code, setcourse_code] = useState('');
+        const [name, setname] = useState('');
+        const [teacher,setteacher] = useState('');
+        const [term, setterm] = useState('');
+        const [place,setplace] = useState('');
+        const [day, setday] = useState('');
+        const [time, settime] = useState('');
         const onCancle = e => {
                 e.preventDefault()
-                setCourseCode('')
-                setName('')
-                setTerm('')
-                setDay('')
-                setTime('')
+                setcourse_code('')
+                setname('')
+                setterm('')
+                setday('')
+                settime('')
                 props.trigger(false)
               }
               
@@ -21,19 +23,28 @@ const CreateMajor = (props) => {
                 e.preventDefault()
 
                 const payload = {
-                        CourseCode,
-                        Name,
-                        Term,
-                        Day,
-                        Time
+                        course_code,
+                        name,
+                        term,
+                        day,
+                        time
                 }
 
+                const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    };
+                    fetch('http://localhost:5000/major', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
                 console.log('submit value', payload)
-                setCourseCode('')
-                setName('')
-                setTerm('')
-                setDay('')
-                setTime('')
+                setcourse_code('')
+                setname('')
+                setterm('')
+                setday('')
+                settime('')
         }
         return (
                 <div>
@@ -41,24 +52,24 @@ const CreateMajor = (props) => {
                                 <form className="admin-create-ans-box-form-info-container">
                                         <label >รหัสวิชา</label>
                                         <input className="admin-input-info-container" id="course_code" type="text"
-                                                value={CourseCode}
-                                                onChange={e => setCourseCode(e.target.value)} />
+                                                value={course_code}
+                                                onChange={e => setcourse_code(e.target.value)} />
                                         <label >ชื่อวิชา</label>
                                         <input className="admin-input-info-container" id="name" type="text"
-                                                value={Name}
-                                                onChange={e => setName(e.target.value)} />
+                                                value={name}
+                                                onChange={e => setname(e.target.value)} />
                                         <label >ภาคเรียนที่เปิดสอน</label>
                                         <input className="admin-input-info-container" id="term" type="text"
-                                                value={Term}
-                                                onChange={e => setTerm(e.target.value)} />
+                                                value={term}
+                                                onChange={e => setterm(e.target.value)} />
                                         <label >วันที่เรียน</label>
                                         <input className="admin-input-info-container" id="day" type="text"
-                                                value={Day}
-                                                onChange={e => setDay(e.target.value)} />
+                                                value={day}
+                                                onChange={e => setday(e.target.value)} />
                                         <label >ช่วงเวลาที่เรียน</label>
                                         <input className="admin-input-info-container" id="time" type="text"
-                                                value={Time}
-                                                onChange={e => setTime(e.target.value)} />
+                                                value={time}
+                                                onChange={e => settime(e.target.value)} />
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
