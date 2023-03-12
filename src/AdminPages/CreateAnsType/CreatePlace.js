@@ -27,8 +27,21 @@ const CreatePlace = (props) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
-                    };
-                    fetch('http://localhost:5000/place', requestOptions)
+                };
+                fetch('http://localhost:5000/place', requestOptions)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
+                const requestKey = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(
+                                {
+                                        key_1: room,
+                                        key_2: "ห้อง"+room
+                                })
+                };
+                fetch('http://localhost:5000/place-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 

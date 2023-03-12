@@ -8,7 +8,7 @@ const CreateDegree = (props) => {
                 e.preventDefault()
                 setname('')
                 setlink('')
-              }   
+        }
         const onSubmit = e => {
                 e.preventDefault()
                 const payload = {
@@ -19,10 +19,21 @@ const CreateDegree = (props) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
-                    };
-                    fetch('http://localhost:5000/degree', requestOptions)
+                };
+                fetch('http://localhost:5000/degree', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
+
+                const requestKey = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({key_1:name})
+                };
+                fetch('http://localhost:5000/degree-key', requestKey)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
+
                 console.log('submit value', payload)
                 setname('')
                 setlink('')
@@ -42,7 +53,7 @@ const CreateDegree = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
                                 <div className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
                 </div>

@@ -11,8 +11,8 @@ const CreateFreeElective = (props) => {
                 setCourseCode('')
                 setengName('')
                 setthaiName('')
-                seturlDesc('')    
-              }
+                seturlDesc('')
+        }
         const onSubmit = e => {
                 e.preventDefault()
 
@@ -26,10 +26,26 @@ const CreateFreeElective = (props) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
-                    };
-                    fetch('http://localhost:5000/free-elective', requestOptions)
+                };
+                fetch('http://localhost:5000/free-elective', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
+
+                const requestKey = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(
+                                {
+                                        key_1:course_code,
+                                        key_2:name,
+                                        key_3:name_thai
+                                })
+                };
+                fetch('http://localhost:5000/free-elec-key', requestKey)
+                        .then(response => response.json())
+                        .then(data => this.setState({ postId: data.id }));
+
+
 
                 console.log('submit value', payload)
                 setCourseCode('')
@@ -60,7 +76,7 @@ const CreateFreeElective = (props) => {
                                 </form>
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <div className="admin-create-answer-cancle-button " onClick={(e) => {props.trigger(false);onCancle(e);}}>Cancle</div>
+                                <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
                                 <div type="submit" className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
                         </div>
                 </div>
