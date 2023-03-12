@@ -93,12 +93,12 @@ const AnswerEdit = (props) => {
         // })
         showKey =
             <div className='keywordBoxContainer'>
-                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title}/>
-                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title}/>
+                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={false}/>
+                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={true}/>
             </div>
     }
 
