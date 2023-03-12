@@ -58,6 +58,7 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
+  //Major
   handleMajorAll = async (question) => {
     var text = ""
     var message
@@ -100,6 +101,7 @@ class ActionProvider {
   };
 
   //เกม --------------------------------------------
+  //Free elective
   handleFreeElectiveAll = async (question) => {
     var text = ""
     var message
@@ -141,13 +143,14 @@ class ActionProvider {
   };
 
   //เกม ----------------------------------------
+  //Place
   handleWhretoStudyAll = async (question) => {
     var text = ""
     var message
     question.forEach(element => {
-      text = " สถานที่: " + element.building + "\n"
-        + " ห้อง: " + element.room + "\n"
-        + " Location: " + element.location + "\n"
+      text = " ห้อง: " + element.room + "\n"
+        + " อยู่ที่: " + element.building + "\n"
+        + " Location: " + element.link_location + "\n"
       message = this.createChatBotMessage(
         text,
         {
@@ -165,8 +168,8 @@ class ActionProvider {
     var text = ""
     var message
     text = " ห้อง: " + question.room + "\n"
-      + " อยู่ที่ " + question.building + " ครับ\n"
-      + " Location: " + question.liink_location + "\n"
+      + " อยู่ที่ " + question.building + "\n"
+      + " Location: " + question.link_location + "\n"
     message = this.createChatBotMessage(
       text,
       {
@@ -179,7 +182,7 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
-
+  //Teacher
   //-------------------------------------------------
   // handleAllProfesser = (info) => {
   //   var text = ""
@@ -227,6 +230,7 @@ class ActionProvider {
   //   })
   // };
 
+  //Degree
   handleBachelorCurriculum() {
     let message1
     message1 = this.createChatBotMessage(

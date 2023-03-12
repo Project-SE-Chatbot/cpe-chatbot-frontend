@@ -152,42 +152,43 @@ class MessageParser {
           return this.actionProvider.handleError();
         });
 
-      if (message.includes("ห้อง")) {
+      if (containsNumbers(message) === true) {
         return this.actionProvider.handleWhretoStudy(responseData);
-      } else {
+      } else{
         return this.actionProvider.handleWhretoStudyAll(responseData);
       }
     }
 
-    if (message.includes("อาจารย์") || message.includes("อ.")) {
-      if (message.includes("ทั้งหมด") || message.includes("ทุกคน")) {
-        var test = {};
-        var requestOptions = {
-          method: "GET",
-          redirect: "follow",
-        };
-        let url = "http://localhost:5000/teacher";
-        let responseData
-        if (message.includes("อาจารย์") || message.includes("อ.")) {
-          if (message.includes("กานต์") || message.includes("กาน")) {
-            url = "http://localhost:5000/teacher/ผศ.ดร.กานต์ ปทานุคม";
-          }
-        }
 
-        await fetch(url, requestOptions)
-          .then((response) => response.json())
-          .then((result) => {
-            responseData = result;
-          })
-          .catch((error) => console.log("error", error));
-        return this.actionProvider.handleError();
-        if (!message.includes("ทั้งหมด")) {
-          return this.actionProvider.handleProfesser(responseData);
-        } else {
-          return this.actionProvider.handleAllProfesser(responseData);
-        }
-      }
-    }
+    // if (message.includes("อาจารย์") || message.includes("อ.")) {
+    //   if (message.includes("ทั้งหมด") || message.includes("ทุกคน")) {
+    //     var test = {};
+    //     var requestOptions = {
+    //       method: "GET",
+    //       redirect: "follow",
+    //     };
+    //     let url = "http://localhost:5000/teacher";
+    //     let responseData
+    //     if (message.includes("อาจารย์") || message.includes("อ.")) {
+    //       if (message.includes("กานต์") || message.includes("กาน")) {
+    //         url = "http://localhost:5000/teacher/ผศ.ดร.กานต์ ปทานุคม";
+    //       }
+    //     }
+
+    //     await fetch(url, requestOptions)
+    //       .then((response) => response.json())
+    //       .then((result) => {
+    //         responseData = result;
+    //       })
+    //       .catch((error) => console.log("error", error));
+    //     return this.actionProvider.handleError();
+    //     if (!message.includes("ทั้งหมด")) {
+    //       return this.actionProvider.handleProfesser(responseData);
+    //     } else {
+    //       return this.actionProvider.handleAllProfesser(responseData);
+    //     }
+    //   }
+    // }
 
     if (message.includes("หลักสูตร")) {
       if (
