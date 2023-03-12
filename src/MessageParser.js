@@ -159,36 +159,123 @@ class MessageParser {
       }
     }
 
-
-    // if (message.includes("อาจารย์") || message.includes("อ.")) {
-    //   if (message.includes("ทั้งหมด") || message.includes("ทุกคน")) {
-    //     var test = {};
-    //     var requestOptions = {
-    //       method: "GET",
-    //       redirect: "follow",
-    //     };
-    //     let url = "http://localhost:5000/teacher";
-    //     let responseData
-    //     if (message.includes("อาจารย์") || message.includes("อ.")) {
-    //       if (message.includes("กานต์") || message.includes("กาน")) {
-    //         url = "http://localhost:5000/teacher/ผศ.ดร.กานต์ ปทานุคม";
-    //       }
-    //     }
-
-    //     await fetch(url, requestOptions)
-    //       .then((response) => response.json())
-    //       .then((result) => {
-    //         responseData = result;
-    //       })
-    //       .catch((error) => console.log("error", error));
-    //     return this.actionProvider.handleError();
-    //     if (!message.includes("ทั้งหมด")) {
-    //       return this.actionProvider.handleProfesser(responseData);
-    //     } else {
-    //       return this.actionProvider.handleAllProfesser(responseData);
-    //     }
-    //   }
-    // }
+    //Teacher
+    if (message.includes("อาจารย์") || message.includes("อ.")) {
+        var test = {};
+        var requestOptions = {
+          method: "GET",
+          redirect: "follow",
+        };
+        let url = "http://localhost:5000/teacher";
+        let responseData
+        if (message.includes("ทั้งหมด")) {
+          console.log(url);
+        }
+        if(message.includes("สันติ")){
+            url = "http://localhost:5000/teacher/รศ.ดร.สันติ พิทักษ์กิจนุกูร"
+            console.log(url);
+        }
+        else if(message.includes("กานต์") || message.includes("กาน")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.กานต์ ปทานุคม"
+          console.log(url);
+        }
+        else if(message.includes("อัญญา")){
+          url = "http://localhost:5000/teacher/รศ.ดร.อัญญา อาภาวัชรุตม์ วีระประพันธ์"
+          console.log(url);
+        }
+        else if(message.includes("จักรพงศ์") || message.includes("จักรพงษ์")|| message.includes("ช้าง")){
+          url = "http://localhost:5000/teacher/รศ.ดร.จักรพงศ์ นาทวิชัย"
+          console.log(url);
+        }
+        else if(message.includes("เคน") || message.includes("Cosh")){
+          url = "http://localhost:5000/teacher/Kenneth Cosh, Ph.D., Assoc. Prof."
+          console.log(url);
+        }
+        else if(message.includes("นริศรา")){
+          url = "http://localhost:5000/teacher/รศ.ดร.นริศรา เอี่ยมคณิตชาติ"
+          console.log(url);
+        }
+        else if(message.includes("ศักดิ์กษิต")){
+          url = "http://localhost:5000/teacher/รศ.ดร.ศักดิ์กษิต ระมิงค์วงศ์?"
+          console.log(url);
+        }
+        else if(message.includes("สรรพวรรธน์") ){
+          url = "http://localhost:5000/teacher/รศ.ดร.สรรพวรรธน์ กันตะบุตร"
+          console.log(url);
+        }
+        else if(message.includes("ศันสนีย์") || message.includes("จุ๊บ")){
+          url = "http://localhost:5000/teacher/รศ.ดร.ศันสนีย์ เอื้อพันธ์วิริยะกุล"
+          console.log(url);
+        }
+        else if(message.includes("ตรัสพงศ์") || message.includes("ตรัส")){
+          url = "http://localhost:5000/teacher/รศ.ดร.ตรัสพงศ์ ไทยอุปถัมภ์"
+          console.log(url);
+        }
+        else if(message.includes("โดม")){
+          url = "http://localhost:5000/teacher/ผศ.โดม โพธิกานนท์"
+          console.log(url);
+        }
+        else if(message.includes("กำพล") || message.includes("แบงค์")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.กำพล วรดิษฐ์"
+          console.log(url);
+        }
+        else if(message.includes("เกษมสิทธิ์") || message.includes("หนึ่ง")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.เกษมสิทธิ์ ตียพันธ์"
+          console.log(url);
+        }
+        else if(message.includes("ลัชนา")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.ลัชนา ระมิงค์วงศ์"
+          console.log(url);
+        }
+        else if(message.includes("นวดน") || message.includes("เอ็ม")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.นวดนย์ คุณเลิศกิจ"
+          console.log(url);
+        }
+        else if(message.includes("ภาสกร")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.ภาสกร แช่มประเสริฐ"
+          console.log(url);
+        }
+        else if(message.includes("ธนาทิพ")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.ธนาทิพย์ จันทร์คง"
+          console.log(url);
+        }
+        else if(message.includes("ยุทธพง")){
+          url = "http://localhost:5000/teacher/ผศ.ดร.ยุทธพงษ์ สมจิต"
+          console.log(url);
+        }
+        else if(message.includes("อานัน") || message.includes("โรเจอร์")){
+          url = "http://localhost:5000/teacher/อ.ดร.อานันท์ สีห์พิทักษ์เกียรติ"
+          console.log(url);
+        }
+        else if(message.includes("ชิน")){
+          url = "http://localhost:5000/teacher/อ.ดร.ชินวัตร อิศราดิสัยกุล"
+          console.log(url);
+        }
+        else if(message.includes("Myo") || message.includes("Thida")|| message.includes("เหมี่ยว")){
+          url = "http://localhost:5000/teacher/Myo Thida, Ph.D."
+          console.log(url);
+        }
+        else if(message.includes("นัน")){
+          url = "http://localhost:5000/teacher/อ.ดร.ณัฐนันท์ พรหมสุข"
+          console.log(url);
+        }
+        else if(message.includes("พฤษ")){
+          url = "http://localhost:5000/teacher/อ.ดร.พฤษภ์ บุญมา"
+          console.log(url);
+        }
+        await fetch(url, requestOptions)
+          .then((response) => response.json())
+          .then((result) => (responseData = result))
+          .catch((error) => {
+            return this.actionProvider.handleError();
+          });
+        if (!message.includes("ทั้งหมด")) {
+          return this.actionProvider.handleProfesser(responseData);
+        } else {
+          return this.actionProvider.handleAllProfesser(responseData);
+        }
+      
+    }
 
     if (message.includes("หลักสูตร")) {
       if (

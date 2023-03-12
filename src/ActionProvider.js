@@ -184,51 +184,49 @@ class ActionProvider {
 
   //Teacher
   //-------------------------------------------------
-  // handleAllProfesser = (info) => {
-  //   var text = ""
-  //   var message
-  //   info.forEach(element => {
-  //     text = "อาจารย์: " + element.name + "\n"
-  //       + "ออฟฟิศประจำ: " + element.location + "\n"
-  //       + "ช่องทางการติดต่อ: " + element.email + "\n"
-  //       + "ช่วงเวลาที่สามารถติดต่อได้: " + element.time + "\n"
-  //       + "urlรูปภาพ: " + element.picture + "\n"
-  //       + "urlข้อมูลเพิ่มเติม: " + element.link
-  //     message = this.createChatBotMessage(
-  //       text,
-  //       {
-  //         loading: true,
-  //         terminateLoading: true,
-  //         withAvatar: true
-  //       }
-  //     )
-  //     this.addMessageToState(message)
-  //     console.log(text)
-  //   })
-  // };
+  handleAllProfesser = async (info) => {
+    var text = ""
+    var message
+    info.forEach(element => {
+      text = "อาจารย์: " + element.name + "\n"
+        + "ออฟฟิศประจำ: " + element.location + "\n"
+        + "ช่องทางการติดต่อ: " + element.email + "\n"
+        + "ช่วงเวลาที่สามารถติดต่อได้: " + element.time + "\n"
+        + "urlรูปภาพ: " + element.picture + "\n"
+        + "urlข้อมูลเพิ่มเติม: " + element.link
+      message = this.createChatBotMessage(
+        text,
+        {
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        }
+      )
+      this.addMessageToState(message)
+      console.log(text)
+    })
+  };
 
-  // handleProfesser = (info) => {
-  //   var text = ""
-  //   var message
-  //   info.forEach(element => {
-  //     text = "อาจารย์: " + element.name + "\n"
-  //       + "ออฟฟิศประจำ: " + element.location + "\n"
-  //       + "ช่องทางการติดต่อ: " + element.email + "\n"
-  //       + "ช่วงเวลาที่สามารถติดต่อได้: " + element.time + "\n"
-  //       + "urlรูปภาพ: " + element.picture + "\n"
-  //       + "urlข้อมูลเพิ่มเติม: " + element.link
-  //     message = this.createChatBotMessage(
-  //       text,
-  //       {
-  //         loading: true,
-  //         terminateLoading: true,
-  //         withAvatar: true
-  //       }
-  //     )
-  //     this.addMessageToState(message)
-  //     console.log(text)
-  //   })
-  // };
+  handleProfesser = async (info) => {
+    var text = ""
+    var message
+      text = "อาจารย์: " + info.name + "\n"
+        + "ออฟฟิศประจำ: " + info.location + "\n"
+        + "ช่องทางการติดต่อ: " + info.email + "\n"
+        + "ช่วงเวลาที่สามารถติดต่อได้: " + info.time + "\n"
+        + "urlรูปภาพ: " + info.picture + "\n"
+        + "urlข้อมูลเพิ่มเติม: " + info.link
+      message = this.createChatBotMessage(
+        text,
+        {
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        }
+      )
+      this.addMessageToState(message)
+      console.log(text)
+  };
 
   //Degree
   handleBachelorCurriculum() {
