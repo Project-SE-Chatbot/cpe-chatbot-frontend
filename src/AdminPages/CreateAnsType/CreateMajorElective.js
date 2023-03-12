@@ -34,7 +34,11 @@ const CreateMajorElective = (props) => {
                         body: JSON.stringify(
                                 {
                                         key_1: course_code,
-                                        key_2: name
+                                        key_2: name,
+                                        key_3:"",
+                                        key_4:"",
+                                        key_5:"",
+                                        key_6:""
                                 })
                 };
                 fetch('http://localhost:5000/major-elec-key', requestKey)

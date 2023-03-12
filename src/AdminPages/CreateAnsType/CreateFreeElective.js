@@ -38,7 +38,10 @@ const CreateFreeElective = (props) => {
                                 {
                                         key_1:course_code,
                                         key_2:name,
-                                        key_3:name_thai
+                                        key_3:name_thai,
+                                        key_4:"",
+                                        key_5:"",
+                                        key_6:""
                                 })
                 };
                 fetch('http://localhost:5000/free-elec-key', requestKey)

@@ -64,7 +64,6 @@ const AnswerEdit = (props) => {
         setValue()
         setT()
         setDT()
-        setDate()
     }
 
     useEffect(() => {

@@ -36,7 +36,12 @@ const CreateRegister = (props) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(
         {
-          key_1: name
+          key_1: name,
+          key_2:"",
+          key_3:"",
+          key_4:"",
+          key_5:"",
+          key_6:""
         })
     };
     fetch('http://localhost:5000/register-key', requestKey)
