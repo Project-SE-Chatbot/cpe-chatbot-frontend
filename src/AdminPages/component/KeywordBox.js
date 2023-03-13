@@ -57,7 +57,7 @@ const KeywordBox = (props) => {
                 {props.name}
             </div>
 
-            <div className='accContainer'>
+            {/* <div className='accContainer'>
                 <div className='accuracy' style={{ 'background': color }}>
                     <div className='accText' >
                         {props.acc}%
@@ -67,7 +67,7 @@ const KeywordBox = (props) => {
 
             <div className='lastEditText'>
                 {date}
-            </div>
+            </div> */}
             
             {(props.enableEdit) ? (<div className='editDelContainer'>
                 <div className='editIcon'>

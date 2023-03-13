@@ -1,6 +1,6 @@
 .keywordContainer {
     display: grid;
-    grid-template-columns: 375px 260px 210px 100px;
+    grid-template-columns: 845px 100px;
     gap: 5px;
     margin-left: 2vw;
     margin-right: 2vw;

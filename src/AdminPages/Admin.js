@@ -280,7 +280,6 @@ const AdminPage = (props) => {
               <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
             </div>
             <div className="admin-ans-list">
-            <AnswerBox key={12} course_id={"261421"} title={"Major Elective"} star={5} detail={"love"} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
               {type === "teacher"
                 ? dataTeacher && showTeacherAnsBox
                 : type === "freeelective"

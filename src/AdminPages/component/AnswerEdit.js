@@ -46,28 +46,28 @@ const AnswerEdit = (props) => {
         url = "http://localhost:5000/place-key/" + props.id
     } else if (props.title === "Teacher") {
         url = "http://localhost:5000/teacher-key/" + props.id
-    } else if (props.title === "Major Elective"){
+    } else if (props.title === "Major Elective") {
         url = "http://localhost:5000/major-elec-key/" + props.id
-    } else if (props.title === "Free elective"){
+    } else if (props.title === "Free elective") {
         url = "http://localhost:5000/free-elec-key/" + props.id
-    } else if (props.title === "Register"){
+    } else if (props.title === "Register") {
         url = "http://localhost:5000/register-key/" + props.id
-    }else if (props.title === "Degree"){
+    } else if (props.title === "Degree") {
         url = "http://localhost:5000/degree-key/" + props.id
     }
 
     const [data, setData] = useState(null);
     const [keyList, setList] = useState(null);
 
-    const [clickCreate,setCC] = useState(false);
+    const [clickCreate, setCC] = useState(false);
 
-    const clickCC = () =>{
+    const clickCC = () => {
         setCC(!clickCreate)
     }
 
 
     useEffect(() => {
-        
+
     }, [refresh])
 
 
@@ -96,12 +96,12 @@ const AnswerEdit = (props) => {
         // })
         showKey =
             <div className='keywordBoxContainer'>
-                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={false}/>
-                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title} enableEdit={true}/>
-                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title} enableEdit={true}/>
-                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title} enableEdit={true}/>
-                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title} enableEdit={true}/>
-                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={true}/>
+                <KeywordBox name={keyList.key_1} id={props.id} keyID={"key_1"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={false} />
+                <KeywordBox name={keyList.key_2} id={props.id} keyID={"key_2"} acc={30} refresh={handleRefresh} title={props.title} enableEdit={true} />
+                <KeywordBox name={keyList.key_3} id={props.id} keyID={"key_3"} acc={80} refresh={handleRefresh} title={props.title} enableEdit={true} />
+                <KeywordBox name={keyList.key_4} id={props.id} keyID={"key_4"} acc={90} refresh={handleRefresh} title={props.title} enableEdit={true} />
+                <KeywordBox name={keyList.key_5} id={props.id} keyID={"key_5"} acc={10} refresh={handleRefresh} title={props.title} enableEdit={true} />
+                <KeywordBox name={keyList.key_6} id={props.id} keyID={"key_6"} acc={20} refresh={handleRefresh} title={props.title} enableEdit={true} />
             </div>
     }
 
@@ -145,7 +145,7 @@ const AnswerEdit = (props) => {
             </div>
 
             <div >
-                <SearchBar setTrigger={setCreate} keyNum={3} clickCC = {clickCC}></SearchBar>
+                <SearchBar setTrigger={setCreate} keyNum={3} clickCC={clickCC}></SearchBar>
             </div>
 
             <div className='collumText'>
@@ -153,28 +153,27 @@ const AnswerEdit = (props) => {
                     Keywords
                     <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
                 </div>
-                <div className='accuracyCollum'>
+                {/* <div className='accuracyCollum'>
                     Accuracy
                     <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
                 </div>
                 <div className='lastEditedCollum'>
                     Last edited
                     <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
-                </div>
+                </div> */}
             </div>
             <div className='keywordBoxContainer'>
                 {data && showKey}
             </div>
 
-
             <div>
-                <CreateKeyWord  id={props.id} title={props.title} trigger={create} setTrigger={setCreate} refresh={handleRefresh} clickCC={clickCreate}/>
+                <CreateKeyWord id={props.id} title={props.title} trigger={create} setTrigger={setCreate} refresh={handleRefresh} clickCC={clickCreate} />
             </div>
             <div>
-                <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} refresh={handleRefresh}/>
+                <ConfirmDeleteQuestion trigger={delAnswer} setTrigger={setDelAnswer} refresh={handleRefresh} />
             </div>
             <div>
-                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh} trigRefresh={refresh}/>
+                <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh} trigRefresh={refresh} />
             </div>
         </div>
 
