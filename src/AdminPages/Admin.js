@@ -260,7 +260,7 @@ const AdminPage = (props) => {
           <div className="admin-ans-box-container">
             <div className="admin-input-container">
               <form>
-                <select value={type} onChange={handleTypeChange}>
+                <select className="admin-input-search-keyword" value={type} onChange={handleTypeChange}>
                   <option value="major">Major</option>
                   <option value="majorelective">Major Elective</option>
                   <option value="freeelective">Free Elective</option>
