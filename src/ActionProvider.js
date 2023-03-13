@@ -100,6 +100,24 @@ class ActionProvider {
     // console.log(text)
   };
 
+  //Major elective
+  handleMajorElec = async (question) => {
+    var text = ""
+    var message
+    text = "รหัสวิชา: " + question.course_code + "\n"
+      + " วิชา: " + question.name + "\n"
+      + " urlข้อมูลเพิ่มเติม: " + question.link_description 
+    message = this.createChatBotMessage(
+      text,
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      })
+    this.addMessageToState(message)
+    // console.log(text)
+  };
+
   //เกม --------------------------------------------
   //Free elective
   handleFreeElectiveAll = async (question) => {
@@ -353,6 +371,18 @@ class ActionProvider {
   handleError = () => {
     const message = this.createChatBotMessage(
       "ขออภัยครับ ไม่มีข้อมูลในระบบ",
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    );
+    this.addMessageToState(message);
+  }
+
+  handleNotMatchKeyword = () => {
+    const message = this.createChatBotMessage(
+      "ขออภัยครับ ยังไม่เข้าใจคำถาม ลองถามคำถามใหม่อีกครั้งครับ",
       {
         loading: true,
         terminateLoading: true,
