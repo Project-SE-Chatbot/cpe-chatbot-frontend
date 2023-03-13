@@ -261,6 +261,7 @@ const AdminPage = (props) => {
             <div className="admin-input-container">
               <form>
                 <select className="admin-input-search-keyword" value={type} onChange={handleTypeChange}>
+                <option value="empty">choose type of answer</option>
                   <option value="major">Major</option>
                   <option value="majorelective">Major Elective</option>
                   <option value="freeelective">Free Elective</option>
@@ -292,7 +293,11 @@ const AdminPage = (props) => {
                         ? dataRegister && showRegisterAnsBox
                         : type === "major"
                           ? dataMajor && showMajorAnsBox
-                          : dataMajorElec && showMajorElecAnsBox
+                          : type === "majorelective"
+                            ? dataMajorElec && showMajorElecAnsBox
+                             : ""
+                              
+
               }
             </div>
           </div>
