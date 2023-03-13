@@ -109,10 +109,9 @@ const AnswerEdit = (props) => {
     return (props.trigger) ? (
         <div>
             <div className="AnswerEdit">
-                <div className="Date">
-                    {/* {date} */}
+                {/* <div className="Date">
                     {props.date}
-                </div>
+                </div> */}
                 <div className='HeadText'>
                     {/* {headText} */}
                     {props.title}

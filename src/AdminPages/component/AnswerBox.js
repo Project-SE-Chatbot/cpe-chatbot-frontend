@@ -46,9 +46,9 @@ const AnswerBox = (props) =>{
 
     return (
         <div className="AnswerBox" onClick={() => {handleOver();}} style={isOver}>
-            <div className='Date'>
+            {/* <div className='Date'>
                     {props.date}
-            </div>
+            </div> */}
             <div className="HeadText">
                     {props.title}
             </div>
