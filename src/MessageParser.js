@@ -59,7 +59,7 @@ class MessageParser {
     }
 
     //major
-    if (
+    if ( message.includes("เมเจอร์") ||
       message.includes("ตัวเจอร์") ||
       message.includes("ตัวเมเจอร์") ||
       message.includes("วิชา") ||
@@ -93,7 +93,7 @@ class MessageParser {
       }
     }
     //free elective
-    if (message.includes("ตัวฟรี") || message.includes("free elective")) {
+    if (message.includes("ฟรี") ||message.includes("ตัวฟรี") || message.includes("free elective")) {
       var requestOptions = {
         method: "GET",
         redirect: "follow",
@@ -276,27 +276,96 @@ class MessageParser {
         }
       
     }
-
+    //degree
     if (message.includes("หลักสูตร")) {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+      let responseData;
+      let url = "http://localhost:5000/degree";
       if (
         message.includes("ปตรี") ||
         message.includes("ป.ตรี") ||
         message.includes("ปริญญาตรี")
       ) {
-        return this.actionProvider.handleBachelorCurriculum();
+        url = "http://localhost:5000/degree/หลักสูตรปริญญาตรี"
+        // return this.actionProvider.handleBachelorCurriculum();
       } else if (
         message.includes("ปโท") ||
         message.includes("ป.โท") ||
         message.includes("ปริญญาโท")
       ) {
-        return this.actionProvider.handleDegreeCurriculum(2);
+        url = "http://localhost:5000/degree/หลักสูตรปริญญาโท"
+        // return this.actionProvider.handleDegreeCurriculum(2);
       } else if (
         message.includes("ปเอก") ||
         message.includes("ป.เอก") ||
         message.includes("ปริญญาเอก")
       ) {
-        return this.actionProvider.handleDegreeCurriculum(3);
+        url = "http://localhost:5000/degree/หลักสูตรปริญญาเอก"
+        // return this.actionProvider.handleDegreeCurriculum(3);
       }
+      await fetch(url, requestOptions)
+          .then((response) => response.json())
+          .then((result) => (responseData = result))
+          .catch((error) => {
+            return this.actionProvider.handleError();
+          });
+      if (message.includes("ตรี") || message.includes("โท")||message.includes("เอก")) {
+          return this.actionProvider.handleDegree(responseData);
+        } else {
+          return this.actionProvider.handleAllDegree(responseData);
+        }
+    }
+
+    //Register
+    if (
+      message.includes("ทีแคส") ||
+      message.includes("TCAS") ||
+      message.includes("วิศวะคอม") ||
+      message.includes("เข้าเรียน") ||
+      message.includes("สมัครเรียน") ||
+      message.includes("รอบ")
+    ) {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      let responseData;
+      let url = "http://localhost:5000/register/วิศวะคอม TCAS66";
+     
+      if (containsNumbers(message) === true) {
+        let onlyNum = message.replace(/\D/g, "");
+        console.log("Number : "+ onlyNum)
+        if (onlyNum == 1){
+          url = "http://localhost:5000/register/วิศวะคอม TCAS รอบที่1 ประจำปีการศึกษา2566"
+          console.log(url)
+        }
+        else if (onlyNum == 2){
+          url = "http://localhost:5000/register/วิศวะคอม TCAS รอบที่2 ประจำปีการศึกษา2566"
+          console.log(url)
+        }
+      }
+      
+      //-----------------------------------fetch function
+      await fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((result) => (responseData = result))
+        .catch((error) => {
+          return this.actionProvider.handleError();
+        });
+
+        if (
+          message.includes("ทีแคส") ||
+          message.includes("TCAS") ||
+          message.includes("วิศวะคอม") ||
+          message.includes("เข้าเรียน") ||
+          message.includes("สมัครเรียน")
+        ){
+          return this.actionProvider.handleRegister(responseData);
+        }
     }
 
     return this.actionProvider.handleOptions({ withAvatar: true });

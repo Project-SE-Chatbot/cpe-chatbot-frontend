@@ -229,6 +229,43 @@ class ActionProvider {
   };
 
   //Degree
+  handleDegree = async (question) => {
+    var text = ""
+    var message
+    text =  question.name + "\n"
+        + question.link 
+    message = this.createChatBotMessage(
+      text,
+      {
+        widget: question.link,
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    )
+    this.addMessageToState(message)
+    // console.log(text)
+  };
+
+  handleAllDegree = async (question) => {
+    var text = ""
+    var message
+    question.forEach(element => {
+      text =  element.name + "\n"
+        + element.link 
+      message = this.createChatBotMessage(
+        text,
+        {
+          loading: true,
+          terminateLoading: true,
+          withAvatar: true
+        }
+      )
+      this.addMessageToState(message)
+      // console.log(text)
+    })
+  };
+
   handleBachelorCurriculum() {
     let message1
     message1 = this.createChatBotMessage(
@@ -277,6 +314,26 @@ class ActionProvider {
       );
     }
   }
+
+  //Register
+  handleRegister = async (question) => {
+    var text = ""
+    var message
+    text =  question.name + "\n"
+        + question.link 
+    message = this.createChatBotMessage(
+      text,
+      {
+        widget: question.link,
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    )
+    this.addMessageToState(message)
+    // console.log(text)
+  };
+
 
   handleFBCPECMU = () => {
     const message = this.createChatBotMessage(
