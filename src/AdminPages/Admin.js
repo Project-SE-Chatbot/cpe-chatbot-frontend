@@ -330,7 +330,7 @@ const AdminPage = (props) => {
           </div>
         </div>
         <div className="edit">
-          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh} />
+          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh} editTrigger={setAnsEdit}/>
           {/* {checkValue()} */}
         </div>
       </div>

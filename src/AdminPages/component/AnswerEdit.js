@@ -170,7 +170,7 @@ const AnswerEdit = (props) => {
                 <CreateKeyWord id={props.id} title={props.title} trigger={create} setTrigger={setCreate} refresh={handleRefresh} clickCC={clickCreate} />
             </div>
             <div>
-                <ConfirmDeleteQuestion title={props.title} name={props.name} courseID={props.id} trigger={delAnswer} setTrigger={setDelAnswer} refresh={handleRefresh} />
+                <ConfirmDeleteQuestion title={props.title} name={props.name} courseID={props.id} trigger={delAnswer} setTrigger={setDelAnswer} refresh={handleRefresh} editTrigger={props.editTrigger}/>
             </div>
             <div>
                 <PopupEditAns title={props.title} trigger={editAns} setTrigger={setEditAns} courseID={props.id} refresh={handleRefresh} trigRefresh={refresh} />
