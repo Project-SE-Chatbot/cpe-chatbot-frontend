@@ -17,7 +17,7 @@ const AnswerBox = (props) =>{
 
     let handleOver = () =>{
         setOver(!over);
-        props.editTrigger(!over);
+        props.editTrigger(true);
         props.setTitle(props.title);
         props.setDetail(props.detail);
         props.setStar(props.star);
