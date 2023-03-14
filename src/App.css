@@ -307,6 +307,8 @@
   flex-direction: column;
   background: #ECF1FF;
   height: 100%;
+  width: 100vw;
+  position: fixed;
 }
 
 .admin-background .container {
