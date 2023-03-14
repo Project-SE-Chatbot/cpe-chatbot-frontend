@@ -125,7 +125,7 @@ const CreateTeacher = (props) => {
         >
           Cancle
         </div>
-        <div className="admin-create-answer-done-button" onClick={onSubmit}>
+        <div className="admin-create-answer-done-button" onClick={(e)=>{ onSubmit(e); props.refresh(); }}>
           Done
         </div>
       </div>

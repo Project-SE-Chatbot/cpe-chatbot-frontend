@@ -267,7 +267,7 @@ const AdminPage = (props) => {
       <div className="container">
         <div>
           {/* <AnsContainer /> */}
-          <PopupCreAns trigger={showPopup} togglePopup={togglePopup} />
+          <PopupCreAns trigger={showPopup} togglePopup={togglePopup} refresh={handleRefresh}/>
           <div className="admin-ans-box-container">
             <div className="admin-input-container">
               <form>

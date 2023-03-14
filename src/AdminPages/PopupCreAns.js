@@ -42,18 +42,18 @@ const PopupCreAns = (props) => {
                 </div>
     
                     {type === "teacher"
-                        ? <CreateTeacher trigger={props.togglePopup}/>
+                        ? <CreateTeacher trigger={props.togglePopup} refresh={props.refresh}/> 
                         : type === "freeelective"
-                            ? <CreateFreeElective trigger={props.togglePopup}/>
+                            ? <CreateFreeElective trigger={props.togglePopup} refresh={props.refresh}/>
                             : type === "place"
-                                ? <CreatePlace trigger={props.togglePopup}/>
+                                ? <CreatePlace trigger={props.togglePopup} refresh={props.refresh}/>
                                 : type === "degree"
-                                    ? <CreateDegree trigger={props.togglePopup}/>
+                                    ? <CreateDegree trigger={props.togglePopup} refresh={props.refresh}/>
                                     : type === "register"
-                                        ? <CreateRegister trigger={props.togglePopup}/>
+                                        ? <CreateRegister trigger={props.togglePopup} refresh={props.refresh}/>
                                         : type === "major"
-                                            ? <CreateMajor trigger={props.togglePopup}/>
-                                            : <CreateMajorElective trigger={props.togglePopup}/>
+                                            ? <CreateMajor trigger={props.togglePopup} refresh={props.refresh}/>
+                                            : <CreateMajorElective trigger={props.togglePopup} refresh={props.refresh}/>
                     }
                 
             </div>

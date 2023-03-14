@@ -80,7 +80,7 @@ const CreateFreeElective = (props) => {
                         </div>
                         <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 <div className="admin-create-answer-cancle-button " onClick={(e) => { props.trigger(false); onCancle(e); }}>Cancle</div>
-                                <div type="submit" className="admin-create-answer-done-button" onClick={onSubmit}>Done</div>
+                                <div type="submit" className="admin-create-answer-done-button" onClick={(e)=>{ onSubmit(e); props.refresh(); }}>Done</div>
                         </div>
                 </div>
 
