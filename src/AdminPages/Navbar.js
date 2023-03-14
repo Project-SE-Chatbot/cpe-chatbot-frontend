@@ -3,6 +3,13 @@ import logout from "../img/logout.png";
 import user from "../img/user.png";
 
 const Navbar = (props) => {
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    window.location.href = "/Login";
+  };
+
+
   return (
     <div className="admin-navbar-container">
       <h1>CPE CHATBOT</h1>
@@ -13,7 +20,7 @@ const Navbar = (props) => {
         </div>
         <button className="admin-button">
             <img src={logout} style={{width: "35px",height: "35px"}}
-            onClick={()=>window.location.href = "/Login"}></img>
+            onClick={handleLogout}></img>
         </button>
       </div>
     </div>

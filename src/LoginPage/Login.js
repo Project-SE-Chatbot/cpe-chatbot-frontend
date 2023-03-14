@@ -45,6 +45,7 @@ const LoginPage = (props) => {
         AdminList.map(element =>{
             if(element.name == info.username && element.password == info.password){
                 window.location.href = "/Admin";
+                localStorage.setItem('accessToken', 'accessToken');
                 console.log("LoginSusess")
             }       
         })

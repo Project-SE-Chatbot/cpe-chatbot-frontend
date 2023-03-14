@@ -7,13 +7,24 @@ import LoginPage from './LoginPage/Login';
 
 function App() {
 
+  const token = localStorage.getItem('accessToken');
+
+  if (!token) {
+    return(
+      <Routes>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/Login' element={<LoginPage />}></Route>
+    </Routes>
+    )
+  }
+
   return (
-   
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/Admin' element={<AdminPage />}></Route>
-          <Route path='/Login' element={<LoginPage />}></Route>
-        </Routes>
+
+    <Routes>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/Admin' element={<AdminPage />}></Route>
+      <Route path='/Login' element={<LoginPage />}></Route>
+    </Routes>
   );
 }
 
