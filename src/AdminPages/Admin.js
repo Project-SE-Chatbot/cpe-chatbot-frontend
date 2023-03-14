@@ -257,7 +257,8 @@ const AdminPage = (props) => {
       )
   }
 
-  let ansNum = majorNum + teacherNum + placeNum + DegreeNum + registerNum + placeNum +majorElecNum
+  let ansNum = majorNum + teacherNum + placeNum + DegreeNum + registerNum + freeElecNum+ majorElecNum
+
 
   return (
     <div className="admin-background" >
