@@ -74,6 +74,8 @@ const AdminPage = (props) => {
   const [dataRegister, setDataRegister] = useState(null);
   const [dataTeacher, setDataTeacher] = useState(null);
 
+  const [SelectedBox, setSelectedBox] = useState("null");
+
   const [refresh, setRefresh] = useState(false)
 
   const handleRefresh = () => {
@@ -186,7 +188,8 @@ const AdminPage = (props) => {
           + "ภาคเรียนที่เปิดสอน: " + element.term + " "
           + "วัน: " + element.day + " " + element.time;
 
-        return <AnswerBox key={element.id_major} course_id={element.course_code} title={"Major"} star={3} detail={text} date={"Yesterday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_major} course_id={element.course_code} title={"Major"} star={3} detail={text} date={"Yesterday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -198,7 +201,8 @@ const AdminPage = (props) => {
         text = "วิชา: " + element.name + " " + element.course_code + " "
           + "Description and review: " + element.link_description;
 
-        return <AnswerBox key={element.id_major_elective} course_id={element.course_code} title={"Major Elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_major_elective} course_id={element.course_code} title={"Major Elective"} star={5} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -209,7 +213,8 @@ const AdminPage = (props) => {
         DegreeNum++
         text = element.name + " " + "Description:" + element.link;
 
-        return <AnswerBox key={element.id_degree} course_id={element.name} title={"Degree"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_degree} course_id={element.name} title={"Degree"} star={5} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -219,7 +224,8 @@ const AdminPage = (props) => {
       AnsboxFreeElecList.map(element => {
         freeElecNum++
         text = "วิชา:" + element.name + " " + element.name_thai + " " + element.course_code + "Description:" + element.link_description;
-        return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -230,7 +236,8 @@ const AdminPage = (props) => {
         placeNum++
         text = "Room: " + element.room + " Buildiing: " + element.building + " Floor: " + element.floor + " Link locattion: " + element.link_location;
 
-        return <AnswerBox key={element.id_place} course_id={element.room} title={"Place"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_place} course_id={element.room} title={"Place"} star={1} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -241,7 +248,8 @@ const AdminPage = (props) => {
         registerNum++
         text = element.name + " Link: " + element.link;
 
-        return <AnswerBox key={element.id_register} course_id={element.name} title={"Register"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_register} course_id={element.name} title={"Register"} star={1} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -252,7 +260,8 @@ const AdminPage = (props) => {
         teacherNum++
         text = "ชื่อ: " + element.name + " Office: " + element.location + " Contact: " + element.email + " Image: " + element.picture + " More Info: " + element.link;
 
-        return <AnswerBox key={element.id_teacher} course_id={element.name} title={"Teacher"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
+        return <AnswerBox key={element.id_teacher} course_id={element.name} title={"Teacher"} star={1} detail={text} date={"Last Monday"} SelectedBox={SelectedBox} setSelectedBox={setSelectedBox}
+        setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
@@ -330,7 +339,8 @@ const AdminPage = (props) => {
           </div>
         </div>
         <div className="edit">
-          <AnswerEdit trigger={AnsEdit} id={id} title={title} detail={detail} star={star} date={day} refresh={handleRefresh} />
+          <AnswerEdit trigger={AnsEdit} id={id}  title={title} detail={detail} star={star} date={day} SelectedBox={SelectedBox}
+          refresh={handleRefresh} />
           {/* {checkValue()} */}
         </div>
       </div>

@@ -23,10 +23,11 @@ const AnswerBox = (props) =>{
         props.setStar(props.star);
         props.setDate(props.date);
         props.setID(props.course_id);
+        props.setSelectedBox(props.course_id);
     }
 
     const isOver = {
-        border: over ? '3px solid #6B7EB6':" ",
+        border: props.SelectedBox==props.course_id? '3px solid #6B7EB6':" ",
         cursor: 'pointer'
     }
 
