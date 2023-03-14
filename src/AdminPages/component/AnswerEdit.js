@@ -106,7 +106,7 @@ const AnswerEdit = (props) => {
     }
 
 
-    return (props.trigger) ? (
+    return (props.id==props.SelectedBox) ? (
         <div>
             <div className="AnswerEdit">
                 {/* <div className="Date">
