@@ -60,9 +60,9 @@ const AnswerBox = (props) =>{
                 <div className='CommuIcon'>
                     <FontAwesomeIcon icon={faComments} />
                 </div>
-                <div>
+                {/* <div>
                     {comment}
-                </div>
+                </div> */}
                 <div className='star'>
                     <Rating  maxRating={5} defaultRating={props.star} icon='star' size='mini' disabled/>
                 </div>
