@@ -55,7 +55,7 @@ const ConfirmDeleteQuestion = (props) => {
                         Cancle
                     </div>
                 </div>
-                <div className='deleteButton' onClick={() => { handleDelete(); props.refresh();props.setTrigger(false);}}>
+                <div className='deleteButton' onClick={() => { handleDelete(); props.refresh();props.setTrigger(false); props.editTrigger(false)}}>
                     <div className='deleteText'>
                         Delete
                     </div>
