@@ -2,7 +2,7 @@ import plus from "../img/plus (1).png";
 import '../css/SearchBar.css'
 import { useState } from "react";
 const SearchBar = (props) => {
-    const [keyNum, setKeyNum] = useState(0);
+    const [keyNum, setKeyNum] = useState(props.key_word);
     return (
         <div className='SearchBar'>
             <div className="SearchContainer">
@@ -19,9 +19,9 @@ const SearchBar = (props) => {
                 </div>
             </div>
 
-            <div className="Detail">
-                We’ve found {props.keyNum} Keywords
-            </div>
+            {/* <div className="Detail">
+                We’ve found {keyNum} Keywords
+            </div> */}
 
         </div>
     )
