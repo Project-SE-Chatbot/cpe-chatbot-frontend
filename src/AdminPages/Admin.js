@@ -160,7 +160,16 @@ const AdminPage = (props) => {
   }, [urlTeacher, refresh])
 
   let text = null
-  let ansNum = 0
+
+  
+  let majorNum = 0
+  let teacherNum = 0
+  let placeNum = 0
+  let majorElecNum = 0
+  let freeElecNum = 0
+  let DegreeNum = 0
+  let registerNum = 0
+
   let showMajorAnsBox = null
   let showMajorElecAnsBox = null
   let showDegreeAnsBox = null
@@ -172,7 +181,7 @@ const AdminPage = (props) => {
   if (dataMajor) {
     showMajorAnsBox =
       AnsboxMajorList.map(element => {
-        ansNum++
+        majorNum++
         text = "วิชา: " + element.name + " " + element.course_code + " "
           + "ภาคเรียนที่เปิดสอน: " + element.term + " "
           + "วัน: " + element.day + " " + element.time;
@@ -185,7 +194,7 @@ const AdminPage = (props) => {
   if (dataMajorElec) {
     showMajorElecAnsBox =
       AnsboxMajorElecList.map(element => {
-        ansNum++
+        majorElecNum++
         text = "วิชา: " + element.name + " " + element.course_code + " "
           + "Description and review: " + element.link_description;
 
@@ -197,7 +206,7 @@ const AdminPage = (props) => {
   if (dataDegree) {
     showDegreeAnsBox =
       AnsboxDegreeList.map(element => {
-        ansNum++
+        DegreeNum++
         text = element.name + " " + "Description:" + element.link;
 
         return <AnswerBox key={element.id_degree} course_id={element.name} title={"Degree"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
@@ -208,7 +217,7 @@ const AdminPage = (props) => {
   if (dataFreeElec) {
     showFreeElecAnsBox =
       AnsboxFreeElecList.map(element => {
-        ansNum++
+        freeElecNum++
         text = "วิชา:" + element.name + " " + element.name_thai + " " + element.course_code + "Description:" + element.link_description;
         return <AnswerBox key={element.id_free_elective} course_id={element.course_code} title={"Free elective"} star={5} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
@@ -218,7 +227,7 @@ const AdminPage = (props) => {
   if (dataPlace) {
     showPlaceAnsBox =
       AnsboxPlaceList.map(element => {
-        ansNum++
+        placeNum++
         text = "Room: " + element.room + " Buildiing: " + element.building + " Floor: " + element.floor + " Link locattion: " + element.link_location;
 
         return <AnswerBox key={element.id_place} course_id={element.room} title={"Place"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
@@ -229,7 +238,7 @@ const AdminPage = (props) => {
   if (dataRegister) {
     showRegisterAnsBox =
       AnsboxRegisterList.map(element => {
-        ansNum++
+        registerNum++
         text = element.name + " Link: " + element.link;
 
         return <AnswerBox key={element.id_register} course_id={element.name} title={"Register"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
@@ -240,13 +249,15 @@ const AdminPage = (props) => {
   if (dataTeacher) {
     showTeacherAnsBox =
       AnsboxTeacherList.map(element => {
-        ansNum++
+        teacherNum++
         text = "ชื่อ: " + element.name + " Office: " + element.location + " Contact: " + element.email + " Image: " + element.picture + " More Info: " + element.link;
 
         return <AnswerBox key={element.id_teacher} course_id={element.name} title={"Teacher"} star={1} detail={text} date={"Last Monday"} setID={setID} setTitle={setTitle} setDetail={setDetail} setStar={setStar} setDate={setDate} editTrigger={setAnsEdit} />
       }
       )
   }
+
+  let ansNum = majorNum + teacherNum + placeNum + DegreeNum + registerNum + placeNum +majorElecNum
 
   return (
     <div className="admin-background" >
@@ -277,7 +288,22 @@ const AdminPage = (props) => {
               </button>
             </div>
             <div className="FoundAns">
-              <p>We found {ansNum} Answer</p>
+              {type === "teacher"
+                ? <p>We found {teacherNum} Answer</p>
+                : type === "freeelective"
+                  ? <p>We found {freeElecNum} Answer</p>
+                  : type === "place"
+                    ? <p>We found {placeNum} Answer</p>
+                    : type === "degree"
+                      ? <p>We found {DegreeNum} Answer</p>
+                      : type === "register"
+                        ? <p>We found {registerNum} Answer</p>
+                        : type === "major"
+                          ? <p>We found {majorNum} Answer</p>
+                          : type === "majorelective"
+                            ? <p>We found {majorElecNum} Answer</p>
+                             : <p>We found {ansNum} Answer</p>
+              }
               <FontAwesomeIcon icon={faChevronDown} style={{ cursor: 'pointer' }} />
             </div>
             <div className="admin-ans-list">
