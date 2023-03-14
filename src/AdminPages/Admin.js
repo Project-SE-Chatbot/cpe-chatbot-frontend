@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AnsContainer from "./AnsContainer";
-import ConfirmDelAns from "./ConfirmDelAns";
 import AnswerEdit from "./component/AnswerEdit";
 import Navbar from "./Navbar";
 import PopupCreAns from "./PopupCreAns";
