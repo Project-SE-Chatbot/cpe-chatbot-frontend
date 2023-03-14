@@ -46,6 +46,7 @@ const LoginPage = (props) => {
             if(element.name == info.username && element.password == info.password){
                 window.location.href = "/Admin";
                 localStorage.setItem('accessToken', 'accessToken');
+                localStorage.setItem('username', element.name);
                 console.log("LoginSusess")
             }       
         })
