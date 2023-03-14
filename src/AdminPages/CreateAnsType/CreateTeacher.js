@@ -32,7 +32,7 @@ const CreateTeacher = (props) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     };
-    fetch('http://localhost:5000/teacher', requestOptions)
+    fetch('10.10.182.145:5000/teacher', requestOptions)
       .then(response => response.json())
       .then(data => this.setState({ postId: data.id }));
 
@@ -49,7 +49,7 @@ const CreateTeacher = (props) => {
           key_6:""
         })
     };
-    fetch('http://localhost:5000/teacher-key', requestKey)
+    fetch('10.10.182.145:5000/teacher-key', requestKey)
       .then(response => response.json())
       .then(data => this.setState({ postId: data.id }));
 

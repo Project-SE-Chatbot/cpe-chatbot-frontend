@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AnsContainer from "./AnsContainer";
-import ConfirmDelAns from "./ConfirmDelAns";
 import AnswerEdit from "./component/AnswerEdit";
 import Navbar from "./Navbar";
 import PopupCreAns from "./PopupCreAns";
@@ -50,13 +49,21 @@ const AdminPage = (props) => {
   };
 
 
-  const urlMajor = "http://localhost:5000/major"
-  const urlMajorElec = "http://localhost:5000/major-elective"
-  const urlDegree = "http://localhost:5000/degree"
-  const urlFreeElec = "http://localhost:5000/free-elective"
-  const urlPlace = "http://localhost:5000/place"
-  const urlRegister = "http://localhost:5000/register"
-  const urlTeacher = "http://localhost:5000/teacher"
+  // const urlMajor = "http://localhost:5000/major"
+  // const urlMajorElec = "http://localhost:5000/major-elective"
+  // const urlDegree = "http://localhost:5000/degree"
+  // const urlFreeElec = "http://localhost:5000/free-elective"
+  // const urlPlace = "http://localhost:5000/place"
+  // const urlRegister = "http://localhost:5000/register"
+  // const urlTeacher = "http://localhost:5000/teacher"
+
+  const urlMajor = "10.10.182.145:5000/major"
+  const urlMajorElec = "10.10.182.145:5000/major-elective"
+  const urlDegree = "10.10.182.145:5000/degree"
+  const urlFreeElec = "10.10.182.145:5000/free-elective"
+  const urlPlace = "10.10.182.145:5000/place"
+  const urlRegister = "10.10.182.145:5000/register"
+  const urlTeacher = "10.10.182.145:5000/teacher"
 
   const [AnsboxMajorList, setMajorList] = useState(null);
   const [AnsboxMajorElecList, setMajorElecList] = useState(null);
