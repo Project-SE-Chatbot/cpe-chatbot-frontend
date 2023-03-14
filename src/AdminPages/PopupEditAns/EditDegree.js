@@ -7,7 +7,8 @@ const EditDegree = (props) => {
     const [More, setMore] = useState('');
     const [data, setData] = useState(null);
     
-    var geturl = "http://localhost:5000/degree/" + props.courseID
+    // var geturl = "http://localhost:5000/degree/" + props.courseID
+    var geturl = "10.10.182.145:5000/degree/" + props.courseID
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
