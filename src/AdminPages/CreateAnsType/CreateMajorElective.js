@@ -24,7 +24,7 @@ const CreateMajorElective = (props) => {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                 };
-                fetch('10.10.182.145:5000/major-elective', requestOptions)
+                fetch('http://10.10.182.145:5000/major-elective', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -41,7 +41,7 @@ const CreateMajorElective = (props) => {
                                         key_6:""
                                 })
                 };
-                fetch('10.10.182.145:5000/major-elec-key', requestKey)
+                fetch('http://10.10.182.145:5000/major-elec-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 

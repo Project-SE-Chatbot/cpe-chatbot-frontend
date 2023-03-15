@@ -27,7 +27,7 @@ const CreateRegister = (props) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     };
-    fetch('10.10.182.145:5000/register', requestOptions)
+    fetch('http://10.10.182.145:5000/register', requestOptions)
       .then(response => response.json())
       // .then(data => this.setState({ postId: data.id }));
 
@@ -44,7 +44,7 @@ const CreateRegister = (props) => {
           key_6:""
         })
     };
-    fetch('10.10.182.145:5000/register-key', requestKey)
+    fetch('http://10.10.182.145:5000/register-key', requestKey)
       .then(response => response.json())
       // .then(data => this.setState({ postId: data.id }));
 
