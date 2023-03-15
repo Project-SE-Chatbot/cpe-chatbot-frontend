@@ -14,8 +14,8 @@ const EditTeacher = (props) => {
     // var geturl = "http://localhost:5000/teacher/" + props.courseID
     // var puturl = "http://localhost:5000/teacher/name"
 
-    var geturl = "10.10.182.145:5000/teacher/" + props.courseID
-    var puturl = "10.10.182.145:5000/teacher/name"
+    var geturl = "http://10.10.182.145:5000/teacher/" + props.courseID
+    var puturl = "http://10.10.182.145:5000/teacher/name"
 
     var requestOptions = {
         method: 'GET',

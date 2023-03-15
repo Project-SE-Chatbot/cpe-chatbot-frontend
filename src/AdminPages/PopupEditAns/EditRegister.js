@@ -10,8 +10,8 @@ const EditPlan = (props) => {
     // var geturl = "http://localhost:5000/register/" + props.courseID
     // var puturl = "http://localhost:5000/register/name"
 
-    var geturl = "10.10.182.145:5000/register/" + props.courseID
-    var puturl = "10.10.182.145:5000/register/name"
+    var geturl = "http://10.10.182.145:5000/register/" + props.courseID
+    var puturl = "http://10.10.182.145:5000/register/name"
 
     var requestOptions = {
         method: 'GET',
