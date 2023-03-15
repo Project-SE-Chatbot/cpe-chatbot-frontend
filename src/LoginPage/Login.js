@@ -8,6 +8,7 @@ const LoginPage = (props) => {
 
   const [username, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,15 +19,16 @@ const LoginPage = (props) => {
 
     let responseData;
     let url
-    // url = "http://localhost:5000/admin/"+username
-    url = "10.10.182.145:5000/admin"+username
+    url = "http://localhost:5000/admin/"+username
+    // url = "10.10.182.145:5000/admin"+username
     await fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((result) => (responseData = result))
+      .then((result) => {(responseData = result); setLoading(false)})
       .catch((error) => {
         alert("username or passwor is incorrect");
       });
-      if(responseData.name === info.username && responseData.password === info.password){
+      if(loading == false){
+        if(responseData.name === info.username && responseData.password === info.password){
                 window.location.href = "/Admin";
                 localStorage.setItem('accessToken', 'accessToken');
                 localStorage.setItem('username', responseData.name);
@@ -35,6 +37,8 @@ const LoginPage = (props) => {
                 alert("username or passwor is incorrect")
                 console.log("LoginFail")
             }
+      }
+      
   };
   return (
     <div className="login-background">
