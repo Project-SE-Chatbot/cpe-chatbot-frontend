@@ -26,6 +26,7 @@ const LoginPage = (props) => {
       .then((result) => {(responseData = result); setLoading(false)})
       .catch((error) => {
         alert("username or passwor is incorrect");
+        console.log(error);
       });
       if(loading == false){
         if(responseData.name === info.username && responseData.password === info.password){
