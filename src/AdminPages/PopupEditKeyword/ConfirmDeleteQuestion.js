@@ -7,19 +7,19 @@ const ConfirmDeleteQuestion = (props) => {
     let url
 
     if (props.title === "Major") {
-        url = "10.10.182.145:5000/major/" + props.courseID
+        url = "http://10.10.182.145:5000/major/" + props.courseID
     } else if (props.title === "Place") {
-        url = "10.10.182.145:5000/place/" + props.courseID
+        url = "http://10.10.182.145:5000/place/" + props.courseID
     } else if (props.title === "Teacher") {
-        url = "10.10.182.145:5000/teacher/" + props.courseID
+        url = "http://10.10.182.145:5000/teacher/" + props.courseID
     } else if (props.title === "Major Elective") {
-        url = "10.10.182.145:5000/major-elective/" + props.courseID
+        url = "http://10.10.182.145:5000/major-elective/" + props.courseID
     } else if (props.title === "Free elective") {
-        url = "10.10.182.145:5000/free-elective/" + props.courseID
+        url = "http://10.10.182.145:5000/free-elective/" + props.courseID
     } else if (props.title === "Register") {
-        url = "10.10.182.145:5000/register/" + props.courseID
+        url = "http://10.10.182.145:5000/register/" + props.courseID
     } else if (props.title === "Degree") {
-        url = "10.10.182.145:5000/degree/" + props.courseID
+        url = "http://10.10.182.145:5000/degree/" + props.courseID
     }
 
     const handleDelete = () => {

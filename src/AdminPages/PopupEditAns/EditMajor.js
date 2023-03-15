@@ -11,7 +11,7 @@ const EditMajor = (props) => {
   const [data,setData] = useState(null);
 
   // var geturl = "http://localhost:5000/major/" + props.courseID
-  var geturl = "10.10.182.145:5000/major/" + props.courseID
+  var geturl = "http://10.10.182.145:5000/major/" + props.courseID
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
