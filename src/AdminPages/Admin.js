@@ -57,13 +57,13 @@ const AdminPage = (props) => {
   // const urlRegister = "http://localhost:5000/register"
   // const urlTeacher = "http://localhost:5000/teacher"
 
-  const urlMajor = "10.10.182.145:5000/major"
-  const urlMajorElec = "10.10.182.145:5000/major-elective"
-  const urlDegree = "10.10.182.145:5000/degree"
-  const urlFreeElec = "10.10.182.145:5000/free-elective"
-  const urlPlace = "10.10.182.145:5000/place"
-  const urlRegister = "10.10.182.145:5000/register"
-  const urlTeacher = "10.10.182.145:5000/teacher"
+  const urlMajor = "http://10.10.182.145:5000/major"
+  const urlMajorElec = "http://10.10.182.145:5000/major-elective"
+  const urlDegree = "http://10.10.182.145:5000/degree"
+  const urlFreeElec = "http://10.10.182.145:5000/free-elective"
+  const urlPlace = "http://10.10.182.145:5000/place"
+  const urlRegister = "http://10.10.182.145:5000/register"
+  const urlTeacher = "http://10.10.182.145:5000/teacher"
 
   const [AnsboxMajorList, setMajorList] = useState(null);
   const [AnsboxMajorElecList, setMajorElecList] = useState(null);
