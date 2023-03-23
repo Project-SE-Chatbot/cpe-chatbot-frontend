@@ -9,10 +9,10 @@ const EditPlace = (props) => {
   
   const [data, setData] = useState(null);
 
-    // var geturl = "http://localhost:5000/place/" + props.courseID
-    // var puturl = "http://localhost:5000/place/room"
-    var geturl = "10.10.182.145:5000/place/" + props.courseID
-    var puturl = "10.10.182.145:5000/place/room"
+    var geturl = "http://localhost:5000/place/" + props.courseID
+    var puturl = "http://localhost:5000/place/room"
+    // var geturl = "10.10.182.145:5000/place/" + props.courseID
+    // var puturl = "10.10.182.145:5000/place/room"
 
     var requestOptions = {
         method: 'GET',

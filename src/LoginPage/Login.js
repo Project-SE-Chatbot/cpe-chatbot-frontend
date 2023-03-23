@@ -18,8 +18,8 @@ const LoginPage = (props) => {
 
     let responseData;
     let url
-    // url = "http://localhost:5000/admin/"+username
-    url = "10.10.182.145:5000/admin"+username
+    url = "http://localhost:5000/admin/"+username
+    //url = "10.10.182.145:5000/admin"+username
     await fetch(url, requestOptions)
       .then((response) => response.json())
       .then((result) => (responseData = result))

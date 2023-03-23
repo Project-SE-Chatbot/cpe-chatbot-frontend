@@ -21,7 +21,7 @@ const CreateDegree = (props) => {
                         body: JSON.stringify(payload)
                 };
                 // url = http://localhost:5000
-                fetch('10.10.182.145:5000/degree', requestOptions)
+                fetch('http://localhost:5000/degree', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -38,7 +38,7 @@ const CreateDegree = (props) => {
                                         key_6:""
                                 })
                 };
-                fetch('10.10.182.145:5000/degree-key', requestKey)
+                fetch('http://localhost:5000/degree-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 

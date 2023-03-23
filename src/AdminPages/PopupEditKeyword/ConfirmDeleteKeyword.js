@@ -17,19 +17,19 @@ const ConfirmDeleteKeyword = (props) => {
 
     let url
         if (props.title === "Major") {
-        url = "10.10.182.145:5000/major-key/" + props.id
+        url = "http://localhost:5000/major-key/" + props.id
     } else if (props.title === "Place") {
-        url = "10.10.182.145:5000/place-key/" + props.id
+        url = "http://localhost:5000/place-key/" + props.id
     } else if (props.title === "Teacher") {
-        url = "10.10.182.145:5000/teacher-key/" + props.id
+        url = "http://localhost:5000/teacher-key/" + props.id
     } else if (props.title === "Major Elective"){
-        url = "10.10.182.145:5000/major-elec-key/" + props.id
+        url = "http://localhost:5000/major-elec-key/" + props.id
     } else if (props.title === "Free elective"){
-        url = "10.10.182.145:5000/free-elec-key/" + props.id
+        url = "http://localhost:5000/free-elec-key/" + props.id
     } else if (props.title === "Register"){
-        url = "10.10.182.145:5000/register-key/" + props.id
+        url = "http://localhost:5000/register-key/" + props.id
     } else if (props.title === "Degree"){
-        url = "10.10.182.145:5000/degree-key/" + props.id
+        url = "http://localhost:5000/degree-key/" + props.id
     }
     
 

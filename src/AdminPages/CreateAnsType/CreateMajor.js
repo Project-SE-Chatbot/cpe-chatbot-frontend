@@ -34,7 +34,7 @@ const CreateMajor = (props) => {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                 };
-                fetch('10.10.182.145:5000/major', requestOptions)
+                fetch('http://localhost:5000/major', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -51,7 +51,7 @@ const CreateMajor = (props) => {
                                         key_6:"" 
                                 })
                 };
-                fetch('10.10.182.145:5000/major-key', requestKey)
+                fetch('http://localhost:5000/major-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 

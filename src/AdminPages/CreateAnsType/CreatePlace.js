@@ -28,7 +28,7 @@ const CreatePlace = (props) => {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                 };
-                fetch('10.10.182.145:5000/place', requestOptions)
+                fetch('http://localhost:5000/place', requestOptions)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
@@ -45,7 +45,7 @@ const CreatePlace = (props) => {
                                         key_6:""
                                 })
                 };
-                fetch('10.10.182.145:5000/place-key', requestKey)
+                fetch('http://localhost:5000/place-key', requestKey)
                         .then(response => response.json())
                         .then(data => this.setState({ postId: data.id }));
 
