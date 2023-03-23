@@ -66,7 +66,10 @@ const Reaction = ({ message }) => {
       score: s,
       feedback: "love" })
   };
-  fetch('http://localhost:5000/feed-back', requestOptions)
+
+  // let url = "http://localhost:5000/feed-back"
+  let url = "http://10.10.182.145:5000/feed-back"
+  fetch(url, requestOptions)
       .then(response => response.json())
       .then(data => this.setState({ postId: data.id }));
   };

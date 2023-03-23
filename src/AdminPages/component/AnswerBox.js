@@ -17,7 +17,7 @@ const AnswerBox = (props) =>{
 
     let handleOver = () =>{
         setOver(!over);
-        props.editTrigger(!over);
+        props.editTrigger(true);
         props.setTitle(props.title);
         props.setDetail(props.detail);
         props.setStar(props.star);
@@ -60,9 +60,9 @@ const AnswerBox = (props) =>{
                 <div className='CommuIcon'>
                     <FontAwesomeIcon icon={faComments} />
                 </div>
-                <div>
+                {/* <div>
                     {comment}
-                </div>
+                </div> */}
                 <div className='star'>
                     <Rating  maxRating={5} defaultRating={props.star} icon='star' size='mini' disabled/>
                 </div>

@@ -16,10 +16,10 @@ const CreateRegister = (props) => {
     e.preventDefault();
 
     const payload = {
-      name,
-      link,
-      tcas_round,
-      degree
+      name:name,
+      link:link,
+      tcas_round:tcas_round,
+      degree:degree
 
     };
     const requestOptions = {
@@ -27,9 +27,9 @@ const CreateRegister = (props) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     };
-    fetch('http://localhost:5000/register', requestOptions)
+    fetch('http://localhost:50000/register', requestOptions)
       .then(response => response.json())
-      .then(data => this.setState({ postId: data.id }));
+      // .then(data => this.setState({ postId: data.id }));
 
     const requestKey = {
       method: 'POST',
@@ -44,9 +44,9 @@ const CreateRegister = (props) => {
           key_6:""
         })
     };
-    fetch('http://localhost:5000/register-key', requestKey)
+    fetch('http://localhost:50000/register-key', requestKey)
       .then(response => response.json())
-      .then(data => this.setState({ postId: data.id }));
+      // .then(data => this.setState({ postId: data.id }));
 
     console.log("submit value", payload);
     setname("");
